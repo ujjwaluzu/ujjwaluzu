@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Geist } from "next/font/google";
+import { Anton, Cormorant_Garamond, Geist } from "next/font/google";
 
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -16,20 +16,25 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
-  title: "ujjwaluzu - Coming Soon",
-  description: site.description,
+  title: "ujjwaluzu — Web Developer Portfolio",
+  description: "Ujjwal Baunthiyal is a web developer exploring ideas, building products, and turning concepts into real experiences.",
   keywords: [
     "ujjwaluzu",
     "portfolio",
-    "coming soon",
-    "product designer",
-    "developer",
+    "web developer",
+    "IntelligenceX",
   ],
   openGraph: {
-    title: "ujjwaluzu - Coming Soon",
-    description: site.description,
+    title: "ujjwaluzu — Web Developer Portfolio",
+    description: "Exploring ideas, building products, and turning concepts into real experiences.",
     url: site.domain,
     siteName: site.name,
     locale: "en_US",
@@ -37,8 +42,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "ujjwaluzu - Coming Soon",
-    description: site.description,
+    title: "ujjwaluzu — Web Developer Portfolio",
+    description: "Exploring ideas, building products, and turning concepts into real experiences.",
+  },
+  icons: {
+    icon: "/assets/faviconicon.png",
+    shortcut: "/assets/faviconicon.png",
+    apple: "/assets/faviconicon.png",
   },
   robots: {
     index: true,
@@ -50,7 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${cormorant.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${cormorant.variable} ${anton.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         {children}
