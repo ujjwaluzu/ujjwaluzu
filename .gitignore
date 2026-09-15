@@ -13,6 +13,7 @@
 # testing
 /coverage
 .dev.log
+.dev.log.err
 # next.js
 /.next/
 /out/
@@ -22,7 +23,13 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
+*.local
+
+# editors
+.idea/
+.vscode/
 
 # debug
 npm-debug.log*

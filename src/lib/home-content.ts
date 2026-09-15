@@ -14,7 +14,16 @@ export const homeContent = {
       "Web Developer Intern at IntelligenceX, exploring ideas, building products, and turning concepts into real experiences.",
     status: "Currently building on the web",
   },
-  tools: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Python", "Django", "MongoDB"],
+  tools: [
+    { name: "JavaScript", icon: "javascript.png", alt: "JavaScript logo" },
+    { name: "TypeScript", icon: "typescript.png", alt: "TypeScript logo" },
+    { name: "React", icon: "react.png", alt: "React logo" },
+    { name: "Next.js", icon: "nextjs.png", alt: "Next.js logo" },
+    { name: "Tailwind CSS", icon: "tailwindcss.png", alt: "Tailwind CSS logo" },
+    { name: "Python", icon: "python.png", alt: "Python logo" },
+    { name: "Django", icon: "django.png", alt: "Django logo" },
+    { name: "MongoDB", icon: "mongodb.png", alt: "MongoDB logo" },
+  ],
   projects: [
     {
       name: "RepoTeam",
@@ -51,13 +60,14 @@ export const homeContent = {
     titleLines: ["A curious builder", "who loves the", "web."],
     description:
       "I'm Ujjwal, a web developer who enjoys exploring technologies, building useful experiences, and turning ideas into products. I'm always learning, experimenting, and looking for what's next.",
-    labels: ["Ideas", "Projects", "Experiments"],
+    labels: ["Ideas", "Projects", "Repositories"],
     note: ["Development", "Design", "Problem Solving", "Good Coffee", "And", "A Brighter Tomorrow"],
   },
   experience: {
     eyebrow: "EXPERIENCE",
     role: "Web Developer Intern",
     company: "IntelligenceX",
+    period: "2026 - present",
     description:
       "Building and maintaining web applications, exploring modern technologies, and contributing to impactful products.",
     quote: "Build with curiosity. Ship with purpose.",

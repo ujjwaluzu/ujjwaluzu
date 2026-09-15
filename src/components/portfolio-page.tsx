@@ -20,8 +20,10 @@ function SectionEyebrow({ children, light = false }: { children: ReactNode; ligh
 export function SiteHeader() {
   const links = ["About", "Projects", "Experience", "Contact"];
   const [isHiddenWhileScrolling, setIsHiddenWhileScrolling] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
   const scrollStopTimer = useRef<number | undefined>(undefined);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     lastScrollY.current = window.scrollY;
@@ -49,6 +51,32 @@ export function SiteHeader() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    const closeOnOutsideClick = (event: MouseEvent) => {
+      if (!menuButtonRef.current?.parentElement?.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("mousedown", closeOnOutsideClick);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("mousedown", closeOnOutsideClick);
+    };
+  }, [isMenuOpen]);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <header className={`site-header${isHiddenWhileScrolling ? " is-hidden-while-scrolling" : ""}`}>
       <a href="#top" className="brand-lockup" aria-label="ujjwaluzu home">
@@ -62,14 +90,24 @@ export function SiteHeader() {
 
       <a className="button button-dark header-cta" href="#contact">Let&apos;s Talk <Arrow /></a>
 
-      <details className="mobile-menu">
-        <summary aria-label="Open navigation"><span /><span /><span /></summary>
-        <nav aria-label="Mobile navigation">
-          <a href="#top">Home</a>
-          {links.map((link) => <a key={link} href={`#${link.toLowerCase()}`}>{link}</a>)}
-          <a className="button button-dark" href="#contact">Let&apos;s Talk <Arrow /></a>
+      <div className={`mobile-menu${isMenuOpen ? " is-open" : ""}`}>
+        <button
+          ref={menuButtonRef}
+          className="mobile-menu-toggle"
+          type="button"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-nav"
+          aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span /><span /><span />
+        </button>
+        <nav id="mobile-nav" className="mobile-menu-nav" aria-label="Mobile navigation">
+          <a href="#top" onClick={closeMenu}>Home</a>
+          {links.map((link) => <a key={link} href={`#${link.toLowerCase()}`} onClick={closeMenu}>{link}</a>)}
+          <a className="button button-dark" href="#contact" onClick={closeMenu}>Let&apos;s Talk <Arrow /></a>
         </nav>
-      </details>
+      </div>
     </header>
   );
 }
@@ -122,9 +160,17 @@ export function HeroSection() {
   );
 }
 
-function ToolMark({ tool }: { tool: string }) {
-  const initial = tool === "Tailwind CSS" ? "~" : tool === "MongoDB" ? "◆" : tool.slice(0, 2);
-  return <span className={`tool-mark tool-${tool.toLowerCase().replace(/[^a-z]/g, "-")}`}>{initial}</span>;
+function TechIcon({ icon, alt, size = 22 }: { icon: string; alt: string; size?: number }) {
+  return (
+    <Image
+      className="tech-icon"
+      src={`${assetRoot}/${icon}`}
+      alt={alt}
+      width={size}
+      height={size}
+      style={{ width: size, height: size, objectFit: "contain" }}
+    />
+  );
 }
 
 export function TechnologyStrip() {
@@ -133,7 +179,7 @@ export function TechnologyStrip() {
       <div className="page-shell tool-strip-inner">
         <div className="tool-intro"><span>tools I love</span><b aria-hidden="true">↘</b></div>
         <div className="tool-list">
-          {homeContent.tools.map((tool) => <div className="tool-item" key={tool}><ToolMark tool={tool} /><span>{tool}</span></div>)}
+          {homeContent.tools.map((tool) => <div className="tool-item" key={tool.name}><TechIcon icon={tool.icon} alt={tool.alt} /><span>{tool.name}</span></div>)}
         </div>
       </div>
     </section>
@@ -171,7 +217,7 @@ export function FeaturedProjects() {
     <section className="projects-section paper-texture" id="projects">
       <div className="page-shell">
         <div className="section-heading projects-heading">
-          <div><SectionEyebrow>FEATURED PROJECTS</SectionEyebrow><h2 className="display-heading">Some things<br /><span>I&apos;ve built.</span><i aria-hidden="true">✦</i></h2></div>
+          <div><SectionEyebrow>FEATURED PROJECTS</SectionEyebrow><h2 className="display-heading">Some things<br /><span>I&apos;ve built.</span></h2></div>
           <div className="heading-aside"><p>Ideas <span>→</span> products<br /><em>One commit at a time.</em></p><a className="button button-dark" href="#contact">View All Projects <Arrow /></a></div>
         </div>
         <div className="projects-grid">{homeContent.projects.map((project, index) => <ProjectCard key={project.name} project={project} index={index} />)}</div>
@@ -190,9 +236,9 @@ export function AboutSection() {
         </div>
         <div className="about-copy">
           <SectionEyebrow>{about.eyebrow}</SectionEyebrow>
-          <h2 className="display-heading">{about.titleLines.map((line) => <span key={line}>{line}</span>)}<i aria-hidden="true">✦</i></h2>
+          <h2 className="display-heading">{about.titleLines.map((line) => <span key={line}>{line}</span>)}</h2>
           <p className="about-description">{about.description}</p>
-          <div className="about-labels">{about.labels.map((label, index) => <div key={label}><strong>{index === 0 ? "∞" : index === 1 ? "✦" : "↗"}</strong><span>{label}</span></div>)}</div>
+          <div className="about-labels">{about.labels.map((label, index) => <div key={label}><strong>{index === 0 ? "∞" : index === 1 ? "4+" : "20+"}</strong><span>{label}</span></div>)}</div>
         </div>
         <aside className="about-right-art">
           <Image className="about-right-asset" src={`${assetRoot}/about-right.png`} alt="Handwritten note listing Development, Design, Problem Solving, Good Coffee, And, and A Brighter Tomorrow." width={1067} height={1475} sizes="(max-width: 767px) 72vw, 24vw" />
@@ -209,7 +255,7 @@ export function ExperienceSection() {
       <div className="page-shell">
         <SectionEyebrow light>{experience.eyebrow}</SectionEyebrow>
         <div className="experience-grid">
-          <div className="experience-entry"><div className="experience-icon" aria-hidden="true">⌘</div><div><h2>{experience.role}</h2><h3>{experience.company}</h3><p>{experience.description}</p></div><span className="experience-mark">now</span></div>
+          <div className="experience-entry"><div className="experience-icon" aria-hidden="true">⌘</div><div><h2>{experience.role}</h2><h3>{experience.company}</h3><p>{experience.description}</p></div><span className="experience-mark">{experience.period}</span></div>
           <blockquote><span aria-hidden="true">“</span><p>{experience.quote}</p><span aria-hidden="true">”</span></blockquote>
         </div>
       </div>
@@ -221,8 +267,8 @@ export function TechStackSection() {
   return (
     <section className="stack-section paper-texture" id="stack">
       <div className="page-shell">
-        <div className="stack-heading"><div><SectionEyebrow>MY TECH STACK</SectionEyebrow><h2 className="display-heading">Technologies<br /><span>I work with.</span><i aria-hidden="true">✦</i></h2></div><Image className="always-learning-asset" src={decorativeAssets.alwaysLearning} alt="Always learning handwritten note." width={380} height={190} /></div>
-        <div className="stack-grid">{homeContent.tools.map((tool) => <div className="stack-card" key={tool}><ToolMark tool={tool} /><span>{tool}</span></div>)}</div>
+        <div className="stack-heading"><div><SectionEyebrow>MY TECH STACK</SectionEyebrow><h2 className="display-heading">Technologies<br /><span>I work with.</span></h2></div><Image className="always-learning-asset" src={decorativeAssets.alwaysLearning} alt="Always learning handwritten note." width={380} height={190} /></div>
+        <div className="stack-grid">{homeContent.tools.map((tool) => <div className="stack-card" key={tool.name}><TechIcon icon={tool.icon} alt={tool.alt} size={34} /><span>{tool.name}</span></div>)}</div>
       </div>
     </section>
   );

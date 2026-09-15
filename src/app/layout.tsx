@@ -24,7 +24,7 @@ const anton = Anton({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
-  title: "ujjwaluzu — Web Developer Portfolio",
+  title: "ujjwaluzu - Web Developer Portfolio",
   description: "Ujjwal Baunthiyal is a web developer exploring ideas, building products, and turning concepts into real experiences.",
   keywords: [
     "ujjwaluzu",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "IntelligenceX",
   ],
   openGraph: {
-    title: "ujjwaluzu — Web Developer Portfolio",
+    title: "ujjwaluzu - Web Developer Portfolio",
     description: "Exploring ideas, building products, and turning concepts into real experiences.",
     url: site.domain,
     siteName: site.name,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "ujjwaluzu — Web Developer Portfolio",
+    title: "ujjwaluzu - Web Developer Portfolio",
     description: "Exploring ideas, building products, and turning concepts into real experiences.",
   },
   icons: {
