@@ -46,7 +46,7 @@ export function HeroSection() {
           <p className="hero-description animate-rise" style={{ animationDelay: "340ms" }}>{hero.description}</p>
           <div className="hero-actions animate-rise" style={{ animationDelay: "420ms" }}>
             <a className="button button-dark" href="#projects">View My Work <Arrow /></a>
-            <a className="text-link" href="#about">About Me <span aria-hidden="true">↓</span></a>
+            <a className="button button-outline" href="#about">About Me <span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div className="hero-art">
@@ -92,19 +92,19 @@ function GitHubMark() {
 function ProjectVisual({ theme }: { theme: string }) {
   if (theme === "cinema") {
     return (
-      <div className="project-visual project-visual-cinema" aria-hidden="true">
+      <>
         <div className="vis-poster">
           <span className="vis-poster-label" />
           <b>UZZUTV</b>
           <span className="vis-play">▶</span>
         </div>
         <div className="vis-player-bar"><span /><i /></div>
-      </div>
+      </>
     );
   }
   if (theme === "collab") {
     return (
-      <div className="project-visual project-visual-collab" aria-hidden="true">
+      <>
         <div className="visual-window"><span /><span /><span /></div>
         <div className="vis-board">
           <div className="vis-column"><i /><i /><i /></div>
@@ -112,12 +112,12 @@ function ProjectVisual({ theme }: { theme: string }) {
           <div className="vis-column"><i /><i /><i /></div>
         </div>
         <div className="visual-lines"><i /><i /><i /></div>
-      </div>
+      </>
     );
   }
   if (theme === "auction") {
     return (
-      <div className="project-visual project-visual-auction" aria-hidden="true">
+      <>
         <div className="vis-item" />
         <div className="vis-item vis-item-front">
           <span className="vis-bid">BID</span>
@@ -125,34 +125,64 @@ function ProjectVisual({ theme }: { theme: string }) {
           <b>$24</b>
         </div>
         <div className="vis-bidder"><i /><span>Current bid</span><b>▲ 2</b></div>
-      </div>
+      </>
     );
   }
   return (
-    <div className="project-visual project-visual-wiki" aria-hidden="true">
+    <>
       <div className="vis-doc">
         <span className="vis-search">⌕ Search entries…</span>
         <b>Encyclopedia</b>
         <div className="vis-md"><i /><i /><i /><i /></div>
       </div>
       <div className="vis-hash">#</div>
-    </div>
+    </>
   );
 }
 
+const MAX_VISIBLE_TAGS = 5;
+
 function ProjectCard({ project, index }: { project: typeof homeContent.projects[number]; index: number }) {
+  const visibleTags = project.technologies.slice(0, MAX_VISIBLE_TAGS);
+  const hiddenCount = project.technologies.length - MAX_VISIBLE_TAGS;
+
   return (
     <article className={`project-card project-card-${index + 1}`}>
       <Reveal delayMs={index * 70}>
-        <ProjectVisual theme={project.theme} />
+        <div className={`project-visual project-visual-${project.theme}`} aria-hidden="true">
+          <div className="project-visual-inner">
+            <ProjectVisual theme={project.theme} />
+          </div>
+        </div>
         <div className="project-card-body">
-          <span className={`project-label${project.category === "MVP" ? " project-label--green" : project.category === "Streaming platform" ? " project-label--warm" : ""}`}>{project.category}</span>
-          <h3>{project.name}</h3>
-          <p>{project.description}</p>
-          <div className="tag-list">{project.technologies.map((tag) => <span key={tag}>{tag}</span>)}</div>
+          <div>
+            <span className={`project-label${project.category === "MVP" ? " project-label--green" : project.category === "Streaming platform" ? " project-label--warm" : ""}`}>{project.category}</span>
+            <h3>{project.name}</h3>
+            <p>{project.description}</p>
+            <div className="tag-list">
+              {visibleTags.map((tag) => <span key={tag}>{tag}</span>)}
+              {hiddenCount > 0 && <span className="tag-more">+{hiddenCount} more</span>}
+            </div>
+          </div>
           <div className="project-links">
-            <a className="github-link" href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} on GitHub`}><GitHubMark /> View code</a>
-            <a className="round-arrow" href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository on GitHub`}><Arrow /></a>
+            <a
+              className="github-link"
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${project.name} source code on GitHub`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <GitHubMark /> View code
+            </a>
+            <Link
+              className="round-arrow"
+              href="/projects"
+              aria-label={`View ${project.name} project details`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Arrow />
+            </Link>
           </div>
         </div>
       </Reveal>
@@ -166,7 +196,7 @@ export function FeaturedProjects() {
       <div className="page-shell">
         <Reveal className="section-heading projects-heading">
           <div><h2 className="display-heading">Some things<br /><span>I&apos;ve built.</span></h2></div>
-          <div className="heading-aside"><p>Ideas <span>→</span> products<br /><em>One commit at a time.</em></p><a className="button button-dark" href="#contact">View All Projects <Arrow /></a></div>
+          <div className="heading-aside"><p>Ideas <span>→</span> products<br /><em>One commit at a time.</em></p><Link className="button button-dark" href="/projects">View All Projects <Arrow /></Link></div>
         </Reveal>
         <div className="projects-grid">{homeContent.projects.map((project, index) => <ProjectCard key={project.name} project={project} index={index} />)}</div>
       </div>

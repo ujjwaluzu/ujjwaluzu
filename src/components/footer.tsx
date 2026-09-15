@@ -4,7 +4,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 flex flex-col items-center gap-3 px-6 pb-8 pt-4 text-center sm:pb-10">
+    <footer className="relative z-10 flex flex-col items-center gap-3 px-6 pb-4 pt-2 text-center sm:pb-5">
       <p
         className="text-[10px] uppercase tracking-[0.4em] text-muted sm:text-[11px]"
         aria-label="Tagline"

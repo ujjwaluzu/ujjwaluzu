@@ -28,7 +28,7 @@ export const homeContent = {
     {
       name: "UzzUTV",
       description:
-        "An all-in-one streaming platform for movies, TV, and anime with discovery, watchlists, reviews, profiles, and Watch Parties.",
+        "Streaming platform for movies, TV, and anime with discovery, watchlists, reviews, and Watch Parties.",
       technologies: ["Django", "Python", "Bootstrap", "JavaScript", "TMDB API", "AniList", "Supabase", "SQLite"],
       githubUrl: "https://github.com/ujjwaluzu/uzzutv",
       category: "Streaming platform",
@@ -37,7 +37,7 @@ export const homeContent = {
     {
       name: "RepoTeam",
       description:
-        "A collaborative project-management platform for teams to organize projects, track issues, and work together.",
+        "Collaborative project-management platform for teams to organize work, track issues, and ship together.",
       technologies: ["Django", "Python", "SQLite", "Django ORM", "HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/ujjwaluzu/RepoTeam-MVP",
       category: "MVP",
@@ -46,7 +46,7 @@ export const homeContent = {
     {
       name: "Commerce",
       description:
-        "An eBay-style auction platform with listings, bidding, watchlists, comments, and category browsing.",
+        "eBay-style auction platform with live listings, bidding, watchlists, and category browsing.",
       technologies: ["Python", "Django", "HTML", "CSS", "SQLite", "Django ORM"],
       githubUrl: "https://github.com/ujjwaluzu/cs50w-commerce",
       category: "CS50W project",
@@ -55,7 +55,7 @@ export const homeContent = {
     {
       name: "Wiki",
       description:
-        "A Wikipedia-inspired encyclopedia built with Django, featuring searchable Markdown-based entries and editing.",
+        "Wikipedia-inspired encyclopedia with searchable Markdown-based entries and full editing support.",
       technologies: ["Python", "Django", "HTML", "CSS", "Markdown", "markdown2"],
       githubUrl: "https://github.com/ujjwaluzu/cs50w-wiki",
       category: "CS50W project",
@@ -84,6 +84,6 @@ export const homeContent = {
     eyebrow: "LET'S CONNECT",
     title: ["LET'S BUILD", "SOMETHING", "COOL TOGETHER."],
     description: "Ideas, opportunities, or just a friendly hello. My inbox is always open.",
-    socials: ["GitHub", "LinkedIn", "X", "Instagram", "Email"],
+    socials: ["LinkedIn", "X", "GitHub"],
   },
 } as const;
