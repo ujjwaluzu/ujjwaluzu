@@ -196,19 +196,6 @@ function TechIcon({ icon, alt, size = 22 }: { icon: string; alt: string; size?: 
   );
 }
 
-export function TechnologyStrip() {
-  return (
-    <section className="tool-strip paper-texture" aria-label="Tools I love">
-      <Reveal className="page-shell tool-strip-inner">
-        <div className="tool-intro"><span>tools I love</span><b aria-hidden="true">↘</b></div>
-        <div className="tool-list">
-          {homeContent.tools.map((tool) => <div className="tool-item" key={tool.name}><TechIcon icon={tool.icon} alt={tool.alt} /><span>{tool.name}</span></div>)}
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
 function GitHubMark() {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
@@ -343,11 +330,23 @@ export function ExperienceSection() {
 export function TechStackSection() {
   const learningRef = useParallax<HTMLImageElement>(10);
 
+  const renderIcon = (tool: { name: string; icon: string; alt: string }, suffix: string) => (
+    <div className="stack-marquee-item" key={`${tool.name}-${suffix}`}>
+      <TechIcon icon={tool.icon} alt={tool.alt} size={88} />
+    </div>
+  );
+
   return (
     <section className="stack-section paper-texture" id="stack">
       <div className="page-shell">
         <Reveal className="stack-heading"><div><h2 className="display-heading">Technologies<br /><span>I work with.</span></h2></div><Image ref={learningRef} className="always-learning-asset" src={decorativeAssets.alwaysLearning} alt="Always learning handwritten note." width={380} height={190} /></Reveal>
-        <div className="stack-grid">{homeContent.tools.map((tool, index) => <div className="stack-card" key={tool.name}><Reveal delayMs={index * 45}><TechIcon icon={tool.icon} alt={tool.alt} size={50} /></Reveal></div>)}</div>
+        <div className="stack-tools-note"><span>tools I like</span><b aria-hidden="true">↓</b></div>
+        <Reveal className="stack-marquee">
+          <div className="stack-marquee-track">
+            <div className="stack-marquee-group">{homeContent.tools.map((tool) => renderIcon(tool, "a"))}</div>
+            <div className="stack-marquee-group" aria-hidden="true">{homeContent.tools.map((tool) => renderIcon(tool, "b"))}</div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -373,5 +372,5 @@ export function SiteFooter() {
 }
 
 export function PortfolioPage() {
-  return <><main><HeroSection /><TechnologyStrip /><FeaturedProjects /><AboutSection /><ExperienceSection /><TechStackSection /><ContactSection /></main><SiteFooter /></>;
+  return <><main><HeroSection /><FeaturedProjects /><AboutSection /><ExperienceSection /><TechStackSection /><ContactSection /></main><SiteFooter /></>;
 }

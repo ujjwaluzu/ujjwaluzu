@@ -9,8 +9,7 @@ export default async function run(page) {
       const offenders = [...document.querySelectorAll("*")].filter((el) => {
         const r = el.getBoundingClientRect();
         if (r.width === 0 && r.height === 0) return false;
-        if (getComputedStyle(el).position === "fixed") return false;
-        if (el.closest(".tool-list")) return false;
+        if (el.closest(".stack-marquee")) return false;
         return r.right > doc.clientWidth + 1 || r.left < -1;
       });
       const brief = (s) => {
@@ -28,7 +27,7 @@ export default async function run(page) {
         alwaysLearning: brief(".always-learning-asset"),
         socialRow: brief(".social-row"),
         contactCopy: brief(".contact-copy"),
-        stackGrid: brief(".stack-grid"),
+        stackGrid: brief(".stack-marquee"),
         projectsGrid: brief(".projects-grid"),
       };
     });
