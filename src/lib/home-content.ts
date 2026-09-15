@@ -26,32 +26,40 @@ export const homeContent = {
   ],
   projects: [
     {
+      name: "UzzUTV",
+      description:
+        "An all-in-one streaming platform for movies, TV, and anime with discovery, watchlists, reviews, profiles, and Watch Parties.",
+      technologies: ["Django", "Python", "Bootstrap", "JavaScript", "TMDB API", "AniList", "Supabase", "SQLite"],
+      githubUrl: "https://github.com/ujjwaluzu/uzzutv",
+      category: "Streaming platform",
+      theme: "cinema",
+    },
+    {
       name: "RepoTeam",
-      description: "Find your team. Build together. A platform for connecting collaborators and building projects.",
-      tags: ["Django", "Python", "SQLite"],
-      accent: "blue",
-      mark: "••",
+      description:
+        "A collaborative project-management platform for teams to organize projects, track issues, and work together.",
+      technologies: ["Django", "Python", "SQLite", "Django ORM", "HTML", "CSS", "JavaScript"],
+      githubUrl: "https://github.com/ujjwaluzu/RepoTeam-MVP",
+      category: "MVP",
+      theme: "collab",
     },
     {
-      name: "AniCluster",
-      description: "A platform for anime communities to connect, share, and discover.",
-      tags: ["Next.js", "TypeScript", "Tailwind"],
-      accent: "purple",
-      mark: "アニメ",
+      name: "Commerce",
+      description:
+        "An eBay-style auction platform with listings, bidding, watchlists, comments, and category browsing.",
+      technologies: ["Python", "Django", "HTML", "CSS", "SQLite", "Django ORM"],
+      githubUrl: "https://github.com/ujjwaluzu/cs50w-commerce",
+      category: "CS50W project",
+      theme: "auction",
     },
     {
-      name: "SkillSync",
-      description: "A platform to match learners with the right mentors.",
-      tags: ["Next.js", "MongoDB", "Tailwind"],
-      accent: "sky",
-      mark: "sync",
-    },
-    {
-      name: "Uzzutv",
-      description: "A modern streaming platform for entertainment lovers.",
-      tags: ["Next.js", "MongoDB", "Tailwind"],
-      accent: "charcoal",
-      mark: "more than\nentertainment.",
+      name: "Wiki",
+      description:
+        "A Wikipedia-inspired encyclopedia built with Django, featuring searchable Markdown-based entries and editing.",
+      technologies: ["Python", "Django", "HTML", "CSS", "Markdown", "markdown2"],
+      githubUrl: "https://github.com/ujjwaluzu/cs50w-wiki",
+      category: "CS50W project",
+      theme: "wiki",
     },
   ],
   about: {

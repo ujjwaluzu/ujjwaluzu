@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { Monogram } from "@/components/monogram";
+import { Reveal } from "@/components/reveal";
 import { decorativeAssets } from "@/lib/decorative-assets";
 import { homeContent } from "@/lib/home-content";
+import { useParallax } from "@/lib/use-parallax";
 
 const assetRoot = "/assets";
 
@@ -13,13 +14,10 @@ function Arrow() {
   return <span className="button-arrow" aria-hidden="true">→</span>;
 }
 
-function SectionEyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) {
-  return <p className={`section-eyebrow ${light ? "section-eyebrow-light" : ""}`}><span aria-hidden="true" />{children}</p>;
-}
-
 export function SiteHeader() {
   const links = ["About", "Projects", "Experience", "Contact"];
   const [isHiddenWhileScrolling, setIsHiddenWhileScrolling] = useState(false);
+  const [activeSection, setActiveSection] = useState("top");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
   const scrollStopTimer = useRef<number | undefined>(undefined);
@@ -49,6 +47,23 @@ export function SiteHeader() {
       window.removeEventListener("scroll", handleScroll);
       if (scrollStopTimer.current) window.clearTimeout(scrollStopTimer.current);
     };
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ["top", "about", "projects", "experience", "contact"];
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as Element[];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" },
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -84,8 +99,8 @@ export function SiteHeader() {
       </a>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
-        <a className="active" href="#top">Home</a>
-        {links.map((link) => <a key={link} href={`#${link.toLowerCase()}`}>{link}</a>)}
+        <a className={activeSection === "top" ? "active" : ""} href="#top">Home</a>
+        {links.map((link) => <a key={link} className={activeSection === link.toLowerCase() ? "active" : ""} href={`#${link.toLowerCase()}`}>{link}</a>)}
       </nav>
 
       <a className="button button-dark header-cta" href="#contact">Let&apos;s Talk <Arrow /></a>
@@ -104,7 +119,7 @@ export function SiteHeader() {
         </button>
         <nav id="mobile-nav" className="mobile-menu-nav" aria-label="Mobile navigation">
           <a href="#top" onClick={closeMenu}>Home</a>
-          {links.map((link) => <a key={link} href={`#${link.toLowerCase()}`} onClick={closeMenu}>{link}</a>)}
+          {links.map((link) => <a key={link} className={activeSection === link.toLowerCase() ? "active" : ""} href={`#${link.toLowerCase()}`} onClick={closeMenu}>{link}</a>)}
           <a className="button button-dark" href="#contact" onClick={closeMenu}>Let&apos;s Talk <Arrow /></a>
         </nav>
       </div>
@@ -113,18 +128,25 @@ export function SiteHeader() {
 }
 
 function HeroDecoration() {
+  const buildRef = useParallax<HTMLImageElement>(10);
+  const biggerRef = useParallax<HTMLImageElement>(12);
+  const goodRef = useParallax<HTMLImageElement>(10);
+  const codingRef = useParallax<HTMLImageElement>(12);
+
   return (
     <div className="hero-decorations" aria-hidden="true">
-      <Image className="hero-asset hero-asset-build" src={decorativeAssets.heroStickyBuild} width={220} height={285} alt="" />
-      <Image className="hero-asset hero-asset-bigger" src={decorativeAssets.heroStickyBiggerThings} width={225} height={205} alt="" />
-      <Image className="hero-asset hero-asset-good" src={decorativeAssets.heroGoodIdeas} width={250} height={245} alt="" />
-      <Image className="hero-asset hero-asset-coding" src={decorativeAssets.heroCodingDoodle} width={195} height={205} alt="" />
+      <Image ref={buildRef} className="hero-asset hero-asset-build" src={decorativeAssets.heroStickyBuild} width={220} height={285} alt="" />
+      <Image ref={biggerRef} className="hero-asset hero-asset-bigger" src={decorativeAssets.heroStickyBiggerThings} width={225} height={205} alt="" />
+      <Image ref={goodRef} className="hero-asset hero-asset-good" src={decorativeAssets.heroGoodIdeas} width={250} height={245} alt="" />
+      <Image ref={codingRef} className="hero-asset hero-asset-coding" src={decorativeAssets.heroCodingDoodle} width={195} height={205} alt="" />
     </div>
   );
 }
 
 export function HeroSection() {
   const { hero } = homeContent;
+  const characterRef = useParallax<HTMLImageElement>(14);
+
   return (
     <section className="hero" id="top">
       <SiteHeader />
@@ -145,6 +167,7 @@ export function HeroSection() {
         <div className="hero-art">
           <HeroDecoration />
           <Image
+            ref={characterRef}
             className="character character-hero"
             src={`${assetRoot}/hero-char.png`}
             alt="Illustrated full-body portrait of Ujjwal with a frog on his head"
@@ -176,24 +199,71 @@ function TechIcon({ icon, alt, size = 22 }: { icon: string; alt: string; size?: 
 export function TechnologyStrip() {
   return (
     <section className="tool-strip paper-texture" aria-label="Tools I love">
-      <div className="page-shell tool-strip-inner">
+      <Reveal className="page-shell tool-strip-inner">
         <div className="tool-intro"><span>tools I love</span><b aria-hidden="true">↘</b></div>
         <div className="tool-list">
           {homeContent.tools.map((tool) => <div className="tool-item" key={tool.name}><TechIcon icon={tool.icon} alt={tool.alt} /><span>{tool.name}</span></div>)}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
 
-function ProjectVisual({ accent, mark }: { accent: string; mark: string }) {
+function GitHubMark() {
   return (
-    <div className={`project-visual project-visual-${accent}`} aria-hidden="true">
-      <div className="visual-window"><span /><span /><span /></div>
-      <strong>{mark}</strong>
-      <div className="visual-lines"><i /><i /><i /></div>
-      {accent === "sky" && <div className="visual-modal"><b>↗</b><span /><span /><span /></div>}
-      {accent === "charcoal" && <div className="visual-play">▶</div>}
+    <svg aria-hidden="true" viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+    </svg>
+  );
+}
+
+function ProjectVisual({ theme }: { theme: string }) {
+  if (theme === "cinema") {
+    return (
+      <div className="project-visual project-visual-cinema" aria-hidden="true">
+        <div className="vis-poster">
+          <span className="vis-poster-label" />
+          <b>UZZUTV</b>
+          <span className="vis-play">▶</span>
+        </div>
+        <div className="vis-player-bar"><span /><i /></div>
+      </div>
+    );
+  }
+  if (theme === "collab") {
+    return (
+      <div className="project-visual project-visual-collab" aria-hidden="true">
+        <div className="visual-window"><span /><span /><span /></div>
+        <div className="vis-board">
+          <div className="vis-column"><i /><i /><i /></div>
+          <div className="vis-column"><i /><i /></div>
+          <div className="vis-column"><i /><i /><i /></div>
+        </div>
+        <div className="visual-lines"><i /><i /><i /></div>
+      </div>
+    );
+  }
+  if (theme === "auction") {
+    return (
+      <div className="project-visual project-visual-auction" aria-hidden="true">
+        <div className="vis-item" />
+        <div className="vis-item vis-item-front">
+          <span className="vis-bid">BID</span>
+          <div className="vis-item-lines"><i /><i /><i /></div>
+          <b>$24</b>
+        </div>
+        <div className="vis-bidder"><i /><span>Current bid</span><b>▲ 2</b></div>
+      </div>
+    );
+  }
+  return (
+    <div className="project-visual project-visual-wiki" aria-hidden="true">
+      <div className="vis-doc">
+        <span className="vis-search">⌕ Search entries…</span>
+        <b>Encyclopedia</b>
+        <div className="vis-md"><i /><i /><i /><i /></div>
+      </div>
+      <div className="vis-hash">#</div>
     </div>
   );
 }
@@ -201,13 +271,19 @@ function ProjectVisual({ accent, mark }: { accent: string; mark: string }) {
 function ProjectCard({ project, index }: { project: typeof homeContent.projects[number]; index: number }) {
   return (
     <article className={`project-card project-card-${index + 1}`}>
-      <ProjectVisual accent={project.accent} mark={project.mark} />
-      <div className="project-card-body">
-        <h3>{project.name}</h3>
-        <p>{project.description}</p>
-        <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-        <a href="#contact" className="round-arrow" aria-label={`Learn more about ${project.name}`}><Arrow /></a>
-      </div>
+      <Reveal delayMs={index * 70}>
+        <ProjectVisual theme={project.theme} />
+        <div className="project-card-body">
+          <span className={`project-label${project.category === "MVP" ? " project-label--green" : project.category === "Streaming platform" ? " project-label--warm" : ""}`}>{project.category}</span>
+          <h3>{project.name}</h3>
+          <p>{project.description}</p>
+          <div className="tag-list">{project.technologies.map((tag) => <span key={tag}>{tag}</span>)}</div>
+          <div className="project-links">
+            <a className="github-link" href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} on GitHub`}><GitHubMark /> View code</a>
+            <a className="round-arrow" href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository on GitHub`}><Arrow /></a>
+          </div>
+        </div>
+      </Reveal>
     </article>
   );
 }
@@ -216,10 +292,10 @@ export function FeaturedProjects() {
   return (
     <section className="projects-section paper-texture" id="projects">
       <div className="page-shell">
-        <div className="section-heading projects-heading">
-          <div><SectionEyebrow>FEATURED PROJECTS</SectionEyebrow><h2 className="display-heading">Some things<br /><span>I&apos;ve built.</span></h2></div>
+        <Reveal className="section-heading projects-heading">
+          <div><h2 className="display-heading">Some things<br /><span>I&apos;ve built.</span></h2></div>
           <div className="heading-aside"><p>Ideas <span>→</span> products<br /><em>One commit at a time.</em></p><a className="button button-dark" href="#contact">View All Projects <Arrow /></a></div>
-        </div>
+        </Reveal>
         <div className="projects-grid">{homeContent.projects.map((project, index) => <ProjectCard key={project.name} project={project} index={index} />)}</div>
       </div>
     </section>
@@ -228,22 +304,24 @@ export function FeaturedProjects() {
 
 export function AboutSection() {
   const { about } = homeContent;
+  const polaroidRef = useParallax<HTMLImageElement>(16);
+  const noteRef = useParallax<HTMLImageElement>(12);
+
   return (
     <section className="about-section paper-texture" id="about">
-      <div className="page-shell about-grid">
+      <Reveal className="page-shell about-grid">
         <div className="about-art-wrap">
-          <Image className="about-left-asset" src={`${assetRoot}/about-left.png`} alt="Illustrated polaroid portrait of Ujjwal coding with a frog on his head." width={1210} height={1300} sizes="(max-width: 767px) 84vw, 34vw" />
+          <Image ref={polaroidRef} className="about-left-asset" src={`${assetRoot}/about-left.png`} alt="Illustrated polaroid portrait of Ujjwal coding with a frog on his head." width={1210} height={1300} sizes="(max-width: 767px) 84vw, 34vw" />
         </div>
         <div className="about-copy">
-          <SectionEyebrow>{about.eyebrow}</SectionEyebrow>
           <h2 className="display-heading">{about.titleLines.map((line) => <span key={line}>{line}</span>)}</h2>
           <p className="about-description">{about.description}</p>
           <div className="about-labels">{about.labels.map((label, index) => <div key={label}><strong>{index === 0 ? "∞" : index === 1 ? "4+" : "20+"}</strong><span>{label}</span></div>)}</div>
         </div>
         <aside className="about-right-art">
-          <Image className="about-right-asset" src={`${assetRoot}/about-right.png`} alt="Handwritten note listing Development, Design, Problem Solving, Good Coffee, And, and A Brighter Tomorrow." width={1067} height={1475} sizes="(max-width: 767px) 72vw, 24vw" />
+          <Image ref={noteRef} className="about-right-asset" src={`${assetRoot}/about-right.png`} alt="Handwritten note listing Development, Design, Problem Solving, Good Coffee, And, and A Brighter Tomorrow." width={1067} height={1475} sizes="(max-width: 767px) 72vw, 24vw" />
         </aside>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -252,23 +330,24 @@ export function ExperienceSection() {
   const { experience } = homeContent;
   return (
     <section className="experience-section dark-texture" id="experience">
-      <div className="page-shell">
-        <SectionEyebrow light>{experience.eyebrow}</SectionEyebrow>
+      <Reveal className="page-shell">
         <div className="experience-grid">
-          <div className="experience-entry"><div className="experience-icon" aria-hidden="true">⌘</div><div><h2>{experience.role}</h2><h3>{experience.company}</h3><p>{experience.description}</p></div><span className="experience-mark">{experience.period}</span></div>
+          <div className="experience-entry"><Image src="/assets/company.png" alt="Company logo" width={48} height={48} className="experience-icon" /><div><h2>{experience.role}</h2><h3>{experience.company}</h3><p>{experience.description}</p></div><span className="experience-mark">{experience.period}</span></div>
           <blockquote><span aria-hidden="true">“</span><p>{experience.quote}</p><span aria-hidden="true">”</span></blockquote>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
 
 export function TechStackSection() {
+  const learningRef = useParallax<HTMLImageElement>(10);
+
   return (
     <section className="stack-section paper-texture" id="stack">
       <div className="page-shell">
-        <div className="stack-heading"><div><SectionEyebrow>MY TECH STACK</SectionEyebrow><h2 className="display-heading">Technologies<br /><span>I work with.</span></h2></div><Image className="always-learning-asset" src={decorativeAssets.alwaysLearning} alt="Always learning handwritten note." width={380} height={190} /></div>
-        <div className="stack-grid">{homeContent.tools.map((tool) => <div className="stack-card" key={tool.name}><TechIcon icon={tool.icon} alt={tool.alt} size={34} /><span>{tool.name}</span></div>)}</div>
+        <Reveal className="stack-heading"><div><h2 className="display-heading">Technologies<br /><span>I work with.</span></h2></div><Image ref={learningRef} className="always-learning-asset" src={decorativeAssets.alwaysLearning} alt="Always learning handwritten note." width={380} height={190} /></Reveal>
+        <div className="stack-grid">{homeContent.tools.map((tool, index) => <div className="stack-card" key={tool.name}><Reveal delayMs={index * 45}><TechIcon icon={tool.icon} alt={tool.alt} size={50} /></Reveal></div>)}</div>
       </div>
     </section>
   );
@@ -282,15 +361,15 @@ export function ContactSection() {
   const { contact } = homeContent;
   return (
     <section className="contact-section dark-texture" id="contact">
-      <div className="page-shell contact-grid">
-        <div className="contact-copy"><SectionEyebrow light>{contact.eyebrow}</SectionEyebrow><h2 className="display-heading">{contact.title.map((line) => <span key={line}>{line === "COOL TOGETHER." ? <><b>COOL</b> TOGETHER.</> : line}</span>)}</h2><p>{contact.description}</p><a className="button button-light" href="#top">Get in Touch <Arrow /></a><div className="social-row">{contact.socials.map((social) => <a key={social} href="#contact" aria-label={`${social} placeholder`}><SocialMark label={social} /></a>)}</div></div>
-      </div>
+      <Reveal className="page-shell contact-grid">
+        <div className="contact-copy"><h2 className="display-heading">{contact.title.map((line) => <span key={line}>{line === "COOL TOGETHER." ? <><b>COOL</b> TOGETHER.</> : line}</span>)}</h2><p>{contact.description}</p><a className="button button-light" href="#top">Get in Touch <Arrow /></a><div className="social-row">{contact.socials.map((social) => <a key={social} href="#contact" aria-label={`${social} placeholder`}><SocialMark label={social} /></a>)}</div></div>
+      </Reveal>
     </section>
   );
 }
 
 export function SiteFooter() {
-  return <footer className="site-footer"><div className="page-shell footer-inner"><a href="#top" className="footer-brand"><Monogram className="brand-monogram" /><span>{homeContent.identity.brand}</span></a><span>© 2026 Ujjwaluzu</span><span>Built with curiosity.</span></div></footer>;
+  return <footer className="site-footer"><div className="page-shell footer-inner"><a href="#top" className="footer-brand footer-favicon-link" aria-label="ujjwaluzu home"><Image src={`${assetRoot}/faviconicon.png`} alt="" width={23} height={23} className="footer-favicon" /></a><span>© 2026 Ujjwaluzu</span><a className="footer-status" href="#" aria-label="Status">Status</a></div></footer>;
 }
 
 export function PortfolioPage() {
