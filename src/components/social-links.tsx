@@ -1,6 +1,6 @@
 import { site, isSocialAvailable } from "@/lib/site";
 
-function LinkedinIcon({ className }: { className?: string }) {
+export function LinkedinIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -18,7 +18,7 @@ function LinkedinIcon({ className }: { className?: string }) {
   );
 }
 
-function GithubIcon({ className }: { className?: string }) {
+export function GithubIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -30,7 +30,7 @@ function GithubIcon({ className }: { className?: string }) {
   );
 }
 
-function InstagramIcon({ className }: { className?: string }) {
+export function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"

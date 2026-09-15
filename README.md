@@ -7,3 +7,4 @@
 - ⚡ Interested in full-stack development, creative ideas, and clean design.
 - 🌱 Always learning, experimenting, and improving.
 - 📫 Find me on [X](https://x.com/ujjwaluzu) or [LinkedIn](https://www.linkedin.com/in/ujjwaluzu/).
+

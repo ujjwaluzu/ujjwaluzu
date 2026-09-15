@@ -1,131 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 import { Reveal } from "@/components/reveal";
+import { Arrow, SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { decorativeAssets } from "@/lib/decorative-assets";
 import { homeContent } from "@/lib/home-content";
 import { useParallax } from "@/lib/use-parallax";
 
 const assetRoot = "/assets";
-
-function Arrow() {
-  return <span className="button-arrow" aria-hidden="true">→</span>;
-}
-
-export function SiteHeader() {
-  const links = ["About", "Projects", "Experience", "Contact"];
-  const [isHiddenWhileScrolling, setIsHiddenWhileScrolling] = useState(false);
-  const [activeSection, setActiveSection] = useState("top");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const lastScrollY = useRef(0);
-  const scrollStopTimer = useRef<number | undefined>(undefined);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    lastScrollY.current = window.scrollY;
-
-    const revealHeader = () => {
-      setIsHiddenWhileScrolling(false);
-      scrollStopTimer.current = undefined;
-    };
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const isScrollingDown = currentScrollY > lastScrollY.current && currentScrollY > 72;
-
-      setIsHiddenWhileScrolling(isScrollingDown);
-      lastScrollY.current = currentScrollY;
-
-      if (scrollStopTimer.current) window.clearTimeout(scrollStopTimer.current);
-      scrollStopTimer.current = window.setTimeout(revealHeader, 180);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollStopTimer.current) window.clearTimeout(scrollStopTimer.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    const sectionIds = ["top", "about", "projects", "experience", "contact"];
-    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as Element[];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { rootMargin: "-50% 0px -50% 0px" },
-    );
-
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsMenuOpen(false);
-        menuButtonRef.current?.focus();
-      }
-    };
-
-    const closeOnOutsideClick = (event: MouseEvent) => {
-      if (!menuButtonRef.current?.parentElement?.contains(event.target as Node)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("keydown", closeOnEscape);
-    document.addEventListener("mousedown", closeOnOutsideClick);
-    return () => {
-      document.removeEventListener("keydown", closeOnEscape);
-      document.removeEventListener("mousedown", closeOnOutsideClick);
-    };
-  }, [isMenuOpen]);
-
-  const closeMenu = () => setIsMenuOpen(false);
-
-  return (
-    <header className={`site-header${isHiddenWhileScrolling ? " is-hidden-while-scrolling" : ""}`}>
-      <a href="#top" className="brand-lockup" aria-label="ujjwaluzu home">
-        <Image className="brand-favicon" src={`${assetRoot}/faviconicon.png`} alt="" width={1254} height={1254} priority />
-      </a>
-
-      <nav className="desktop-nav" aria-label="Primary navigation">
-        <a className={activeSection === "top" ? "active" : ""} href="#top">Home</a>
-        {links.map((link) => <a key={link} className={activeSection === link.toLowerCase() ? "active" : ""} href={`#${link.toLowerCase()}`}>{link}</a>)}
-      </nav>
-
-      <a className="button button-dark header-cta" href="#contact">Let&apos;s Talk <Arrow /></a>
-
-      <div className={`mobile-menu${isMenuOpen ? " is-open" : ""}`}>
-        <button
-          ref={menuButtonRef}
-          className="mobile-menu-toggle"
-          type="button"
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-nav"
-          aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
-          onClick={() => setIsMenuOpen((open) => !open)}
-        >
-          <span /><span /><span />
-        </button>
-        <nav id="mobile-nav" className="mobile-menu-nav" aria-label="Mobile navigation">
-          <a href="#top" onClick={closeMenu}>Home</a>
-          {links.map((link) => <a key={link} className={activeSection === link.toLowerCase() ? "active" : ""} href={`#${link.toLowerCase()}`} onClick={closeMenu}>{link}</a>)}
-          <a className="button button-dark" href="#contact" onClick={closeMenu}>Let&apos;s Talk <Arrow /></a>
-        </nav>
-      </div>
-    </header>
-  );
-}
 
 function HeroDecoration() {
   const buildRef = useParallax<HTMLImageElement>(10);
@@ -361,14 +246,10 @@ export function ContactSection() {
   return (
     <section className="contact-section dark-texture" id="contact">
       <Reveal className="page-shell contact-grid">
-        <div className="contact-copy"><h2 className="display-heading">{contact.title.map((line) => <span key={line}>{line === "COOL TOGETHER." ? <><b>COOL</b> TOGETHER.</> : line}</span>)}</h2><p>{contact.description}</p><a className="button button-light" href="#top">Get in Touch <Arrow /></a><div className="social-row">{contact.socials.map((social) => <a key={social} href="#contact" aria-label={`${social} placeholder`}><SocialMark label={social} /></a>)}</div></div>
+        <div className="contact-copy"><h2 className="display-heading">{contact.title.map((line) => <span key={line}>{line === "COOL TOGETHER." ? <><b>COOL</b> TOGETHER.</> : line}</span>)}</h2><p>{contact.description}</p><Link className="button button-light" href="/contact">Get in Touch <Arrow /></Link><div className="social-row">{contact.socials.map((social) => <a key={social} href="#contact" aria-label={`${social} placeholder`}><SocialMark label={social} /></a>)}</div></div>
       </Reveal>
     </section>
   );
-}
-
-export function SiteFooter() {
-  return <footer className="site-footer"><div className="page-shell footer-inner"><a href="#top" className="footer-brand footer-favicon-link" aria-label="ujjwaluzu home"><Image src={`${assetRoot}/faviconicon.png`} alt="" width={23} height={23} className="footer-favicon" /></a><span>© 2026 Ujjwaluzu</span><a className="footer-status" href="#" aria-label="Status">Status</a></div></footer>;
 }
 
 export function PortfolioPage() {
