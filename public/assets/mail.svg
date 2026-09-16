@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect fill="#fffdf3" width="400" height="220" rx="8"/>
+  <rect x="24" y="32" width="352" height="38" rx="4" fill="none" stroke="#0b0b0b" stroke-width="1.5" opacity=".12"/>
+  <rect x="24" y="82" width="352" height="28" rx="3" fill="none" stroke="#0b0b0b" stroke-width="1" opacity=".10"/>
+  <rect x="24" y="122" width="352" height="28" rx="3" fill="none" stroke="#0b0b0b" stroke-width="1" opacity=".10"/>
+  <rect x="24" y="162" width="352" height="28" rx="3" fill="none" stroke="#0b0b0b" stroke-width="1" opacity=".10"/>
+  <rect x="34" y="40" width="10" height="10" rx="5" fill="#0b0b0b" opacity=".12"/>
+  <rect x="50" y="40" width="10" height="10" rx="5" fill="#0b0b0b" opacity=".12"/>
+  <rect x="66" y="40" width="10" height="10" rx="5" fill="#0b0b0b" opacity=".12"/>
+  <text x="200" y="61" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#0b0b0b" opacity=".18">MAIL</text>
+</svg>

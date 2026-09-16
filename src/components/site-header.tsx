@@ -14,6 +14,7 @@ export function Arrow() {
 export function SiteHeader() {
   const pathname = usePathname();
   const isContactPage = pathname === "/contact";
+  const isProjectPage = pathname === "/project" || pathname.startsWith("/project/");
   const links = ["About", "Projects", "Experience", "Contact"];
   const [isHiddenWhileScrolling, setIsHiddenWhileScrolling] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
@@ -93,6 +94,16 @@ export function SiteHeader() {
 
   const homepageHref = (section: string) => `/${section === "top" ? "" : `#${section}`}`;
 
+  const navHref = (link: string) => (link.toLowerCase() === "projects" ? "/project" : `/#${link.toLowerCase()}`);
+
+  const navClass = (link: string) => {
+    const l = link.toLowerCase();
+    if (isContactPage || isProjectPage) {
+      return l === (isContactPage ? "contact" : "projects") ? "active" : "";
+    }
+    return activeSection === l ? "active" : "";
+  };
+
   return (
     <header className={`site-header${isHiddenWhileScrolling ? " is-hidden-while-scrolling" : ""}`}>
       <Link href="/" className="brand-lockup" aria-label="ujjwaluzu home">
@@ -100,18 +111,12 @@ export function SiteHeader() {
       </Link>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
-        <Link className={!isContactPage && activeSection === "top" ? "active" : ""} href="/">Home</Link>
+        <Link className={!isContactPage && !isProjectPage && activeSection === "top" ? "active" : ""} href="/">Home</Link>
         {links.map((link) => (
           <Link
             key={link}
-            className={
-              isContactPage && link.toLowerCase() === "contact"
-                ? "active"
-                : !isContactPage && activeSection === link.toLowerCase()
-                  ? "active"
-                  : ""
-            }
-            href={`/#${link.toLowerCase()}`}
+            className={navClass(link)}
+            href={navHref(link)}
           >{link}</Link>
         ))}
       </nav>
@@ -135,14 +140,8 @@ export function SiteHeader() {
           {links.map((link) => (
             <Link
               key={link}
-              className={
-                isContactPage && link.toLowerCase() === "contact"
-                  ? "active"
-                  : !isContactPage && activeSection === link.toLowerCase()
-                    ? "active"
-                    : ""
-              }
-              href={`/#${link.toLowerCase()}`}
+              className={navClass(link)}
+              href={navHref(link)}
               onClick={closeMenu}
             >{link}</Link>
           ))}

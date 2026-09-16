@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Reveal } from "@/components/reveal";
+import { GitHubMark } from "@/components/icons";
 import { Arrow, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { decorativeAssets } from "@/lib/decorative-assets";
@@ -81,65 +82,6 @@ function TechIcon({ icon, alt, size = 22 }: { icon: string; alt: string; size?: 
   );
 }
 
-function GitHubMark() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
-      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-    </svg>
-  );
-}
-
-function ProjectVisual({ theme }: { theme: string }) {
-  if (theme === "cinema") {
-    return (
-      <>
-        <div className="vis-poster">
-          <span className="vis-poster-label" />
-          <b>UZZUTV</b>
-          <span className="vis-play">▶</span>
-        </div>
-        <div className="vis-player-bar"><span /><i /></div>
-      </>
-    );
-  }
-  if (theme === "collab") {
-    return (
-      <>
-        <div className="visual-window"><span /><span /><span /></div>
-        <div className="vis-board">
-          <div className="vis-column"><i /><i /><i /></div>
-          <div className="vis-column"><i /><i /></div>
-          <div className="vis-column"><i /><i /><i /></div>
-        </div>
-        <div className="visual-lines"><i /><i /><i /></div>
-      </>
-    );
-  }
-  if (theme === "auction") {
-    return (
-      <>
-        <div className="vis-item" />
-        <div className="vis-item vis-item-front">
-          <span className="vis-bid">BID</span>
-          <div className="vis-item-lines"><i /><i /><i /></div>
-          <b>$24</b>
-        </div>
-        <div className="vis-bidder"><i /><span>Current bid</span><b>▲ 2</b></div>
-      </>
-    );
-  }
-  return (
-    <>
-      <div className="vis-doc">
-        <span className="vis-search">⌕ Search entries…</span>
-        <b>Encyclopedia</b>
-        <div className="vis-md"><i /><i /><i /><i /></div>
-      </div>
-      <div className="vis-hash">#</div>
-    </>
-  );
-}
-
 const MAX_VISIBLE_TAGS = 5;
 
 function ProjectCard({ project, index }: { project: typeof homeContent.projects[number]; index: number }) {
@@ -151,7 +93,13 @@ function ProjectCard({ project, index }: { project: typeof homeContent.projects[
       <Reveal delayMs={index * 70}>
         <div className={`project-visual project-visual-${project.theme}`} aria-hidden="true">
           <div className="project-visual-inner">
-            <ProjectVisual theme={project.theme} />
+            <Image
+              src={`${assetRoot}/${project.image}`}
+              alt=""
+              fill
+              sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 340px, 285px"
+              className="project-shot"
+            />
           </div>
         </div>
         <div className="project-card-body">
@@ -177,7 +125,7 @@ function ProjectCard({ project, index }: { project: typeof homeContent.projects[
             </a>
             <Link
               className="round-arrow"
-              href="/projects"
+              href="/project"
               aria-label={`View ${project.name} project details`}
               onClick={(e) => e.stopPropagation()}
             >
@@ -196,9 +144,9 @@ export function FeaturedProjects() {
       <div className="page-shell">
         <Reveal className="section-heading projects-heading">
           <div><h2 className="display-heading">Some things<br /><span>I&apos;ve built.</span></h2></div>
-          <div className="heading-aside"><p>Ideas <span>→</span> products<br /><em>One commit at a time.</em></p><Link className="button button-dark" href="/projects">View All Projects <Arrow /></Link></div>
+          <div className="heading-aside"><p>Ideas <span>→</span> products<br /><em>One commit at a time.</em></p><Link className="button button-dark" href="/project">View All Projects <Arrow /></Link></div>
         </Reveal>
-        <div className="projects-grid">{homeContent.projects.map((project, index) => <ProjectCard key={project.name} project={project} index={index} />)}</div>
+        <div className="projects-grid">{homeContent.projects.slice(0, 4).map((project, index) => <ProjectCard key={project.name} project={project} index={index} />)}</div>
       </div>
     </section>
   );

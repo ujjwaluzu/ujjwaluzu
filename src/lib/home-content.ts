@@ -26,40 +26,81 @@ export const homeContent = {
   ],
   projects: [
     {
+      slug: "uzzutv",
       name: "UzzUTV",
       description:
-        "Streaming platform for movies, TV, and anime with discovery, watchlists, reviews, and Watch Parties.",
+        "An all-in-one streaming platform for movies, TV, and anime with discovery, watchlists, reviews, profiles, and Watch Parties.",
       technologies: ["Django", "Python", "Bootstrap", "JavaScript", "TMDB API", "AniList", "Supabase", "SQLite"],
       githubUrl: "https://github.com/ujjwaluzu/uzzutv",
       category: "Streaming platform",
       theme: "cinema",
+      image: "uzzutv.png",
     },
     {
+      slug: "repoteam",
       name: "RepoTeam",
       description:
-        "Collaborative project-management platform for teams to organize work, track issues, and ship together.",
+        "A collaborative project-management platform for teams to organize projects, track issues, and work together.",
       technologies: ["Django", "Python", "SQLite", "Django ORM", "HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/ujjwaluzu/RepoTeam-MVP",
       category: "MVP",
       theme: "collab",
+      image: "repoteam/dashboard.png",
     },
     {
+      slug: "commerce",
       name: "Commerce",
       description:
-        "eBay-style auction platform with live listings, bidding, watchlists, and category browsing.",
+        "An eBay-style auction platform with listings, bidding, watchlists, comments, and category browsing.",
       technologies: ["Python", "Django", "HTML", "CSS", "SQLite", "Django ORM"],
       githubUrl: "https://github.com/ujjwaluzu/cs50w-commerce",
       category: "CS50W project",
       theme: "auction",
+      image: "auction.png",
     },
     {
+      slug: "wiki",
       name: "Wiki",
       description:
-        "Wikipedia-inspired encyclopedia with searchable Markdown-based entries and full editing support.",
+        "A web-based encyclopedia built with Django, where Markdown-powered entries can be searched, created, edited, and explored.",
       technologies: ["Python", "Django", "HTML", "CSS", "Markdown", "markdown2"],
       githubUrl: "https://github.com/ujjwaluzu/cs50w-wiki",
       category: "CS50W project",
       theme: "wiki",
+      image: "wiki.png",
+    },
+    {
+      slug: "mail",
+      name: "Mail",
+      description:
+        "A single-page email client built with Django and JavaScript, featuring asynchronous email actions without full-page reloads.",
+      technologies: ["Python", "Django", "JavaScript", "HTML", "CSS", "Fetch API"],
+      githubUrl: "https://github.com/ujjwaluzu/cs50w-mail",
+      category: "CS50W project",
+      theme: "wiki",
+      image: "mail.svg",
+    },
+    {
+      slug: "network",
+      name: "Network",
+      description:
+        "A Django social network with posts, profiles, following, likes, AJAX interactions, and paginated feeds.",
+      technologies: ["Python", "Django", "JavaScript", "AJAX", "Bootstrap 4", "SQLite"],
+      githubUrl: "https://github.com/ujjwaluzu/cs50w-network",
+      category: "CS50W project",
+      theme: "network",
+      image: "network.svg",
+    },
+    {
+      slug: "ghprofile",
+      name: "ghprofile",
+      description:
+        "A lightweight Python library for fetching and summarizing GitHub profile and repository data.",
+      technologies: ["Python", "GitHub API", "PyPI"],
+      githubUrl: "https://github.com/ujjwaluzu/ghprofile",
+      category: "PYTHON LIBRARY",
+      theme: "ghprofile",
+      image: "",
     },
   ],
   about: {
