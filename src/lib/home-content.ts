@@ -15,14 +15,14 @@ export const homeContent = {
     status: "Currently building on the web",
   },
   tools: [
-    { name: "JavaScript", icon: "javascript.png", alt: "JavaScript logo" },
-    { name: "TypeScript", icon: "typescript.png", alt: "TypeScript logo" },
-    { name: "React", icon: "react.png", alt: "React logo" },
-    { name: "Next.js", icon: "nextjs.png", alt: "Next.js logo" },
-    { name: "Tailwind CSS", icon: "tailwindcss.png", alt: "Tailwind CSS logo" },
-    { name: "Python", icon: "python.png", alt: "Python logo" },
-    { name: "Django", icon: "django.png", alt: "Django logo" },
-    { name: "MongoDB", icon: "mongodb.png", alt: "MongoDB logo" },
+    { name: "JavaScript", icon: "javascript.webp", alt: "JavaScript logo" },
+    { name: "TypeScript", icon: "typescript.webp", alt: "TypeScript logo" },
+    { name: "React", icon: "react.webp", alt: "React logo" },
+    { name: "Next.js", icon: "nextjs.webp", alt: "Next.js logo" },
+    { name: "Tailwind CSS", icon: "tailwindcss.webp", alt: "Tailwind CSS logo" },
+    { name: "Python", icon: "python.webp", alt: "Python logo" },
+    { name: "Django", icon: "django.webp", alt: "Django logo" },
+    { name: "MongoDB", icon: "mongodb.webp", alt: "MongoDB logo" },
   ],
   projects: [
     {
@@ -34,7 +34,7 @@ export const homeContent = {
       githubUrl: "https://github.com/ujjwaluzu/uzzutv",
       category: "Streaming platform",
       theme: "cinema",
-      image: "uzzutv.png",
+      image: "uzzutv.webp",
     },
     {
       slug: "repoteam",
@@ -45,7 +45,7 @@ export const homeContent = {
       githubUrl: "https://github.com/ujjwaluzu/RepoTeam-MVP",
       category: "MVP",
       theme: "collab",
-      image: "repoteam/dashboard.png",
+      image: "repoteam/dashboard.webp",
     },
     {
       slug: "commerce",
@@ -56,7 +56,7 @@ export const homeContent = {
       githubUrl: "https://github.com/ujjwaluzu/cs50w-commerce",
       category: "CS50W project",
       theme: "auction",
-      image: "auction.png",
+      image: "auction.webp",
     },
     {
       slug: "wiki",
@@ -67,7 +67,7 @@ export const homeContent = {
       githubUrl: "https://github.com/ujjwaluzu/cs50w-wiki",
       category: "CS50W project",
       theme: "wiki",
-      image: "wiki.png",
+      image: "wiki.webp",
     },
     {
       slug: "mail",

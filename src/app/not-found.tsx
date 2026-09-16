@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <main className="nf-page">
       <Link href="/" className="brand-lockup nf-brand" aria-label="ujjwaluzu home">
-        <Image className="brand-favicon" src="/assets/faviconicon.png" alt="" width={1254} height={1254} />
+        <Image className="brand-favicon" src="/assets/faviconicon.webp" alt="" width={1254} height={1254} />
         <span className="brand-name">ujjwaluzu</span>
       </Link>
 
@@ -14,7 +14,7 @@ export default function NotFound() {
       <div className="nf-stage">
         <Image
           className="character nf-char"
-          src="/assets/hero-char.png"
+          src="/assets/hero-char.webp"
           alt="Illustrated full-body portrait of Ujjwal with a frog on his head, searching for the missing page"
           width={1024}
           height={1536}

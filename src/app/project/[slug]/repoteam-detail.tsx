@@ -12,10 +12,10 @@ import { homeContent } from "@/lib/home-content";
 const assetRoot = "/assets";
 
 const shotDims: Record<string, { w: number; h: number }> = {
-  "repoteam/dashboard.png": { w: 1921, h: 919 },
-  "repoteam/team-detail.png": { w: 1921, h: 955 },
-  "repoteam/project-detail.png": { w: 1921, h: 919 },
-  "repoteam/home.png": { w: 1921, h: 1168 },
+  "repoteam/dashboard.webp": { w: 1921, h: 919 },
+  "repoteam/team-detail.webp": { w: 1921, h: 955 },
+  "repoteam/project-detail.webp": { w: 1921, h: 919 },
+  "repoteam/home.webp": { w: 1921, h: 1168 },
 };
 
 const statusTones = ["todo", "progress", "review", "done"];

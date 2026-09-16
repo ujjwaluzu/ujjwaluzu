@@ -11,11 +11,11 @@ import { homeContent } from "@/lib/home-content";
 const assetRoot = "/assets";
 
 const shotDims: Record<string, { w: number; h: number }> = {
-  "uzzutv.png": { w: 1904, h: 911 },
-  "uzzutv-movie.png": { w: 1898, h: 915 },
-  "uzzutv-watch-page.png": { w: 1902, h: 911 },
-  "uzzutv-aniuzu.png": { w: 1896, h: 906 },
-  "uzzutv-watch-party.png": { w: 1885, h: 900 },
+  "uzzutv.webp": { w: 1904, h: 911 },
+  "uzzutv-movie.webp": { w: 1898, h: 915 },
+  "uzzutv-watch-page.webp": { w: 1902, h: 911 },
+  "uzzutv-aniuzu.webp": { w: 1896, h: 906 },
+  "uzzutv-watch-party.webp": { w: 1885, h: 900 },
 };
 
 export function UzzutvDetail({

@@ -57,7 +57,7 @@ export function HeroSection() {
           <Image
             ref={characterRef}
             className="character character-hero"
-            src={`${assetRoot}/hero-char.png`}
+            src={`${assetRoot}/hero-char.webp`}
             alt="Illustrated full-body portrait of Ujjwal with a frog on his head"
             width={1024}
             height={1536}
@@ -163,7 +163,7 @@ export function AboutSection() {
     <section className="about-section paper-texture" id="about">
       <Reveal className="page-shell about-grid">
         <div className="about-art-wrap">
-          <Image ref={polaroidRef} className="about-left-asset" src={`${assetRoot}/about-left.png`} alt="Illustrated polaroid portrait of Ujjwal coding with a frog on his head." width={1210} height={1300} sizes="(max-width: 767px) 84vw, 34vw" />
+          <Image ref={polaroidRef} className="about-left-asset" src={`${assetRoot}/about-left.webp`} alt="Illustrated polaroid portrait of Ujjwal coding with a frog on his head." width={1210} height={1300} sizes="(max-width: 767px) 84vw, 34vw" />
         </div>
         <div className="about-copy">
           <h2 className="display-heading">{about.titleLines.map((line) => <span key={line}>{line}</span>)}</h2>
@@ -171,7 +171,7 @@ export function AboutSection() {
           <div className="about-labels">{about.labels.map((label, index) => <div key={label}><strong>{index === 0 ? "∞" : index === 1 ? "4+" : "20+"}</strong><span>{label}</span></div>)}</div>
         </div>
         <aside className="about-right-art">
-          <Image ref={noteRef} className="about-right-asset" src={`${assetRoot}/about-right.png`} alt="Handwritten note listing Development, Design, Problem Solving, Good Coffee, And, and A Brighter Tomorrow." width={1067} height={1475} sizes="(max-width: 767px) 72vw, 24vw" />
+          <Image ref={noteRef} className="about-right-asset" src={`${assetRoot}/about-right.webp`} alt="Handwritten note listing Development, Design, Problem Solving, Good Coffee, And, and A Brighter Tomorrow." width={1067} height={1475} sizes="(max-width: 767px) 72vw, 24vw" />
         </aside>
       </Reveal>
     </section>
@@ -184,7 +184,7 @@ export function ExperienceSection() {
     <section className="experience-section dark-texture" id="experience">
       <Reveal className="page-shell">
         <div className="experience-grid">
-          <div className="experience-entry"><Image src="/assets/company.png" alt="Company logo" width={48} height={48} className="experience-icon" /><div><h2>{experience.role}</h2><h3>{experience.company}</h3><p>{experience.description}</p></div><span className="experience-mark">{experience.period}</span></div>
+          <div className="experience-entry"><Image src="/assets/company.webp" alt="Company logo" width={48} height={48} className="experience-icon" /><div><h2>{experience.role}</h2><h3>{experience.company}</h3><p>{experience.description}</p></div><span className="experience-mark">{experience.period}</span></div>
           <blockquote><span aria-hidden="true">“</span><p>{experience.quote}</p><span aria-hidden="true">”</span></blockquote>
         </div>
       </Reveal>

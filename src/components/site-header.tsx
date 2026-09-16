@@ -107,7 +107,7 @@ export function SiteHeader() {
   return (
     <header className={`site-header${isHiddenWhileScrolling ? " is-hidden-while-scrolling" : ""}`}>
       <Link href="/" className="brand-lockup" aria-label="ujjwaluzu home">
-        <Image className="brand-favicon" src={`${assetRoot}/faviconicon.png`} alt="" width={1254} height={1254} priority />
+        <Image className="brand-favicon" src={`${assetRoot}/faviconicon.webp`} alt="" width={1254} height={1254} priority />
       </Link>
 
       <nav className="desktop-nav" aria-label="Primary navigation">

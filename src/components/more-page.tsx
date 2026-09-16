@@ -78,7 +78,7 @@ export function MorePage() {
             <div className="more-hero-art">
               <Image
                 className="more-hero-character"
-                src="/assets/ujjwal-character.png"
+                src="/assets/ujjwal-character.webp"
                 alt="Illustrated portrait of Ujjwal with a frog on his head"
                 width={1254}
                 height={1254}

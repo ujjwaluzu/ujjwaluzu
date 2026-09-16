@@ -46,9 +46,9 @@ export const metadata: Metadata = {
     description: "Exploring ideas, building products, and turning concepts into real experiences.",
   },
   icons: {
-    icon: "/assets/faviconicon.png",
-    shortcut: "/assets/faviconicon.png",
-    apple: "/assets/faviconicon.png",
+    icon: "/assets/faviconicon.webp",
+    shortcut: "/assets/faviconicon.webp",
+    apple: "/assets/faviconicon.webp",
   },
   robots: {
     index: true,

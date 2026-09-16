@@ -12,10 +12,10 @@ import { homeContent } from "@/lib/home-content";
 const assetRoot = "/assets";
 
 const shotDims: Record<string, { w: number; h: number }> = {
-  "auction.png": { w: 1907, h: 915 },
-  "repoteam-listing-detail.png": { w: 1899, h: 916 },
-  "repoteam-create-listing.png": { w: 1899, h: 911 },
-  "repoteam-watchlist.png": { w: 1917, h: 912 },
+  "auction.webp": { w: 1907, h: 915 },
+  "repoteam-listing-detail.webp": { w: 1899, h: 916 },
+  "repoteam-create-listing.webp": { w: 1899, h: 911 },
+  "repoteam-watchlist.webp": { w: 1917, h: 912 },
 };
 
 const closingTones = ["open", "bidding", "closed", "winner"];

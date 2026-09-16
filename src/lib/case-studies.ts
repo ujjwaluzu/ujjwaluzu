@@ -479,11 +479,11 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       { step: "Learning", text: "API caching, rate limits, realtime sync, auth patterns and state persistence." },
     ],
     screenshots: [
-      { kind: "image", image: "uzzutv.png", label: "Home / discovery", alt: "UzzUTV homepage showing movies and TV series to discover" },
-      { kind: "image", image: "uzzutv-movie.png", label: "Media detail", alt: "UzzUTV media detail page for a movie" },
-      { kind: "image", image: "uzzutv-watch-page.png", label: "Watch page", alt: "UzzUTV watch page with video playback controls" },
-      { kind: "image", image: "uzzutv-aniuzu.png", label: "Aniuzu", alt: "Aniuzu anime discovery page inside UzzUTV" },
-      { kind: "image", image: "uzzutv-watch-party.png", label: "Watch Party", alt: "UzzUTV Watch Party room interface" },
+      { kind: "image", image: "uzzutv.webp", label: "Home / discovery", alt: "UzzUTV homepage showing movies and TV series to discover" },
+      { kind: "image", image: "uzzutv-movie.webp", label: "Media detail", alt: "UzzUTV media detail page for a movie" },
+      { kind: "image", image: "uzzutv-watch-page.webp", label: "Watch page", alt: "UzzUTV watch page with video playback controls" },
+      { kind: "image", image: "uzzutv-aniuzu.webp", label: "Aniuzu", alt: "Aniuzu anime discovery page inside UzzUTV" },
+      { kind: "image", image: "uzzutv-watch-party.webp", label: "Watch Party", alt: "UzzUTV Watch Party room interface" },
     ],
     details: [
       { label: "Category", value: "Streaming platform" },
@@ -612,25 +612,25 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
     screenshots: [
       {
         kind: "image",
-        image: "repoteam/dashboard.png",
+        image: "repoteam/dashboard.webp",
         label: "Dashboard",
         alt: "RepoTeam dashboard showing the user's teams, team projects, and open issue counters",
       },
       {
         kind: "image",
-        image: "repoteam/team-detail.png",
+        image: "repoteam/team-detail.webp",
         label: "Team workspace",
         alt: "RepoTeam team workspace showing the member list and project list",
       },
       {
         kind: "image",
-        image: "repoteam/project-detail.png",
+        image: "repoteam/project-detail.webp",
         label: "Project workspace",
         alt: "RepoTeam project workspace listing the team's issues",
       },
       {
         kind: "image",
-        image: "repoteam/home.png",
+        image: "repoteam/home.webp",
         label: "Homepage",
         alt: "RepoTeam homepage",
       },
@@ -853,25 +853,25 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
     screenshots: [
       {
         kind: "image",
-        image: "auction.png",
+        image: "auction.webp",
         label: "Active listings",
         alt: "Commerce auction application showing active listings on the marketplace homepage",
       },
       {
         kind: "image",
-        image: "repoteam-listing-detail.png",
+        image: "repoteam-listing-detail.webp",
         label: "Listing detail",
         alt: "Commerce listing detail page with bidding and listing information",
       },
       {
         kind: "image",
-        image: "repoteam-create-listing.png",
+        image: "repoteam-create-listing.webp",
         label: "Create listing",
         alt: "Commerce create listing form for adding a new auction item",
       },
       {
         kind: "image",
-        image: "repoteam-watchlist.png",
+        image: "repoteam-watchlist.webp",
         label: "Watchlist",
         alt: "Commerce watchlist page showing saved auction listings",
       },
@@ -1091,9 +1091,9 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       { heading: "Small, readable code", text: "Virtually all logic lives in a handful of views and a small helper module - easy to follow." },
     ],
     screenshots: [
-      { kind: "image", image: "wiki.png", label: "The Wiki encyclopedia", alt: "Wiki encyclopedia interface built with Django" },
-      { kind: "image", image: "wiki-create.png", label: "Create a new entry", alt: "Wiki create page for writing a new Markdown encyclopedia entry" },
-      { kind: "image", image: "wiki-search.png", label: "Search results", alt: "Wiki search page showing matching encyclopedia results" },
+      { kind: "image", image: "wiki.webp", label: "The Wiki encyclopedia", alt: "Wiki encyclopedia interface built with Django" },
+      { kind: "image", image: "wiki-create.webp", label: "Create a new entry", alt: "Wiki create page for writing a new Markdown encyclopedia entry" },
+      { kind: "image", image: "wiki-search.webp", label: "Search results", alt: "Wiki search page showing matching encyclopedia results" },
     ],
     details: [
       { label: "Project", value: "Wiki" },

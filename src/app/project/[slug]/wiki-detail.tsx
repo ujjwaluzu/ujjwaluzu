@@ -12,9 +12,9 @@ import { homeContent } from "@/lib/home-content";
 const assetRoot = "/assets";
 
 const shotDims: Record<string, { w: number; h: number }> = {
-  "wiki.png": { w: 1920, h: 909 },
-  "wiki-create.png": { w: 1920, h: 910 },
-  "wiki-search.png": { w: 1157, h: 590 },
+  "wiki.webp": { w: 1920, h: 909 },
+  "wiki-create.webp": { w: 1920, h: 910 },
+  "wiki-search.webp": { w: 1157, h: 590 },
 };
 
 export function WikiDetail({
