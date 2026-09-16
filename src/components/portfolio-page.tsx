@@ -98,7 +98,8 @@ function ProjectCard({ project, index }: { project: typeof homeContent.projects[
             <Image
               src={`${assetRoot}/${project.image}`}
               alt=""
-              fill
+              width={1904}
+              height={911}
               sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 340px, 285px"
               className="project-shot"
             />
@@ -127,7 +128,7 @@ function ProjectCard({ project, index }: { project: typeof homeContent.projects[
             </a>
             <Link
               className="round-arrow"
-              href="/project"
+              href={`/project/${project.slug}`}
               aria-label={`View ${project.name} project details`}
               onClick={(e) => e.stopPropagation()}
             >

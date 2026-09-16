@@ -10,11 +10,15 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# testing and local reports
 /coverage
-.dev.log
-.dev.log.err
-dev-server.log
+/.nyc_output
+/test-results
+/playwright-report
+
+# local development logs
+*.log
+*.log.*
 # next.js
 /.next/
 /out/
@@ -43,7 +47,13 @@ yarn-error.log*
 !.env.example
 
 # vercel
-.vercel
+/.vercel/
+
+# local agent instructions and workspace metadata
+/AGENTS.md
+/CLAUDE.md
+/.agents/
+/.codex/
 
 # typescript
 *.tsbuildinfo
