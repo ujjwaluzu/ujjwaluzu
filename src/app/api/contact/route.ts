@@ -40,7 +40,11 @@ function getConfig() {
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
   try {
-    body = (await request.json()) as Record<string, unknown>;
+    const parsed = await request.json();
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      throw new Error("Contact payload must be an object");
+    }
+    body = parsed as Record<string, unknown>;
   } catch {
     return NextResponse.json(
       { success: false, message: "Invalid submission. Please try again." },
@@ -61,7 +65,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const nameValid = name.length >= 2 && name.length <= NAME_MAX;
+  const nameValid = name.length >= 2 && name.length <= NAME_MAX && !/[\r\n]/.test(name);
   const emailValid = EMAIL_PATTERN.test(email) && email.length <= EMAIL_MAX;
   const messageValid = message.length >= MSG_MIN && message.length <= MSG_MAX;
 
@@ -113,6 +117,9 @@ export async function POST(request: Request) {
     ].join(""),
   };
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
+
   try {
     const response = await fetch(BREVO_URL, {
       method: "POST",
@@ -121,6 +128,7 @@ export async function POST(request: Request) {
         accept: "application/json",
         "content-type": "application/json",
       },
+      signal: controller.signal,
       body: JSON.stringify(payload),
     });
 
@@ -142,5 +150,7 @@ export async function POST(request: Request) {
       { success: false, message: "Something went wrong. Please try again later." },
       { status: 502 },
     );
+  } finally {
+    clearTimeout(timeoutId);
   }
 }

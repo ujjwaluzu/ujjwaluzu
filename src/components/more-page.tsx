@@ -34,7 +34,14 @@ function YouTubeCard({
         </span>
         <span>/ {category}</span>
       </p>
-      {video.title && <h3 className="more-video-title">{video.title}</h3>}
+      {video.title && (
+        <h3 className="more-video-title">
+          <Link href={`/more/${video.id}`}>
+            {video.title}
+          </Link>
+        </h3>
+      )}
+      {video.summary && <p className="more-video-summary">{video.summary}</p>}
       <div className="more-video-frame">
         {isPlaceholder ? (
           <div className="more-video-placeholder">
@@ -51,6 +58,21 @@ function YouTubeCard({
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
           />
+        )}
+      </div>
+      <div className="more-video-actions">
+        <Link className="more-video-detail-link" href={`/more/${video.id}`}>
+          Video details <span aria-hidden="true">→</span>
+        </Link>
+        {!isPlaceholder && (
+          <a
+            className="more-video-youtube-link"
+            href={`https://www.youtube.com/watch?v=${video.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch on YouTube <span aria-hidden="true">↗</span>
+          </a>
         )}
       </div>
     </article>

@@ -3,11 +3,13 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 import { GitHubMark } from "@/components/icons";
+import { RelatedVideoLink } from "@/components/related-video-link";
 import { Reveal } from "@/components/reveal";
 import { Arrow, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import type { ProjectCaseStudy } from "@/lib/case-studies";
 import { homeContent } from "@/lib/home-content";
+import { allVideos } from "@/lib/more-content";
 
 const assetRoot = "/assets";
 
@@ -28,6 +30,7 @@ export function CommerceDetail({
   project: (typeof homeContent.projects)[number];
 }) {
   const cm = study.commerce!;
+  const relatedVideo = allVideos.find((video) => video.projectSlug === project.slug);
   const heroImage = `${assetRoot}/${project.image}`;
   const shots = study.screenshots.filter((s): s is Extract<typeof s, { kind: "image" }> => s.kind === "image");
   const mainShot = shots[0];
@@ -450,6 +453,7 @@ export function CommerceDetail({
           </div>
         </section>
       </main>
+      {relatedVideo && <RelatedVideoLink title={relatedVideo.title ?? "Commerce video"} videoId={relatedVideo.id} projectName={project.name} />}
       <SiteFooter />
     </>
   );

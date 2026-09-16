@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 import { GitHubMark } from "@/components/icons";
+import { RelatedVideoLink } from "@/components/related-video-link";
 import { Reveal } from "@/components/reveal";
 import { Arrow, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import type { ProjectCaseStudy } from "@/lib/case-studies";
 import { homeContent } from "@/lib/home-content";
+import { allVideos } from "@/lib/more-content";
 
 const GITHUB_URL = "https://github.com/ujjwaluzu/ghprofile";
 const PYPI_URL = "https://pypi.org/project/ghprofile/";
@@ -44,6 +46,7 @@ export function GhprofileDetail({
   project: (typeof homeContent.projects)[number];
 }) {
   const gp = study.ghprofile!;
+  const relatedVideo = allVideos.find((video) => video.projectSlug === project.slug);
 
   return (
     <>
@@ -518,6 +521,7 @@ export function GhprofileDetail({
           </div>
         </section>
       </main>
+      {relatedVideo && <RelatedVideoLink title={relatedVideo.title ?? "ghprofile video"} videoId={relatedVideo.id} projectName={project.name} />}
       <SiteFooter />
     </>
   );

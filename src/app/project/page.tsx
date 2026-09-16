@@ -2,35 +2,79 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { GitHubMark } from "@/components/icons";
+import { SeoJsonLd } from "@/components/seo-json-ld";
 import { Arrow, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { homeContent } from "@/lib/home-content";
+import { defaultSocialImage, breadcrumbSchema, personSchema } from "@/lib/seo-schema";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "All Projects - Ujjwal Baunthiyal",
-  description: "A collection of things I've built, explored, and shipped.",
+  title: "Projects by Ujjwal Baunthiyal | ujjwaluzu",
+  description: "Explore UzzUTV, RepoTeam, Commerce, Wiki, Mail, Network, and ghprofile projects built by web developer Ujjwal Baunthiyal.",
+  keywords: [
+    "Ujjwal Baunthiyal projects",
+    "ujjwaluzu projects",
+    "UzzUTV",
+    "RepoTeam",
+    "CS50W Commerce",
+    "CS50W Wiki",
+    "CS50W Mail",
+    "CS50W Network",
+    "ghprofile",
+  ],
   openGraph: {
-    title: "All Projects - Ujjwal Baunthiyal",
-    description: "A collection of things I've built, explored, and shipped.",
+    title: "Projects by Ujjwal Baunthiyal | ujjwaluzu",
+    description: "Explore the web applications and Python library built by Ujjwal Baunthiyal.",
     url: `${site.domain}/project`,
     siteName: site.name,
     locale: "en_US",
     type: "website",
+    images: [{ url: defaultSocialImage, alt: "Ujjwal Baunthiyal illustrated portrait" }],
   },
   twitter: {
     card: "summary",
-    title: "All Projects - Ujjwal Baunthiyal",
-    description: "A collection of things I've built, explored, and shipped.",
+    title: "Projects by Ujjwal Baunthiyal | ujjwaluzu",
+    description: "Explore the web applications and Python library built by Ujjwal Baunthiyal.",
+    images: [defaultSocialImage],
   },
   alternates: {
     canonical: `${site.domain}/project`,
   },
 };
 
+const projectsJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${site.domain}/project#collection`,
+      url: `${site.domain}/project`,
+      name: "Projects by Ujjwal Baunthiyal",
+      description: metadata.description,
+      author: personSchema(),
+    },
+    {
+      "@type": "ItemList",
+      name: "Ujjwal Baunthiyal project portfolio",
+      itemListElement: homeContent.projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: project.name,
+        url: `${site.domain}/project/${project.slug}`,
+      })),
+    },
+    breadcrumbSchema([
+      { name: "Home", url: site.domain },
+      { name: "Projects", url: `${site.domain}/project` },
+    ]),
+  ],
+};
+
 export default function ProjectArchivePage() {
   return (
     <>
+      <SeoJsonLd data={projectsJsonLd} />
       <SiteHeader />
       <main className="project-page">
         <section className="project-hero paper-texture">

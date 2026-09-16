@@ -27,7 +27,7 @@ export function ContactPage() {
   const trimmedEmail = email.trim();
   const trimmedMessage = message.trim();
 
-  const nameValid = trimmedName.length >= 2 && trimmedName.length <= NAME_MAX;
+  const nameValid = trimmedName.length >= 2 && trimmedName.length <= NAME_MAX && !/[\r\n]/.test(trimmedName);
   const emailValid = EMAIL_PATTERN.test(trimmedEmail) && trimmedEmail.length <= EMAIL_MAX;
   const messageValid = trimmedMessage.length >= MSG_MIN && trimmedMessage.length <= MSG_MAX;
   const isFormValid = nameValid && emailValid && messageValid;
@@ -55,10 +55,14 @@ export function ContactPage() {
 
     setStatus("submitting");
 
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 15000);
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           name: trimmedName,
           email: trimmedEmail,
@@ -78,6 +82,8 @@ export function ContactPage() {
       setSubmitAttempted(false);
     } catch {
       setStatus("error");
+    } finally {
+      window.clearTimeout(timeoutId);
     }
   };
 
