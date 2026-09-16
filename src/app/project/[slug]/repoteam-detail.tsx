@@ -33,7 +33,6 @@ export function RepoTeamDetail({
   const heroImage = `${assetRoot}/${project.image}`;
   const shots = study.screenshots.filter((s): s is Extract<typeof s, { kind: "image" }> => s.kind === "image");
   const mainShot = shots[0];
-  const sideShots = shots.slice(1);
   const mainDims = mainShot ? shotDims[mainShot.image] ?? { w: 1921, h: 919 } : { w: 1921, h: 919 };
 
   return (
@@ -296,7 +295,7 @@ export function RepoTeamDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">PROJECT SCREENSHOTS</p>
               <h2 className="display-heading case-section-title">See it in action.</h2>
-              <p className="case-section-sub">Real screenshots straight from the RepoTeam docs.</p>
+              <p className="case-section-sub">A look at the team workspace, with room for more screenshots.</p>
             </Reveal>
             <div className="gallery">
               <Reveal className="gallery-main">
@@ -314,14 +313,22 @@ export function RepoTeamDetail({
                 )}
               </Reveal>
               <div className="gallery-side">
-                {sideShots.map((shot, index) => {
-                  const dims = shotDims[shot.image] ?? { w: 1921, h: 919 };
+                {study.screenshots.slice(1).map((shot, index) => {
+                  const dims = shot.kind === "image" ? shotDims[shot.image] ?? { w: 1921, h: 919 } : { w: 1921, h: 919 };
                   return (
-                    <Reveal key={shot.label} delayMs={index * 60} className={`gallery-side-item${index === sideShots.length - 1 ? " gallery-side-item--wide" : ""}`}>
-                      <figure className="gallery-item gallery-item--image">
-                        <Image src={`${assetRoot}/${shot.image}`} alt={shot.alt} width={dims.w} height={dims.h} sizes="(max-width: 767px) 100vw, 320px" />
-                        <figcaption className="gallery-label">{shot.label}</figcaption>
-                      </figure>
+                    <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
+                      {shot.kind === "image" ? (
+                        <figure className="gallery-item gallery-item--image">
+                          <Image src={`${assetRoot}/${shot.image}`} alt={shot.alt} width={dims.w} height={dims.h} sizes="(max-width: 767px) 100vw, 320px" />
+                          <figcaption className="gallery-label">{shot.label}</figcaption>
+                        </figure>
+                      ) : (
+                        <div className="gallery-item gallery-placeholder">
+                          <span className="gallery-ph" aria-hidden="true">▭</span>
+                          <b>{shot.label}</b>
+                          <i>screenshot placeholder</i>
+                        </div>
+                      )}
                     </Reveal>
                   );
                 })}

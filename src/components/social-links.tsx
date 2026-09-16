@@ -1,4 +1,7 @@
-import { site, isSocialAvailable } from "@/lib/site";
+import type { ComponentType } from "react";
+
+import { isSocialAvailable, site, socialLabels } from "@/lib/site";
+import type { SocialId } from "@/lib/site";
 
 export function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -14,6 +17,18 @@ export function LinkedinIcon({ className }: { className?: string }) {
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
       <rect width="4" height="12" x="2" y="9" />
       <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
+export function XIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.59-6.63 7.59H.47l8.6-9.83L0 1.15h7.59l5.25 6.93 6.06-6.93Zm-1.29 19.49h2.04L6.49 3.24H4.3l13.31 17.4Z" />
     </svg>
   );
 }
@@ -48,17 +63,23 @@ export function InstagramIcon({ className }: { className?: string }) {
   );
 }
 
-const platforms = [
-  { id: "linkedin" as const, label: "LinkedIn", Icon: LinkedinIcon },
-  { id: "github" as const, label: "GitHub", Icon: GithubIcon },
-  { id: "instagram" as const, label: "Instagram", Icon: InstagramIcon },
-];
+/** Icon lookup used by the social row and the footer/nav social menus. */
+export const socialIcons: Record<SocialId, ComponentType<{ className?: string }>> = {
+  linkedin: LinkedinIcon,
+  x: XIcon,
+  github: GithubIcon,
+  instagram: InstagramIcon,
+};
+
+const socialOrder: SocialId[] = ["linkedin", "x", "github", "instagram"];
 
 export function SocialLinks() {
   return (
     <nav aria-label="Social links" className="flex items-center gap-7">
-      {platforms.map(({ id, label, Icon }) => {
+      {socialOrder.map((id) => {
         const url = site.socials[id];
+        const label = socialLabels[id];
+        const Icon = socialIcons[id];
         const available = isSocialAvailable(url);
 
         const icon = (

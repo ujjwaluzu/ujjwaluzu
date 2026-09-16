@@ -430,17 +430,18 @@ export function NetworkDetail({
           </div>
         </section>
 
-        <section className="case-section case-gallery paper-texture" id="screenshots">
+        <section className="case-section case-gallery" id="screenshots">
           <div className="page-shell">
             <Reveal className="case-section-head">
-              <p className="section-eyebrow">INSIDE THE NETWORK</p>
-              <h2 className="display-heading case-section-title">Screenshots, on the way.</h2>
-              <p className="case-section-sub">These frames are placeholders — real captures drop in behind the same slots.</p>
+              <p className="section-eyebrow">PROJECT SCREENSHOTS</p>
+              <h2 className="display-heading case-section-title">See it in action.</h2>
+              <p className="case-section-sub">A look at the social network, with room for more screenshots.</p>
             </Reveal>
             <div className="gallery">
               {mainPlaceholder && (
                 <Reveal className="gallery-main">
                   <div className="gallery-item gallery-placeholder">
+                    <span className="gallery-ph" aria-hidden="true">▭</span>
                     <b>{mainPlaceholder.label}</b>
                     <i>screenshot placeholder</i>
                   </div>
@@ -448,8 +449,9 @@ export function NetworkDetail({
               )}
               <div className="gallery-side">
                 {sidePlaceholders.map((shot, index) => (
-                  <Reveal key={shot.label} delayMs={index * 60} className={`gallery-side-item${index === sidePlaceholders.length - 1 ? " gallery-side-item--wide" : ""}`}>
+                  <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
                     <div className="gallery-item gallery-placeholder">
+                      <span className="gallery-ph" aria-hidden="true">▭</span>
                       <b>{shot.label}</b>
                       <i>screenshot placeholder</i>
                     </div>

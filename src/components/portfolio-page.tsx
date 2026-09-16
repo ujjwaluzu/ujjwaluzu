@@ -5,10 +5,12 @@ import Link from "next/link";
 
 import { Reveal } from "@/components/reveal";
 import { GitHubMark } from "@/components/icons";
+import { socialIcons } from "@/components/social-links";
 import { Arrow, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { decorativeAssets } from "@/lib/decorative-assets";
 import { homeContent } from "@/lib/home-content";
+import { site, socialLabels } from "@/lib/site";
 import { useParallax } from "@/lib/use-parallax";
 
 const assetRoot = "/assets";
@@ -215,8 +217,35 @@ export function TechStackSection() {
   );
 }
 
-function SocialMark({ label }: { label: string }) {
-  return <span className="social-mark" aria-hidden="true">{label === "Email" ? "@" : label === "X" ? "𝕏" : label.slice(0, 1)}</span>;
+export function MorePreviewSection() {
+  return (
+    <section className="more-preview paper-texture" id="more">
+      <div className="page-shell">
+        <Reveal className="more-preview-grid">
+          <div className="more-preview-copy">
+            <p className="more-preview-kicker">beyond the code editor ✎</p>
+            <h2 className="display-heading">More than<br /><span>code.</span></h2>
+            <p className="more-preview-text">A few things I&apos;m into when I&apos;m not building things.</p>
+            <div className="more-preview-actions">
+              <Link className="button button-dark" href="/more">MORE <Arrow /></Link>
+              <span className="more-preview-hint">no readme required</span>
+            </div>
+          </div>
+          <div className="more-preview-art" aria-hidden="true">
+            <div className="more-preview-card">
+              <span className="more-preview-card-tape" />
+              <b>THE OTHER<br />50%</b>
+              <span className="more-preview-card-list">music · tech · coffee · anything interesting</span>
+              <span className="more-preview-card-play">▶</span>
+            </div>
+            <span className="more-doodle more-doodle-arrow">→</span>
+            <span className="more-doodle more-doodle-note">♪</span>
+            <span className="more-doodle more-doodle-star">✶</span>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
 }
 
 export function ContactSection() {
@@ -224,12 +253,25 @@ export function ContactSection() {
   return (
     <section className="contact-section dark-texture" id="contact">
       <Reveal className="page-shell contact-grid">
-        <div className="contact-copy"><h2 className="display-heading">{contact.title.map((line) => <span key={line}>{line === "COOL TOGETHER." ? <><b>COOL</b> TOGETHER.</> : line}</span>)}</h2><p>{contact.description}</p><Link className="button button-light" href="/contact">Get in Touch <Arrow /></Link><div className="social-row">{contact.socials.map((social) => <a key={social} href="#contact" aria-label={`${social} placeholder`}><SocialMark label={social} /></a>)}</div></div>
+        <div className="contact-copy"><h2 className="display-heading">{contact.title.map((line) => <span key={line}>{line === "COOL TOGETHER." ? <><b>COOL</b> TOGETHER.</> : line}</span>)}</h2><p>{contact.description}</p><Link className="button button-light" href="/contact">Get in Touch <Arrow /></Link><nav className="social-row" aria-label="Social profiles">{contact.socials.map((id) => { const Icon = socialIcons[id]; return <a key={id} href={site.socials[id]} target="_blank" rel="noopener noreferrer" aria-label={socialLabels[id]}><Icon /></a>; })}</nav></div>
       </Reveal>
     </section>
   );
 }
 
 export function PortfolioPage() {
-  return <><main><HeroSection /><FeaturedProjects /><AboutSection /><ExperienceSection /><TechStackSection /><ContactSection /></main><SiteFooter /></>;
+  return (
+    <>
+      <main>
+        <HeroSection />
+        <FeaturedProjects />
+        <AboutSection />
+        <ExperienceSection />
+        <TechStackSection />
+        <MorePreviewSection />
+        <ContactSection />
+      </main>
+      <SiteFooter />
+    </>
+  );
 }

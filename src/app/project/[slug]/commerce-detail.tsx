@@ -359,7 +359,7 @@ export function CommerceDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">PROJECT SCREENSHOTS</p>
               <h2 className="display-heading case-section-title">See it in action.</h2>
-              <p className="case-section-sub">The appraisal snapshot is real — the rest are placeholders waiting for clean captures.</p>
+              <p className="case-section-sub">A look at the auction marketplace, with room for more screenshots.</p>
             </Reveal>
             <div className="gallery">
               <Reveal className="gallery-main">
@@ -376,18 +376,17 @@ export function CommerceDetail({
                   </figure>
                 )}
               </Reveal>
-              {placeholders.length > 0 && (
-                <div className="gallery-side">
-                  {placeholders.map((shot, index) => (
-                    <Reveal key={shot.label} delayMs={index * 60} className={`gallery-side-item${index === placeholders.length - 1 ? " gallery-side-item--wide" : ""}`}>
-                      <div className="gallery-item gallery-placeholder">
-                        <b>{shot.label}</b>
-                        <i>screenshot placeholder</i>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
-              )}
+              <div className="gallery-side">
+                {placeholders.map((shot, index) => (
+                  <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
+                    <div className="gallery-item gallery-placeholder">
+                      <span className="gallery-ph" aria-hidden="true">▭</span>
+                      <b>{shot.label}</b>
+                      <i>screenshot placeholder</i>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>

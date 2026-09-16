@@ -125,6 +125,7 @@ export const homeContent = {
     eyebrow: "LET'S CONNECT",
     title: ["LET'S BUILD", "SOMETHING", "COOL TOGETHER."],
     description: "Ideas, opportunities, or just a friendly hello. My inbox is always open.",
-    socials: ["LinkedIn", "X", "GitHub"],
+    /** Platform ids; URLs are defined once in `site.socials`. */
+    socials: ["linkedin", "x", "github"],
   },
 } as const;
