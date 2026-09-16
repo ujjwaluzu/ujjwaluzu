@@ -480,10 +480,10 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
     ],
     screenshots: [
       { kind: "image", image: "uzzutv.png", label: "Home / discovery", alt: "UzzUTV homepage showing movies and TV series to discover" },
-      { kind: "placeholder", label: "Media detail" },
-      { kind: "placeholder", label: "Watch page" },
-      { kind: "placeholder", label: "Aniuzu" },
-      { kind: "placeholder", label: "Watch Party" },
+      { kind: "image", image: "uzzutv-movie.png", label: "Media detail", alt: "UzzUTV media detail page for a movie" },
+      { kind: "image", image: "uzzutv-watch-page.png", label: "Watch page", alt: "UzzUTV watch page with video playback controls" },
+      { kind: "image", image: "uzzutv-aniuzu.png", label: "Aniuzu", alt: "Aniuzu anime discovery page inside UzzUTV" },
+      { kind: "image", image: "uzzutv-watch-party.png", label: "Watch Party", alt: "UzzUTV Watch Party room interface" },
     ],
     details: [
       { label: "Category", value: "Streaming platform" },
@@ -647,7 +647,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
     repoteam: {
       status: {
         eyebrow: "PROJECT STATUS",
-        heading: "MVP — Minimal Viable Product.",
+        heading: "MVP - Minimal Viable Product.",
         text: "RepoTeam is designed to validate the core team → project → issue workflow. It is under active development and not yet production-ready.",
         tag: "Under active development",
       },
@@ -701,7 +701,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
             items: [
               "Full team access",
               "Invite members",
-              "Remove eligible members — never an owner or another admin",
+              "Remove eligible members - never an owner or another admin",
               "Cannot change roles",
               "Create projects",
               "Create, edit, and delete issues",
@@ -728,7 +728,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         eyebrow: "THE DATA MODEL",
         title: "Five models down one spine.",
         chain: ["User", "Membership", "Team", "Project", "Issue"],
-        assignment: { from: "Issue", arrow: "assigned_to", to: "User", note: "nullable — issues can be unassigned" },
+        assignment: { from: "Issue", arrow: "assigned_to", to: "User", note: "nullable - issues can be unassigned" },
         note: "A Comment model exists in the data layer, but commenting is not yet implemented in the UI.",
       },
       ideaToDone: {
@@ -750,7 +750,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         currentDesc: "Implemented and working in the codebase today.",
         current: ["Accounts & authentication", "Dashboard", "Teams", "Projects", "Issues", "Permissions"],
         futureLabel: "FUTURE IDEAS",
-        futureDesc: "Documented as planned or potential — not in the codebase.",
+        futureDesc: "Documented as planned or potential - not in the codebase.",
         future: [
           "Real-time notifications",
           "Activity feeds",
@@ -764,7 +764,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
           "Issue comments UI",
           "Production deployment",
         ],
-        note: "None of these future ideas exist in the codebase today — they're direction, not features.",
+        note: "None of these future ideas exist in the codebase today - they're direction, not features.",
       },
     },
   },
@@ -777,7 +777,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       eyebrow: "THE IDEA",
       heading: "An auction house, built one model at a time.",
       paragraphs: [
-        "Commerce is an eBay-like auction web application. Users create listings, place bids, leave comments, keep a personal watchlist, and browse listings by category — built for CS50's Web Programming with Python and JavaScript (CS50W).",
+        "Commerce is an eBay-like auction web application. Users create listings, place bids, leave comments, keep a personal watchlist, and browse listings by category - built for CS50's Web Programming with Python and JavaScript (CS50W).",
         "The focus was the backend: designing a relational schema in Django, wiring up user authentication, validating every form on the server, and getting the auction business logic exactly right.",
       ],
       note: "list, bid, watch, comment.",
@@ -857,9 +857,24 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         label: "Active listings",
         alt: "Commerce auction application showing active listings on the marketplace homepage",
       },
-      { kind: "placeholder", label: "Listing detail" },
-      { kind: "placeholder", label: "Create listing" },
-      { kind: "placeholder", label: "Watchlist" },
+      {
+        kind: "image",
+        image: "repoteam-listing-detail.png",
+        label: "Listing detail",
+        alt: "Commerce listing detail page with bidding and listing information",
+      },
+      {
+        kind: "image",
+        image: "repoteam-create-listing.png",
+        label: "Create listing",
+        alt: "Commerce create listing form for adding a new auction item",
+      },
+      {
+        kind: "image",
+        image: "repoteam-watchlist.png",
+        label: "Watchlist",
+        alt: "Commerce watchlist page showing saved auction listings",
+      },
     ],
     details: [
       { label: "PROJECT", value: "Commerce" },
@@ -872,7 +887,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       context: {
         eyebrow: "BUILT WITH CS50W",
         heading: "Built with CS50W.",
-        text: "Commerce is a course project from CS50's Web Programming with Python and JavaScript — Django, from database schema to server-rendered pages.",
+        text: "Commerce is a course project from CS50's Web Programming with Python and JavaScript - Django, from database schema to server-rendered pages.",
         tag: "CS50W course project",
         stamp: "(an honest MVP)",
       },
@@ -883,7 +898,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         path: ["Create listing", "Users place bids", "Bid validation", "Auction closes", "Winning bidder"],
         panelTitle: "Every bid is checked.",
         panelText:
-          "A bid only earns its place if it clears the current price — the highest bid so far, or the starting bid when the auction is fresh.",
+          "A bid only earns its place if it clears the current price - the highest bid so far, or the starting bid when the auction is fresh.",
         panelChecks: ["Must be a valid amount", "Must beat the current price", "Becomes the new highest bid", "Updates the current price"],
       },
       details: {
@@ -919,7 +934,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
           {
             eyebrow: "ADMIN",
             title: "Manage it from the admin.",
-            text: "Django's admin interface handles listings, bids, and comments out of the box — no custom dashboard needed.",
+            text: "Django's admin interface handles listings, bids, and comments out of the box - no custom dashboard needed.",
           },
         ],
         adminTitle: "Admin control.",
@@ -932,7 +947,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         text: "Placing a bid is where Commerce does its real work. Every bid is checked before it ever touches the database.",
         rules: [
           "A bid must be a valid numeric amount",
-          "It must beat the current price — the highest bid so far, or the starting bid when there are none",
+          "It must beat the current price - the highest bid so far, or the starting bid when there are none",
           "If it fails, it's rejected with a clear message",
           "If it passes, it's saved and becomes the new highest bid",
         ],
@@ -943,12 +958,12 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         title: "When the hammer comes down.",
         text: "Only a listing's owner can close it. Once closed, the auction is over and the highest bidder takes the win.",
         states: ["Open", "Bidding", "Closed", "Winner"],
-        note: "hammer down — highest bid wins",
+        note: "hammer down - highest bid wins",
       },
       dataModel: {
         eyebrow: "THE DATA MODEL",
         title: "Five models, one centre: the listing.",
-        text: "Users, listings, bids, comments, and categories — with listings at the centre of almost every relationship.",
+        text: "Users, listings, bids, comments, and categories - with listings at the centre of almost every relationship.",
         relations: [
           { nodes: ["User", "Listings", "Bids"], caption: "Bids hang off a listing and remember who placed them." },
           { nodes: ["User", "Watchlist", "Listings"], caption: "A many-to-many watchlist links users to saved listings." },
@@ -965,7 +980,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       forms: {
         eyebrow: "FORMS THAT DO THE WORK",
         title: "Django forms, server-side.",
-        text: "Every form — new listing, bid, comment — is validated server-side before anything is saved. A ModelForm turns clean user input into a real listing.",
+        text: "Every form - new listing, bid, comment - is validated server-side before anything is saved. A ModelForm turns clean user input into a real listing.",
         chips: ["New listing form", "Bid amount checks", "Comment posting", "Validation before save"],
       },
       learning: {
@@ -997,8 +1012,8 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       eyebrow: "THE IDEA",
       heading: "A web encyclopedia, Markdown all the way down.",
       paragraphs: [
-        "Wiki is a web-based encyclopedia built as part of CS50's Web Programming with Python and JavaScript (CS50W). Entries live as Markdown files on disk, and every page is rendered server-side by Django — no database to manage, just files that read and write.",
-        "The brief was deceptively simple: browse an index, look up an entry, search for one, create a new one, edit an existing one. The interesting work is in the parts invisible on screen — reading files, converting Markdown, routing titles to pages, and keeping duplicate entries out.",
+        "Wiki is a web-based encyclopedia built as part of CS50's Web Programming with Python and JavaScript (CS50W). Entries live as Markdown files on disk, and every page is rendered server-side by Django - no database to manage, just files that read and write.",
+        "The brief was deceptively simple: browse an index, look up an entry, search for one, create a new one, edit an existing one. The interesting work is in the parts invisible on screen - reading files, converting Markdown, routing titles to pages, and keeping duplicate entries out.",
       ],
       note: "all content, stored as files",
     },
@@ -1067,20 +1082,18 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       { label: "Content", value: ["Markdown"] },
     ],
     highlights: [
-      { heading: "Titles become routes", text: "Each entry's name maps to its own URL — and Django routes that request to the matching view." },
+      { heading: "Titles become routes", text: "Each entry's name maps to its own URL - and Django routes that request to the matching view." },
       { heading: "The filesystem is the database", text: "Entries live as .md files on disk. Listing, reading, and writing entries all talk straight to the filesystem." },
-      { heading: "Rendering happens on the server", text: "Stored Markdown is converted to HTML in the view, not in the browser — a clean server-side render." },
+      { heading: "Rendering happens on the server", text: "Stored Markdown is converted to HTML in the view, not in the browser - a clean server-side render." },
       { heading: "Search keeps its promises", text: "An exact match jumps straight to the entry; anything else returns a breadcrumb of partial matches." },
       { heading: "Forms feed the file store", text: "Creating and editing are ordinary form submissions that write Markdown back to disk." },
       { heading: "Edge cases get real pages", text: "Duplicate titles and missing entries fail loudly and clearly instead of silently." },
-      { heading: "Small, readable code", text: "Virtually all logic lives in a handful of views and a small helper module — easy to follow." },
+      { heading: "Small, readable code", text: "Virtually all logic lives in a handful of views and a small helper module - easy to follow." },
     ],
     screenshots: [
       { kind: "image", image: "wiki.png", label: "The Wiki encyclopedia", alt: "Wiki encyclopedia interface built with Django" },
-      { kind: "placeholder", label: "Index — every entry in one list" },
-      { kind: "placeholder", label: "Create — a new Markdown entry" },
-      { kind: "placeholder", label: "Edit — pre-filled Markdown" },
-      { kind: "placeholder", label: "Search — matching results" },
+      { kind: "image", image: "wiki-create.png", label: "Create a new entry", alt: "Wiki create page for writing a new Markdown encyclopedia entry" },
+      { kind: "image", image: "wiki-search.png", label: "Search results", alt: "Wiki search page showing matching encyclopedia results" },
     ],
     details: [
       { label: "Project", value: "Wiki" },
@@ -1093,7 +1106,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       context: {
         eyebrow: "BUILT WITH CS50W",
         heading: "A course project, built to learn.",
-        text: "Wiki is a CS50W project through and through — a chance to put Python, Django, and server-side rendering into practice with a real, working application rather than an exercise.",
+        text: "Wiki is a CS50W project through and through - a chance to put Python, Django, and server-side rendering into practice with a real, working application rather than an exercise.",
         tag: "CS50W project",
         stamp: "an honest MVP",
       },
@@ -1111,7 +1124,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       search: {
         eyebrow: "SEARCH, BUT SMARTER",
         title: "One query, two answers.",
-        text: "The search box doesn't just match — it decides what to do with a match. An exact title hit jumps straight to the entry; anything else becomes a list of partial matches to choose from.",
+        text: "The search box doesn't just match - it decides what to do with a match. An exact title hit jumps straight to the entry; anything else becomes a list of partial matches to choose from.",
         exact: { label: "EXACT MATCH", text: "The query matches an entry name, so the app redirects straight to that entry." },
         partial: { label: "PARTIAL MATCH", text: "Otherwise it returns a page listing every entry that contains the query as a substring." },
         query: "ytho",
@@ -1170,7 +1183,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
           {
             label: "DUPLICATE ENTRY",
             title: "One title, one entry.",
-            text: "Trying to create a page whose title already exists is rejected — the encyclopedia never clobbers an existing entry.",
+            text: "Trying to create a page whose title already exists is rejected - the encyclopedia never clobbers an existing entry.",
           },
         ],
       },
@@ -1181,7 +1194,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         layers: [
           { label: "URLs", text: "A urlpatterns map that turns entry names into routes." },
           { label: "Views", text: "Functions that find entries, render pages, and handle search, create, edit, and random." },
-          { label: "Templates", text: "HTML shells that receive data — and the rendered Markdown — from the views." },
+          { label: "Templates", text: "HTML shells that receive data - and the rendered Markdown - from the views." },
           { label: "Filesystem", text: "The entry store: plain .md files under entries/." },
           { label: "Util", text: "A thin helper module that lists, reads, and writes those files." },
           { label: "Markdown", text: "The conversion step turns stored Markdown into HTML at request time." },
@@ -1189,7 +1202,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       },
       fileChain: {
         eyebrow: "A FILE-BASED ENCYCLOPEDIA",
-        title: "No database — just files.",
+        title: "No database - just files.",
         text: "The whole encyclopedia is a folder of Markdown files. A title is a filename, a page is a file read from disk, and the conversion happens fresh on every request.",
         chain: ["Entry title", "Markdown file", "Filesystem", "Django view", "Markdown → HTML", "Entry page"],
         note: "the database is a directory",
@@ -1197,7 +1210,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       why: {
         eyebrow: "WHY DJANGO?",
         title: "The batteries that mattered.",
-        text: "Django supplied routing, views, templates, and forms out of the box — and its server-side discipline keeps all the encyclopedia logic in one place.",
+        text: "Django supplied routing, views, templates, and forms out of the box - and its server-side discipline keeps all the encyclopedia logic in one place.",
         chips: [
           "URL routing",
           "Views",
@@ -1211,13 +1224,13 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       learning: {
         eyebrow: "WHAT THIS PROJECT TAUGHT ME",
         title: "Server-side, start to finish.",
-        subtitle: "The whole loop — request, route, render, write — is one Django application.",
+        subtitle: "The whole loop - request, route, render, write - is one Django application.",
       },
       structure: {
         eyebrow: "PROJECT STRUCTURE",
         title: "A small, tidy Django layout.",
         files: [
-          { path: "entries/", desc: "The encyclopedia itself — one Markdown file per entry." },
+          { path: "entries/", desc: "The encyclopedia itself - one Markdown file per entry." },
           { path: "templates/", desc: "HTML templates for the layout, index, entries, search, and edit pages." },
           { path: "views.py", desc: "The application's logic: index, entry lookup, search, create, edit, random." },
           { path: "urls.py", desc: "Maps URLs to views, including the /wiki/TITLE entry routes." },
@@ -1240,7 +1253,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       eyebrow: "THE IDEA",
       heading: "One page. One app. No reloads.",
       paragraphs: [
-        "Mail is a single-page email client built as part of CS50's Web Programming with Python and JavaScript (CS50W). It recreates the core loop of an email service like Gmail — send, receive, read, archive, reply — but every switch, open, and action happens inside one page.",
+        "Mail is a single-page email client built as part of CS50's Web Programming with Python and JavaScript (CS50W). It recreates the core loop of an email service like Gmail - send, receive, read, archive, reply - but every switch, open, and action happens inside one page.",
         "The backend API was provided by the project, so the build was never about inventing mail infrastructure. The real work was the front end: JavaScript that fetches from that API, then updates the interface on the other side of each response.",
       ],
       note: "one page, dynamic all the way through",
@@ -1325,20 +1338,14 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       { label: "Data moves", value: ["Fetch API"] },
     ],
     highlights: [
-      { heading: "Building single-page applications", text: "Every email experience — inbox, read, compose, reply, archive — happens on one page with no navigation between files." },
+      { heading: "Building single-page applications", text: "Every email experience - inbox, read, compose, reply, archive - happens on one page with no navigation between files." },
       { heading: "Async API calls with JavaScript", text: "The Fetch API drives it all: each user action becomes a request, and the interface waits for nothing." },
-      { heading: "Rendering through DOM manipulation", text: "The visible interface is built and rebuilt by JavaScript — mailboxes list emails, and views render messages." },
+      { heading: "Rendering through DOM manipulation", text: "The visible interface is built and rebuilt by JavaScript - mailboxes list emails, and views render messages." },
       { heading: "Managing multiple UI views", text: "Inbox, sent, archive, compose, and a single email view coexist as states within one page." },
       { heading: "Client-side business logic", text: "Reading, archiving, unarchiving, and replying are decided and executed in the browser." },
       { heading: "Front-end JavaScript meets a Django backend", text: "Django serves the API and the data; JavaScript is the layer that asks for it and paints the result." },
     ],
-    screenshots: [
-      { kind: "placeholder", label: "01 — Inbox" },
-      { kind: "placeholder", label: "02 — Email view" },
-      { kind: "placeholder", label: "03 — Compose" },
-      { kind: "placeholder", label: "04 — Archive" },
-      { kind: "placeholder", label: "05 — Reply" },
-    ],
+    screenshots: [],
     details: [
       { label: "Project", value: "Mail" },
       { label: "Category", value: "CS50W project" },
@@ -1350,7 +1357,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       context: {
         eyebrow: "BUILT WITH CS50W",
         heading: "A course project, focused on the front end.",
-        text: "Mail was created as part of CS50's Web Programming with Python and JavaScript (CS50W). The spotlight fell on JavaScript — APIs, asynchronous requests, DOM manipulation, and single-page behaviour — with Django serving the backend.",
+        text: "Mail was created as part of CS50's Web Programming with Python and JavaScript (CS50W). The spotlight fell on JavaScript - APIs, asynchronous requests, DOM manipulation, and single-page behaviour - with Django serving the backend.",
         tag: "CS50W project",
         stamp: "a real SPA, by hand",
       },
@@ -1360,7 +1367,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       challenge: {
         eyebrow: "THE CHALLENGE",
         title: "Reloads were the enemy.",
-        text: "A conventional multi-page flow could reload the browser every time someone opened a mailbox, read an email, archived something, or replied. Mail instead had to respond dynamically — no reload, just an updated page.",
+        text: "A conventional multi-page flow could reload the browser every time someone opened a mailbox, read an email, archived something, or replied. Mail instead had to respond dynamically - no reload, just an updated page.",
         traditional: {
           label: "TRADITIONAL FLOW",
           steps: ["CLICK", "REQUEST", "PAGE RELOAD", "NEW PAGE"],
@@ -1373,7 +1380,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       mailboxes: {
         eyebrow: "MAILBOX EXPERIENCE",
         title: "One client. Multiple mailboxes.",
-        subtitle: "Users move between their mailboxes inside the same single-page interface — no new page, no full reload.",
+        subtitle: "Users move between their mailboxes inside the same single-page interface - no new page, no full reload.",
         boxes: [
           { label: "INBOX", text: "Received emails, listed and ready to open." },
           { label: "SENT", text: "Everything the user has sent, in one place." },
@@ -1383,7 +1390,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       lifecycle: {
         eyebrow: "THE EMAIL LIFECYCLE",
         title: "Three journeys, one page.",
-        subtitle: "Compose, read, and file away — each flows through the same single-page interface.",
+        subtitle: "Compose, read, and file away - each flows through the same single-page interface.",
         flows: [
           { label: "SEND", steps: ["COMPOSE", "SEND", "SENT"] },
           { label: "READ", steps: ["INBOX", "OPEN EMAIL", "MARK AS READ", "REPLY"] },
@@ -1393,14 +1400,14 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       fetchFlow: {
         eyebrow: "FETCH, THEN RENDER",
         title: "Ask the API, paint the screen.",
-        text: "The JavaScript client talks to the provided backend API through the browser's Fetch API. Every user action becomes a request, and the returned data is what the interface renders — no full-page reloads for the core email actions.",
+        text: "The JavaScript client talks to the provided backend API through the browser's Fetch API. Every user action becomes a request, and the returned data is what the interface renders - no full-page reloads for the core email actions.",
         chain: ["USER ACTION", "FETCH REQUEST", "BACKEND API", "RESPONSE", "JAVASCRIPT", "DOM UPDATE"],
         note: "fetch, render, repeat",
       },
       state: {
         eyebrow: "DYNAMIC DOM",
         title: "The page is the state.",
-        text: "JavaScript decides what the user sees at any moment by changing the DOM in place — mailboxes, messages, compose views, and reply forms all live in the same page.",
+        text: "JavaScript decides what the user sees at any moment by changing the DOM in place - mailboxes, messages, compose views, and reply forms all live in the same page.",
         examples: [
           "Switching mailboxes",
           "Opening messages",
@@ -1422,14 +1429,14 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       archive: {
         eyebrow: "ARCHIVE SYSTEM",
         title: "Archive without deleting.",
-        text: "Received emails can be archived and later unarchived — filed away, never lost, and always one click from the inbox again.",
+        text: "Received emails can be archived and later unarchived - filed away, never lost, and always one click from the inbox again.",
         chain: ["INBOX", "ARCHIVE", "ARCHIVE MAILBOX", "UNARCHIVE", "INBOX"],
         note: "archive now, unarchive anytime",
       },
       reply: {
         eyebrow: "REPLY EXPERIENCE",
         title: "Reply, pre-filled.",
-        text: "Replying to an email carries the original message along — the reply form is pre-filled from the email being answered, so a reply is almost a one-click send.",
+        text: "Replying to an email carries the original message along - the reply form is pre-filled from the email being answered, so a reply is almost a one-click send.",
         chain: ["OPEN EMAIL", "REPLY", "PRE-FILLED FIELDS", "SEND"],
         note: "reply, edit lightly, send",
       },
@@ -1447,7 +1454,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         eyebrow: "PROJECT STRUCTURE",
         title: "A tidy Django layout.",
         files: [
-          { path: "mail/", desc: "Main application — views, templates, static files, and API logic." },
+          { path: "mail/", desc: "Main application - views, templates, static files, and API logic." },
           { path: "project3/", desc: "Django project configuration." },
           { path: "templates/mail/", desc: "HTML templates for the email client." },
           { path: "static/mail/inbox.js", desc: "The core JavaScript file driving the SPA behaviour.", featured: true },
@@ -1458,7 +1465,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       jsCore: {
         eyebrow: "JAVASCRIPT AS THE CORE",
         title: "JavaScript did the heavy lifting.",
-        text: "Every email action — loading a mailbox, reading a message, archiving, replying, composing — is handled in JavaScript. The browser asks the API, and the page updates itself in response.",
+        text: "Every email action - loading a mailbox, reading a message, archiving, replying, composing - is handled in JavaScript. The browser asks the API, and the page updates itself in response.",
         bullets: [
           "Asynchronous fetch requests",
           "User interaction handling",
@@ -1476,13 +1483,13 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       pipeline: {
         eyebrow: "TECHNICAL PIPELINE",
         title: "From click to screen.",
-        text: "This is the project's key story: a user action, a JavaScript event, a fetch, backend data, and a DOM update — the complete round trip that keeps the page feeling alive.",
+        text: "This is the project's key story: a user action, a JavaScript event, a fetch, backend data, and a DOM update - the complete round trip that keeps the page feeling alive.",
         chain: ["USER ACTION", "JAVASCRIPT EVENT", "FETCH REQUEST", "BACKEND API", "RESPONSE DATA", "DOM MANIPULATION", "UPDATED UI"],
         note: "click → request → response → render",
       },
       cta: {
         title: "Want to see the code?",
-        text: "The whole single-page client lives on GitHub — and the screencast walks through it.",
+        text: "The whole single-page client lives on GitHub - and the screencast walks through it.",
       },
       screencastHref: "https://youtu.be/pvPQ_UUkhbA?si=0GlpQkQbAP_Z_B5Q",
     },
@@ -1490,13 +1497,13 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
   network: {
     slug: "network",
     seoDescription:
-      "Network is a social network built with Django for CS50W — posts, profiles, following, likes, AJAX interactions, and paginated feeds. Explore where people and posts connect.",
+      "Network is a social network built with Django for CS50W - posts, profiles, following, likes, AJAX interactions, and paginated feeds. Explore where people and posts connect.",
     heroTechs: ["Python", "Django", "JavaScript", "HTML", "CSS", "AJAX", "Bootstrap 4", "SQLite"],
     idea: {
       eyebrow: "THE IDEA",
       heading: "People, posts, and the connections between them.",
       paragraphs: [
-        "Network is a social media web application built with Django as part of Harvard's CS50 Web Programming with Python and JavaScript (CS50W). It explores how a social-media-style application comes together — users creating posts, connecting with other users, and interacting with each other's content.",
+        "Network is a social media web application built with Django as part of Harvard's CS50 Web Programming with Python and JavaScript (CS50W). It explores how a social-media-style application comes together - users creating posts, connecting with other users, and interacting with each other's content.",
         "The project combines users, posts, following, likes, AJAX, and pagination into one connected application. The backend handles the data and logic; JavaScript adds the responsive, no-reload feel.",
       ],
       note: "a social network, one Django app",
@@ -1578,20 +1585,14 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       { heading: "Django application development", text: "Views, routing, models, and server-side behaviour all live in one Django project." },
       { heading: "JavaScript / AJAX interactions", text: "Core actions use AJAX so the page stays put while the data behind it changes." },
       { heading: "DOM updates", text: "Posts, like counts, and follow states update in place through the DOM." },
-      { heading: "User relationships", text: "Following and followers give the app its social graph — and its personalized feed." },
+      { heading: "User relationships", text: "Following and followers give the app its social graph - and its personalized feed." },
       { heading: "Follow / unfollow logic", text: "The relationship between users is created and removed through clean, AJAX-backed endpoints." },
       { heading: "Like / unlike logic", text: "A toggle that tracks, persists, and renders the like state of every post." },
       { heading: "Pagination", text: "Feeds and profiles are split into pages so content stays readable." },
       { heading: "Profile pages", text: "Each user gets their own page with their posts and their connection counts." },
       { heading: "Server / client interaction", text: "Django answers the front end, and the front end decides what to repaint." },
     ],
-    screenshots: [
-      { kind: "placeholder", label: "01 — All posts" },
-      { kind: "placeholder", label: "02 — Profile" },
-      { kind: "placeholder", label: "03 — Following feed" },
-      { kind: "placeholder", label: "04 — Post editing" },
-      { kind: "placeholder", label: "05 — Like / follow interactions" },
-    ],
+    screenshots: [],
     details: [
       { label: "Project", value: "Network" },
       { label: "Category", value: "CS50W project" },
@@ -1636,7 +1637,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       posts: {
         eyebrow: "POSTS",
         title: "The posting loop.",
-        text: "Users create new posts, browse the feed, and edit their own posts. Editing is AJAX-powered — the post interface updates in place without a full page reload.",
+        text: "Users create new posts, browse the feed, and edit their own posts. Editing is AJAX-powered - the post interface updates in place without a full page reload.",
         chain: ["CREATE", "PUBLISH", "VIEW", "EDIT", "INTERACT"],
       },
       profiles: {
@@ -1655,7 +1656,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       likes: {
         eyebrow: "LIKE SYSTEM",
         title: "Like. Unlike. Update.",
-        text: "Likes are a simple toggle. The like count updates in place through an AJAX request — no page refresh needed to see the number change.",
+        text: "Likes are a simple toggle. The like count updates in place through an AJAX request - no page refresh needed to see the number change.",
         like: ["♡ LIKE", "AJAX", "LIKE COUNT"],
         unlike: ["♥ UNLIKE", "AJAX", "UPDATED COUNT"],
         note: "the count changes in place",
@@ -1692,7 +1693,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       feed: {
         eyebrow: "THE FEED",
         title: "From everyone to following.",
-        text: "Network offers different views into posts. The Following feed personalizes what the user sees based on the users they follow — nothing more, nothing invented.",
+        text: "Network offers different views into posts. The Following feed personalizes what the user sees based on the users they follow - nothing more, nothing invented.",
         views: [
           { label: "ALL POSTS", text: "Every post in the application, in one paginated feed." },
           { label: "FOLLOWING", text: "Only the posts of users you follow, in their own feed." },
@@ -1706,33 +1707,33 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       structure: {
         eyebrow: "PROJECT STRUCTURE",
         title: "A Django application.",
-        text: "A single Django application powers the whole experience — views serve the data, templates render it, and JavaScript keeps the interface responsive.",
+        text: "A single Django application powers the whole experience - views serve the data, templates render it, and JavaScript keeps the interface responsive.",
         chain: ["DJANGO APPLICATION", "VIEWS", "TEMPLATES", "JAVASCRIPT / AJAX", "DYNAMIC UI"],
       },
       flow: {
         eyebrow: "TECHNICAL FLOW",
         title: "From click to update.",
-        text: "This is the request round-trip behind every AJAX interaction — a user action, a background request, a server response, and a DOM update. No WebSockets, no real-time stream, just clean requests and responses.",
+        text: "This is the request round-trip behind every AJAX interaction - a user action, a background request, a server response, and a DOM update. No WebSockets, no real-time stream, just clean requests and responses.",
         chain: ["USER CLICKS", "JAVASCRIPT", "AJAX REQUEST", "DJANGO", "SERVER RESPONSE", "DOM UPDATE", "USER SEES CHANGE"],
         note: "click, request, respond, repaint",
       },
       cta: {
         title: "Want to see the code?",
-        text: "The full social network lives on GitHub — the Django application, its templates, and the AJAX layer.",
+        text: "The full social network lives on GitHub - the Django application, its templates, and the AJAX layer.",
       },
     },
   },
   ghprofile: {
     slug: "ghprofile",
     seoDescription:
-      "ghprofile is a lightweight Python library for fetching and summarizing a GitHub user's public profile and repository statistics — bio, followers, repositories, stars, and pinned repos.",
+      "ghprofile is a lightweight Python library for fetching and summarizing a GitHub user's public profile and repository statistics - bio, followers, repositories, stars, and pinned repos.",
     heroTechs: ["Python", "GitHub API", "PyPI"],
     idea: {
       eyebrow: "THE IDEA",
       heading: "GitHub data, straight into Python.",
       paragraphs: [
         "ghprofile was created as a lightweight abstraction around GitHub profile information. Instead of repeatedly implementing API requests and profile parsing logic, the library provides a compact Python interface for retrieving common GitHub information.",
-        "It is not a web application — it is a Python package anyone can install and import. Where the CS50W projects put Django on a server, ghprofile puts a small library on your machine.",
+        "It is not a web application - it is a Python package anyone can install and import. Where the CS50W projects put Django on a server, ghprofile puts a small library on your machine.",
       ],
       note: "import it, point it, get data",
     },
@@ -1787,20 +1788,15 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
     ],
     highlights: [
       { heading: "Packaging a Python library", text: "Taking small, useful functionality and turning it into an installable, reusable package." },
-      { heading: "Designing a small public API", text: "A handful of clearly named methods — get_bio, get_followers, get_repo, get_stars, get_pinned_repos." },
+      { heading: "Designing a small public API", text: "A handful of clearly named methods - get_bio, get_followers, get_repo, get_stars, get_pinned_repos." },
       { heading: "Interacting with the GitHub API", text: "Fetching public profile and repository data through GitHub's REST API." },
       { heading: "Handling API errors", text: "Failed calls are wrapped under a custom GhprofileError exception the caller can catch." },
       { heading: "Working with rate limits", text: "Token-based access changes the documented API call allowance." },
       { heading: "Repository-level statistics", text: "Computing totals like the star count across a user's repositories." },
       { heading: "Combining API and scraping", text: "Bringing the GitHub API together with scraping for pinned repositories." },
-      { heading: "Publishing to PyPI", text: "The package is published and installable through pip — with a real PyPI project page." },
+      { heading: "Publishing to PyPI", text: "The package is published and installable through pip - with a real PyPI project page." },
     ],
-    screenshots: [
-      { kind: "placeholder", label: "01 — PYPI PACKAGE" },
-      { kind: "placeholder", label: "02 — PYTHON IMPORT" },
-      { kind: "placeholder", label: "03 — PROFILE DATA" },
-      { kind: "placeholder", label: "04 — REPOSITORY STATS" },
-    ],
+    screenshots: [],
     details: [
       { label: "Project", value: "ghprofile" },
       { label: "Category", value: "Python library" },
@@ -1838,7 +1834,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       flow: {
         eyebrow: "FROM USERNAME TO DATA",
         title: "From username to profile.",
-        subtitle: "A username in, a Python object out — the whole point of the library.",
+        subtitle: "A username in, a Python object out - the whole point of the library.",
         steps: ["USERNAME", "GHPROFILE", "GITHUB DATA", "PYTHON OBJECT", "RESULT"],
         calls: ["get_bio()", "get_followers()", "get_repo()", "get_stars()", "get_pinned_repos()"],
       },
@@ -1864,7 +1860,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       pinned: {
         eyebrow: "PINNED REPOSITORIES",
         title: "The pinned part.",
-        text: "The library can fetch a GitHub user's pinned repositories. The project's documentation notes that pinned repositories are retrieved via scraping — not through an official GitHub API endpoint.",
+        text: "The library can fetch a GitHub user's pinned repositories. The project's documentation notes that pinned repositories are retrieved via scraping - not through an official GitHub API endpoint.",
       },
       errorHandling: {
         eyebrow: "ERROR HANDLING",
@@ -1876,7 +1872,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         eyebrow: "UNDER THE HOOD",
         title: "A small conceptual architecture.",
         subtitle: "The library sits between your Python application and GitHub.",
-        chain: ["PYTHON APPLICATION", "GHPROFILE", "GITHUB API — PROFILE / REPOSITORY DATA", "PINNED REPO SCRAPING", "PYTHON RESULTS"],
+        chain: ["PYTHON APPLICATION", "GHPROFILE", "GITHUB API - PROFILE / REPOSITORY DATA", "PINNED REPO SCRAPING", "PYTHON RESULTS"],
         columns: [
           { label: "PYTHON APPLICATION", items: ["Calls the public API"] },
           { label: "GHPROFILE", items: ["Small Python interface"] },
@@ -1888,7 +1884,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         eyebrow: "PACKAGE STRUCTURE",
         title: "A library you import.",
         files: [
-          { path: "ghprofile.core", desc: "The documented public module — where Ghprofile and GhprofileError live.", featured: true },
+          { path: "ghprofile.core", desc: "The documented public module - where Ghprofile and GhprofileError live.", featured: true },
           { path: "Ghprofile", desc: "The main class. Pass a username (and optionally a token) to start querying." },
           { path: "GhprofileError", desc: "The custom exception class wrapping failed API calls." },
         ],
@@ -1897,7 +1893,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
         eyebrow: "CONTRIBUTING",
         title: "Built to extend.",
         subtitle:
-          "The project's documentation welcomes contributions — new features, improved error handling, test coverage, refactoring, and optimization. Ideas such as commit history and language breakdown appear there as possible future work, not as features that exist today.",
+          "The project's documentation welcomes contributions - new features, improved error handling, test coverage, refactoring, and optimization. Ideas such as commit history and language breakdown appear there as possible future work, not as features that exist today.",
         items: ["New features", "Improved error handling", "Test coverage", "Refactoring", "Optimization"],
       },
       learning: {
@@ -1913,7 +1909,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       },
       cta: {
         title: "Want to see the code?",
-        text: "The whole library lives on GitHub — and you can install it from PyPI.",
+        text: "The whole library lives on GitHub - and you can install it from PyPI.",
         installText: "pip install ghprofile",
       },
     },

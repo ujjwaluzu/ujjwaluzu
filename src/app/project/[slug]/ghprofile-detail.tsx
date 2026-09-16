@@ -44,9 +44,6 @@ export function GhprofileDetail({
   project: (typeof homeContent.projects)[number];
 }) {
   const gp = study.ghprofile!;
-  const placeholders = study.screenshots.filter((s): s is Extract<typeof s, { kind: "placeholder" }> => s.kind === "placeholder");
-  const mainPlaceholder = placeholders[0];
-  const sidePlaceholders = placeholders.slice(1);
 
   return (
     <>
@@ -121,7 +118,7 @@ export function GhprofileDetail({
               ))}
               <div className="gp-idea-combo" aria-label="ghprofile combines GitHub profile, repositories, stars, and pinned repos behind a simple Python API">
                 {gp.ideaCombo.map((item, index) => (
-                  <Fragment key={item}>
+                  <Fragment key={`idea-${index}-${item}`}>
                     {index > 0 && <span className="gp-idea-plus" aria-hidden="true">+</span>}
                     <span className="gp-idea-chip">{item}</span>
                   </Fragment>
@@ -142,7 +139,7 @@ export function GhprofileDetail({
             </Reveal>
             <Reveal className="gp-methods" delayMs={60}>
               {gp.whyLibrary.methods.map((method, index) => (
-                <Fragment key={method}>
+                <Fragment key={`method-${index}-${method}`}>
                   {index > 0 && <span className="gp-method-arrow" aria-hidden="true">→</span>}
                   <code className="gp-method">{method}</code>
                 </Fragment>
@@ -160,7 +157,7 @@ export function GhprofileDetail({
             </Reveal>
             <div className="au-detail-grid gp-fetch-grid">
               {gp.fetches.items.map((item, index) => (
-                <Reveal key={item.label} delayMs={index * 40} className="au-detail-card gp-fetch-card">
+                <Reveal key={`${item.label}-${index}`} delayMs={index * 40} className="au-detail-card gp-fetch-card">
                   <p className="au-detail-eyebrow">{item.label}</p>
                   <h3 className="au-detail-title display-heading">{item.title}</h3>
                   <p className="au-detail-text">{item.text}</p>
@@ -180,8 +177,8 @@ export function GhprofileDetail({
             <div className="gp-flow-wrap">
               <Reveal className="gp-flow" delayMs={60}>
                 <ul className="model-chain gp-flow-chain">
-                  {gp.flow.steps.map((step) => (
-                    <li key={step}>
+                  {gp.flow.steps.map((step, index) => (
+                    <li key={`flow-${index}-${step}`}>
                       <span className="model-node gp-flow-node">{step}</span>
                     </li>
                   ))}
@@ -212,7 +209,7 @@ export function GhprofileDetail({
             <Reveal className="gp-terminal gp-terminal--api" delayMs={60}>
               <div className="gp-terminal-head">
                 <span className="gp-terminal-dots"><i /><i /><i /></span>
-                <span className="gp-terminal-title">ghprofile — documented usage</span>
+                <span className="gp-terminal-title">ghprofile - documented usage</span>
                 <span className="gp-terminal-tag">python</span>
               </div>
               <pre><code>{code}</code></pre>
@@ -230,23 +227,23 @@ export function GhprofileDetail({
               <Reveal className="gp-auth-card" delayMs={60}>
                 <span className="gp-auth-label">{gp.auth.without.label}</span>
                 <ul className="gp-auth-list">
-                  {gp.auth.without.items.map((item) => (
-                    <li key={item}><span aria-hidden="true">−</span>{item}</li>
+                  {gp.auth.without.items.map((item, index) => (
+                    <li key={`without-${index}-${item}`}><span aria-hidden="true">−</span>{item}</li>
                   ))}
                 </ul>
                 <div className="gp-auth-code" aria-hidden="true">
                   <code>{`gh = Ghprofile("octocat")`}</code>
                 </div>
-                <p className="gp-auth-rate">~60 <b>API calls / hour</b> — according to the project&apos;s documentation</p>
+                <p className="gp-auth-rate">~60 <b>API calls / hour</b> - according to the project&apos;s documentation</p>
               </Reveal>
               <Reveal className="gp-auth-card gp-auth-card--token" delayMs={120}>
                 <span className="gp-auth-label gp-auth-label--token">{gp.auth.with.label}</span>
                 <ul className="gp-auth-list">
-                  {gp.auth.with.items.map((item) => (
-                    <li key={item}><span aria-hidden="true">+</span>{item}</li>
+                  {gp.auth.with.items.map((item, index) => (
+                    <li key={`with-${index}-${item}`}><span aria-hidden="true">+</span>{item}</li>
                   ))}
                 </ul>
-                <p className="gp-auth-rate">~5000 <b>API calls / hour</b> — according to the project&apos;s documentation</p>
+                <p className="gp-auth-rate">~5000 <b>API calls / hour</b> - according to the project&apos;s documentation</p>
               </Reveal>
             </div>
             <Reveal className="wk-md-note gp-auth-note" delayMs={160}>
@@ -284,7 +281,7 @@ export function GhprofileDetail({
             </Reveal>
             <Reveal className="rt-chain gp-error-chain" delayMs={60}>
               {gp.errorHandling.chain.map((item, index) => (
-                <Fragment key={item}>
+                <Fragment key={`error-${index}-${item}`}>
                   <span className="rt-chain-step">{item}</span>
                   {index < gp.errorHandling.chain.length - 1 && <span className="rt-chain-arrow" aria-hidden="true">↓</span>}
                 </Fragment>
@@ -342,7 +339,7 @@ export function GhprofileDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">{gp.packageStructure.eyebrow}</p>
               <h2 className="display-heading case-section-title">{gp.packageStructure.title}</h2>
-              <p className="case-section-sub">The documented public surface — verified against the project&apos;s documentation.</p>
+              <p className="case-section-sub">The documented public surface - verified against the project&apos;s documentation.</p>
             </Reveal>
             <div className="wk-files">
               {gp.packageStructure.files.map((file, index) => (
@@ -361,7 +358,7 @@ export function GhprofileDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">CODE-FIRST</p>
               <h2 className="display-heading case-section-title">A tool you can import.</h2>
-              <p className="case-section-sub">Install once, import anywhere — this is a Python package, not a web page.</p>
+              <p className="case-section-sub">Install once, import anywhere - this is a Python package, not a web page.</p>
             </Reveal>
             <Reveal className="gp-code gp-code--install" delayMs={60}>
               <div className="gp-code-head">
@@ -381,8 +378,8 @@ export function GhprofileDetail({
               <p className="case-section-sub">{gp.contributing.subtitle}</p>
             </Reveal>
             <Reveal className="rt-server-chips gp-contrib-chips" delayMs={60}>
-              {gp.contributing.items.map((item) => (
-                <span key={item} className="rt-server-chip">{item}</span>
+              {gp.contributing.items.map((item, index) => (
+                <span key={`contributing-${index}-${item}`} className="rt-server-chip">{item}</span>
               ))}
             </Reveal>
           </div>
@@ -429,38 +426,6 @@ export function GhprofileDetail({
                   </article>
                 </Reveal>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="case-section case-gallery" id="screenshots">
-          <div className="page-shell">
-            <Reveal className="case-section-head">
-              <p className="section-eyebrow">PROJECT SCREENSHOTS</p>
-              <h2 className="display-heading case-section-title">See it in action.</h2>
-              <p className="case-section-sub">A look at the library, with room for more screenshots.</p>
-            </Reveal>
-            <div className="gallery">
-              {mainPlaceholder && (
-                <Reveal className="gallery-main">
-                  <div className="gallery-item gallery-placeholder">
-                    <span className="gallery-ph" aria-hidden="true">▭</span>
-                    <b>{mainPlaceholder.label}</b>
-                    <i>screenshot placeholder</i>
-                  </div>
-                </Reveal>
-              )}
-              <div className="gallery-side">
-                {sidePlaceholders.map((shot, index) => (
-                  <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
-                    <div className="gallery-item gallery-placeholder">
-                      <span className="gallery-ph" aria-hidden="true">▭</span>
-                      <b>{shot.label}</b>
-                      <i>screenshot placeholder</i>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
             </div>
           </div>
         </section>

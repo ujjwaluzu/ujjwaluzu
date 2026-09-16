@@ -111,7 +111,7 @@ export function ContactPage() {
                 <div className="contact-success" role="status">
                   <span className="contact-success-mark" aria-hidden="true">✓</span>
                   <h2 className="contact-success-title display-heading">Message sent!</h2>
-                  <p className="contact-success-text">Thanks for reaching out — I&apos;ll get back to you soon.</p>
+                  <p className="contact-success-text">Thanks for reaching out - I&apos;ll get back to you soon.</p>
                   <button type="button" className="button button-dark contact-success-back" onClick={handleReset}>
                     Send another <Arrow />
                   </button>

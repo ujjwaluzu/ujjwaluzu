@@ -114,7 +114,7 @@ export function RepoTeamDetail({
               <Reveal className="wf-path-wrap">
                 <ol className="wf-path">
                   {rt.workflow.path.map((step, index) => (
-                    <li key={step} className="wf-step">
+                    <li key={`workflow-path-${index}-${step}`} className="wf-step">
                       <span className="wf-step-num" aria-hidden="true">{index + 1}</span>
                       <span className="wf-step-label">{step}</span>
                     </li>
@@ -125,7 +125,7 @@ export function RepoTeamDetail({
                 <p className="wf-path-title">The documented typical flow</p>
                 <ol className="rt-steps">
                   {rt.workflow.steps.map((step, index) => (
-                    <li key={step} className="rt-step">
+                    <li key={`rt-${index}-${step}`} className="rt-step">
                       <b aria-hidden="true">{index + 1}</b>
                       <span>{step}</span>
                     </li>
@@ -141,7 +141,7 @@ export function RepoTeamDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">WHAT I BUILT</p>
               <h2 className="display-heading case-section-title">The core features.</h2>
-              <p className="case-section-sub">Six compact areas cover the whole MVP — no production features promised yet.</p>
+              <p className="case-section-sub">Six compact areas cover the whole MVP - no production features promised yet.</p>
             </Reveal>
             <div className="feature-grid feature-grid--three">
               {study.featureGroups.map((group, index) => (
@@ -151,7 +151,7 @@ export function RepoTeamDetail({
                     <span className="feature-num">{group.index}</span>
                     <h3 className="feature-card-title">{group.title}</h3>
                     <ul className="feature-card-list">
-                      {group.items.map((item) => <li key={item}>{item}</li>)}
+                      {group.items.map((item, itemIndex) => <li key={`${group.id}-${itemIndex}-${item}`}>{item}</li>)}
                     </ul>
                   </article>
                 </Reveal>
@@ -170,7 +170,7 @@ export function RepoTeamDetail({
             <Reveal className="rt-issue" delayMs={80}>
               <div className="rt-statuses">
                 {rt.issues.statuses.map((status, index) => (
-                  <Fragment key={status}>
+                  <Fragment key={`status-${index}-${status}`}>
                     <span className={`rt-status rt-status--${statusTones[index]}`}>{status}</span>
                     {index < rt.issues.statuses.length - 1 && <span className="rt-status-arrow" aria-hidden="true">→</span>}
                   </Fragment>
@@ -179,7 +179,7 @@ export function RepoTeamDetail({
               <div className="rt-priorities">
                 <span className="rt-priority-label">Priorities</span>
                 {rt.issues.priorities.map((priority, index) => (
-                  <span key={priority} className={`rt-priority rt-priority--${priorityTones[index]}`}>{priority}</span>
+                  <span key={`priority-${index}-${priority}`} className={`rt-priority rt-priority--${priorityTones[index]}`}>{priority}</span>
                 ))}
               </div>
             </Reveal>
@@ -200,7 +200,7 @@ export function RepoTeamDetail({
                     <h3>{role.name}</h3>
                     <p className="role-tagline">{role.tagline}</p>
                     <ul className="role-list">
-                      {role.items.map((item) => <li key={item}>{item}</li>)}
+                      {role.items.map((item, itemIndex) => <li key={`${role.name}-${itemIndex}-${item}`}>{item}</li>)}
                     </ul>
                     {index === 0 && <p className="role-owner-note">{rt.roles.ownerNote}</p>}
                   </article>
@@ -225,7 +225,7 @@ export function RepoTeamDetail({
                 <Reveal key={entry.label} delayMs={index * 40} className="stack-entry">
                   <span className="stack-label">{entry.label}</span>
                   <div className="stack-pills">
-                    {entry.value.map((pill) => <span key={pill} className="stack-pill">{pill}</span>)}
+                    {entry.value.map((pill, pillIndex) => <span key={`${entry.label}-${pillIndex}-${pill}`} className="stack-pill">{pill}</span>)}
                   </div>
                 </Reveal>
               ))}
@@ -281,7 +281,7 @@ export function RepoTeamDetail({
             </Reveal>
             <div className="rt-progress">
               {rt.ideaToDone.steps.map((step, index) => (
-                <Fragment key={step}>
+                <Fragment key={`auth-${index}-${step}`}>
                   <span className="rt-progress-step"><b aria-hidden="true">{index + 1}</b>{step}</span>
                   {index < rt.ideaToDone.steps.length - 1 && <span className="rt-progress-arrow" aria-hidden="true">→</span>}
                 </Fragment>
@@ -346,7 +346,7 @@ export function RepoTeamDetail({
             </Reveal>
             <Reveal className="rt-chain" delayMs={60}>
               {rt.structure.chain.map((item, index) => (
-                <Fragment key={item}>
+                <Fragment key={`structure-${index}-${item}`}>
                   <span className="rt-chain-step">{item}</span>
                   {index < rt.structure.chain.length - 1 && <span className="rt-chain-arrow" aria-hidden="true">→</span>}
                 </Fragment>
@@ -387,14 +387,14 @@ export function RepoTeamDetail({
                 <span className="next-col-label">{rt.next.currentLabel}</span>
                 <span className="next-col-desc">{rt.next.currentDesc}</span>
                 <div>
-                  {rt.next.current.map((item) => <span key={item} className="next-chip">{item}</span>)}
+                  {rt.next.current.map((item, index) => <span key={`current-${index}-${item}`} className="next-chip">{item}</span>)}
                 </div>
               </Reveal>
               <Reveal className="next-col next-col--later" delayMs={140}>
                 <span className="next-col-label">{rt.next.futureLabel}</span>
                 <span className="next-col-desc">{rt.next.futureDesc}</span>
                 <div>
-                  {rt.next.future.map((item) => <span key={item} className="next-chip">{item}</span>)}
+                  {rt.next.future.map((item, index) => <span key={`future-${index}-${item}`} className="next-chip">{item}</span>)}
                 </div>
               </Reveal>
             </div>

@@ -1,4 +1,4 @@
-# AGENTS.md — ujjwaluzu Portfolio
+# AGENTS.md - ujjwaluzu Portfolio
 
 ## Project goal
 

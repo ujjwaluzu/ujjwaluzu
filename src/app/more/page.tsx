@@ -4,11 +4,11 @@ import { MorePage } from "@/components/more-page";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "More Than Code — Ujjwal Baunthiyal",
+  title: "More Than Code - Ujjwal Baunthiyal",
   description:
     "A collection of music and technology videos curated by Ujjwal Baunthiyal.",
   openGraph: {
-    title: "More Than Code — Ujjwal Baunthiyal",
+    title: "More Than Code - Ujjwal Baunthiyal",
     description:
       "A collection of music and technology videos curated by Ujjwal Baunthiyal.",
     url: `${site.domain}/more`,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "More Than Code — Ujjwal Baunthiyal",
+    title: "More Than Code - Ujjwal Baunthiyal",
     description:
       "A collection of music and technology videos curated by Ujjwal Baunthiyal.",
   },

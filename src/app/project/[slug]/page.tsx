@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!study || !project) return {};
 
   const url = `${site.domain}/project/${slug}`;
-  const title = `${project.name} — Ujjwal Baunthiyal`;
+  const title = `${project.name} - Ujjwal Baunthiyal`;
   const description = study.seoDescription;
   return {
     title,

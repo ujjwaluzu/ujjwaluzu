@@ -8,10 +8,10 @@ import { homeContent } from "@/lib/home-content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "All Projects — Ujjwal Baunthiyal",
+  title: "All Projects - Ujjwal Baunthiyal",
   description: "A collection of things I've built, explored, and shipped.",
   openGraph: {
-    title: "All Projects — Ujjwal Baunthiyal",
+    title: "All Projects - Ujjwal Baunthiyal",
     description: "A collection of things I've built, explored, and shipped.",
     url: `${site.domain}/project`,
     siteName: site.name,
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "All Projects — Ujjwal Baunthiyal",
+    title: "All Projects - Ujjwal Baunthiyal",
     description: "A collection of things I've built, explored, and shipped.",
   },
   alternates: {

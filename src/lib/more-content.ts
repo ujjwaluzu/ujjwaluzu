@@ -10,7 +10,7 @@
  *   }
  *
  * A real YouTube video ID is exactly 11 characters. Nothing else needs to be
- * touched — the grid, numbering, category labels, and size automatically react
+ * touched - the grid, numbering, category labels, and size automatically react
  * to this file.
  */
 
@@ -24,23 +24,23 @@ export type VideoCategory = "MUSIC" | "TECH";
 export const musicVideos: MoreVideo[] = [
   {
     id: "fNtqjROpzmM",
-    title: "Baawe",
+    title: "Baawe prod. by @prodevanson | Ujjwaluzu",
   },
   {
     id: "aQszMoGtBgc",
-    title: "Anish Bhaiya",
+    title: "Anish Bhaiya prod. by @ihatednasty | Ujjwaluzu",
   },
   {
     id: "_2T2bccXvIw",
-    title: "Me&U",
+    title: "Me&U | Ujjwaluzu",
   },
   {
     id: "Oi9LPG1bFvo",
-    title: "YASHIGH",
+    title: "YASHIGH | Ujjwaluzu",
   },
   {
     id: "az4QDIeExLU",
-    title: "Ghey",
+    title: "Ghey - Anish Samanta Diss",
   },
   {
     id: "S9wm_F5y50A",
@@ -51,27 +51,27 @@ export const musicVideos: MoreVideo[] = [
 export const techVideos: MoreVideo[] = [
   {
     id: "pvPQ_UUkhbA",
-    title: "CS50W - Mail",
+    title: "CS50W - Mail | Ujjwal Baunthiyal",
   },
   {
     id: "0ZTboEi6qpI",
-    title: "CS50w - Commerce",
+    title: "CS50w - Commerce | Ujjwal Baunthiyal",
   },
   {
     id: "hnYdDZRMS50",
-    title: "CS50W - Wiki",
+    title: "CS50W - Wiki | Ujjwal Baunthiyal",
   },
   {
     id: "QwcraChO2tE",
-    title: "Ghprofile",
+    title: "Ghprofile - A Python LibRARY | Ujjwal baunthiyal",
   },
   {
     id: "gnMb-KHOqJY",
-    title: "CS50W - Search",
+    title: "CS50W - Search | Ujjwal baunthiyal",
   },
   {
     id: "qEYpCg-9B7Q",
-    title: "CS50P - Final",
+    title: "CS50P - Final | ujjwal baunthiyal",
   },
 ];
 

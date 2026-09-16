@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -74,10 +75,21 @@ export function MorePage() {
               </h1>
               <p className="more-hero-subtitle">Not everything here needs a README.</p>
             </div>
-            <div className="more-hero-doodles" aria-hidden="true">
+            <div className="more-hero-art">
+              <Image
+                className="more-hero-character"
+                src="/assets/ujjwal-character.png"
+                alt="Illustrated portrait of Ujjwal with a frog on his head"
+                width={1254}
+                height={1254}
+                priority
+                sizes="(max-width: 767px) 72vw, (max-width: 1000px) 42vw, 32vw"
+              />
+              <div className="more-hero-doodles" aria-hidden="true">
               <span className="more-doodle more-doodle-star">✶</span>
               <span className="more-doodle more-doodle-note">♪</span>
               <span className="more-doodle more-doodle-play">▶</span>
+            </div>
             </div>
           </div>
         </section>

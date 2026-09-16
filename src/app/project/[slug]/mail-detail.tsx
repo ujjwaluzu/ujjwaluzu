@@ -16,9 +16,6 @@ export function MailDetail({
   project: (typeof homeContent.projects)[number];
 }) {
   const mail = study.mail!;
-  const placeholders = study.screenshots.filter((s): s is Extract<typeof s, { kind: "placeholder" }> => s.kind === "placeholder");
-  const mainPlaceholder = placeholders[0];
-  const sidePlaceholders = placeholders.slice(1);
 
   return (
     <>
@@ -73,11 +70,11 @@ export function MailDetail({
                 </div>
                 <div className="mail-mock-body">
                   <span className="mail-mock-bodyline">re: launch timeline</span>
-                  <span className="mail-mock-bodyline">sounds good — ship</span>
+                  <span className="mail-mock-bodyline">sounds good - ship</span>
                   <span className="mail-mock-bodyline">it by friday ✓</span>
                 </div>
               </div>
-              <p className="mp-note-mail">no reload — just render</p>
+              <p className="mp-note-mail">no reload - just render</p>
             </div>
           </div>
         </section>
@@ -107,7 +104,7 @@ export function MailDetail({
                 <span className="wk-flow-label mp-label-traditional">{mail.challenge.traditional.label}</span>
                 <ol className="wf-path wk-flow-path">
                   {mail.challenge.traditional.steps.map((step, index) => (
-                    <li key={step} className="wf-step">
+                    <li key={`traditional-${index}-${step}`} className="wf-step">
                       <span className="wf-step-num" aria-hidden="true">{index + 1}</span>
                       <span className="wf-step-label">{step}</span>
                     </li>
@@ -118,7 +115,7 @@ export function MailDetail({
                 <span className="wk-flow-label mp-label-spa">{mail.challenge.mail.label}</span>
                 <ol className="wf-path wk-flow-path">
                   {mail.challenge.mail.steps.map((step, index) => (
-                    <li key={step} className="wf-step">
+                    <li key={`mail-${index}-${step}`} className="wf-step">
                       <span className="wf-step-num" aria-hidden="true">{index + 1}</span>
                       <span className="wf-step-label">{step}</span>
                     </li>
@@ -152,7 +149,7 @@ export function MailDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">WHAT I BUILT</p>
               <h2 className="display-heading case-section-title">The email client, feature by feature.</h2>
-              <p className="case-section-sub">Eight focused features — nothing claimed that wasn&apos;t built.</p>
+              <p className="case-section-sub">Eight focused features - nothing claimed that wasn&apos;t built.</p>
             </Reveal>
             <div className="feature-grid feature-grid--three">
               {study.featureGroups.map((group, index) => (
@@ -162,7 +159,7 @@ export function MailDetail({
                     <span className="feature-num">{group.index}</span>
                     <h3 className="feature-card-title">{group.title}</h3>
                     <ul className="feature-card-list">
-                      {group.items.map((item) => <li key={item}>{item}</li>)}
+                      {group.items.map((item, itemIndex) => <li key={`${group.id}-${itemIndex}-${item}`}>{item}</li>)}
                     </ul>
                   </article>
                 </Reveal>
@@ -184,7 +181,7 @@ export function MailDetail({
                   <span className="wk-flow-label">{flow.label}</span>
                   <ol className="wf-path wk-flow-path">
                     {flow.steps.map((step, stepIndex) => (
-                      <li key={step} className="wf-step">
+                      <li key={`${flow.label}-${stepIndex}-${step}`} className="wf-step">
                         <span className="wf-step-num" aria-hidden="true">{stepIndex + 1}</span>
                         <span className="wf-step-label">{step}</span>
                       </li>
@@ -205,7 +202,7 @@ export function MailDetail({
             </Reveal>
             <Reveal className="rt-chain" delayMs={60}>
               {mail.fetchFlow.chain.map((item, index) => (
-                <Fragment key={item}>
+                <Fragment key={`fetch-${index}-${item}`}>
                   <span className="rt-chain-step">{item}</span>
                   {index < mail.fetchFlow.chain.length - 1 && <span className="rt-chain-arrow" aria-hidden="true">→</span>}
                 </Fragment>
@@ -225,7 +222,7 @@ export function MailDetail({
                 <h3 className="display-heading rt-server-title">{mail.state.title}</h3>
               </div>
               <div className="rt-server-chips">
-                {mail.state.examples.map((example) => <span key={example} className="rt-server-chip">{example}</span>)}
+                {mail.state.examples.map((example, index) => <span key={`state-${index}-${example}`} className="rt-server-chip">{example}</span>)}
               </div>
               <p className="rt-server-text">{mail.state.text}</p>
             </Reveal>
@@ -241,7 +238,7 @@ export function MailDetail({
             </Reveal>
             <Reveal className="rt-progress mp-auth-progress" delayMs={60}>
               {mail.auth.steps.map((step, index) => (
-                <Fragment key={step}>
+                <Fragment key={`auth-${index}-${step}`}>
                   <span className="rt-progress-step">
                     <b aria-hidden="true">{index + 1}</b>
                     {step}
@@ -262,7 +259,7 @@ export function MailDetail({
             </Reveal>
             <Reveal className="rt-chain" delayMs={60}>
               {mail.archive.chain.map((item, index) => (
-                <Fragment key={item}>
+                <Fragment key={`archive-${index}-${item}`}>
                   <span className="rt-chain-step">{item}</span>
                   {index < mail.archive.chain.length - 1 && <span className="rt-chain-arrow" aria-hidden="true">→</span>}
                 </Fragment>
@@ -281,7 +278,7 @@ export function MailDetail({
             </Reveal>
             <Reveal className="rt-chain" delayMs={60}>
               {mail.reply.chain.map((item, index) => (
-                <Fragment key={item}>
+                <Fragment key={`reply-${index}-${item}`}>
                   <span className="rt-chain-step">{item}</span>
                   {index < mail.reply.chain.length - 1 && <span className="rt-chain-arrow" aria-hidden="true">→</span>}
                 </Fragment>
@@ -303,7 +300,7 @@ export function MailDetail({
                 <Reveal key={entry.label} delayMs={index * 40} className="stack-entry">
                   <span className="stack-label">{entry.label}</span>
                   <div className="stack-pills">
-                    {entry.value.map((pill) => <span key={pill} className="stack-pill">{pill}</span>)}
+                    {entry.value.map((pill, pillIndex) => <span key={`${entry.label}-${pillIndex}-${pill}`} className="stack-pill">{pill}</span>)}
                   </div>
                 </Reveal>
               ))}
@@ -313,7 +310,7 @@ export function MailDetail({
                 <Reveal key={column.label} delayMs={index * 50} className="mp-hood-col">
                   <b className="mp-hood-label">{column.label}</b>
                   <ul className="mp-hood-list">
-                    {column.items.map((item) => <li key={item}>{item}</li>)}
+                    {column.items.map((item, itemIndex) => <li key={`${column.label}-${itemIndex}-${item}`}>{item}</li>)}
                   </ul>
                 </Reveal>
               ))}
@@ -326,7 +323,7 @@ export function MailDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">{mail.structure.eyebrow}</p>
               <h2 className="display-heading case-section-title">{mail.structure.title}</h2>
-              <p className="case-section-sub">The documented project layout — with the SPA&apos;s heart up front.</p>
+              <p className="case-section-sub">The documented project layout - with the SPA&apos;s heart up front.</p>
             </Reveal>
             <div className="wk-files">
               {mail.structure.files.map((file, index) => (
@@ -348,8 +345,8 @@ export function MailDetail({
                 <h3 className="display-heading spotlight-title">{mail.jsCore.title}</h3>
                 <p className="spotlight-text">{mail.jsCore.text}</p>
                 <ul className="bid-rules mp-js-bullets">
-                  {mail.jsCore.bullets.map((bullet) => (
-                    <li key={bullet}><span aria-hidden="true">✓</span>{bullet}</li>
+                  {mail.jsCore.bullets.map((bullet, index) => (
+                    <li key={`js-core-${index}-${bullet}`}><span aria-hidden="true">✓</span>{bullet}</li>
                   ))}
                 </ul>
               </div>
@@ -383,38 +380,6 @@ export function MailDetail({
           </div>
         </section>
 
-        <section className="case-section case-gallery" id="screenshots">
-          <div className="page-shell">
-            <Reveal className="case-section-head">
-              <p className="section-eyebrow">PROJECT SCREENSHOTS</p>
-              <h2 className="display-heading case-section-title">See it in action.</h2>
-              <p className="case-section-sub">A look at the mail client, with room for more screenshots.</p>
-            </Reveal>
-            <div className="gallery">
-              {mainPlaceholder && (
-                <Reveal className="gallery-main">
-                  <div className="gallery-item gallery-placeholder">
-                    <span className="gallery-ph" aria-hidden="true">▭</span>
-                    <b>{mainPlaceholder.label}</b>
-                    <i>screenshot placeholder</i>
-                  </div>
-                </Reveal>
-              )}
-              <div className="gallery-side">
-                {sidePlaceholders.map((shot, index) => (
-                  <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
-                    <div className="gallery-item gallery-placeholder">
-                      <span className="gallery-ph" aria-hidden="true">▭</span>
-                      <b>{shot.label}</b>
-                      <i>screenshot placeholder</i>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section className="case-section case-pipeline" id="pipeline">
           <div className="page-shell">
             <Reveal className="case-section-head">
@@ -425,7 +390,7 @@ export function MailDetail({
             <Reveal className="mp-pipeline" delayMs={80}>
               <ol className="mp-pipeline-chain">
                 {mail.pipeline.chain.map((item, index) => (
-                  <Fragment key={item}>
+                  <Fragment key={`pipeline-${index}-${item}`}>
                     <li className="mp-pipeline-step"><span aria-hidden="true">{index + 1}</span>{item}</li>
                     {index < mail.pipeline.chain.length - 1 && <span className="mp-pipeline-arrow" aria-hidden="true">↓</span>}
                   </Fragment>

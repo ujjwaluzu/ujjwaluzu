@@ -639,6 +639,42 @@ section[id] { scroll-margin-top: 96px; }
   .status-strip { padding: 32px 24px 30px; } .status-heading { font-size: clamp(30px, 9vw, 42px); } .status-text { font-size: 14px; } .status-pill { margin-top: 22px; } .status-stamp { position: static; display: inline-block; margin: 18px 0 0; transform: rotate(2deg); } .core-workflow-grid { gap: 34px; margin-top: 42px; } .wf-step { grid-template-columns: 40px 1fr; gap: 14px; } .wf-step::before { left: 19px; } .wf-step-num { width: 40px; height: 40px; font-size: 13px; } .wf-step-label { font-size: 17px; } .rt-steps { grid-template-columns: 1fr; } .feature-grid--three { grid-template-columns: 1fr; gap: 14px; margin-top: 42px; } .feature-card--rt .feature-card-title { font-size: 20px; } .rt-issue { margin-top: 42px; padding: 30px 24px; } .rt-status { padding: 10px 14px; font-size: 10px; } .rt-priorities { margin-top: 22px; padding-top: 18px; } .roles-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 42px; } .role-card { padding: 24px 22px 26px; } .rt-server { grid-template-columns: 1fr; padding: 26px 22px; } .rt-server-chips { justify-content: flex-start; } .model-wrap { grid-template-columns: 1fr; gap: 34px; margin-top: 42px; } .model-node { font-size: 16px; padding: 14px 18px; } .rt-progress { margin-top: 40px; } .rt-progress-step { min-width: 106px; } .rt-progress-arrow { display: none; } .rt-chain { margin-top: 40px; row-gap: 8px; } .rt-chain-step { padding: 11px 15px; font-size: 9.5px; } .rt-chain-arrow { display: none; } .next-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 42px; } .next-col { padding: 26px 22px 28px; } .au-panel { padding: 26px 22px; } .au-detail-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 42px; } .admin-strip { grid-template-columns: 1fr; gap: 10px 0; padding: 20px 18px; } .admin-strip-text { grid-column: 1 / -1; } .bid-ticket { padding: 26px 22px 24px; } .closing-progress { margin-top: 40px; } .cm-model-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 42px; } .cm-rel { padding: 22px 20px 20px; } .outcomes-steps { margin-top: 40px; }
 }
 
+/* ---- Detail page density and canvas balance ---- */
+.case-page .page-shell { width: min(1360px, calc(100% - 48px)); }
+.case-hero { padding: 126px 0 46px; }
+.case-hero-inner { grid-template-columns: minmax(0, 1fr) minmax(390px, 520px); gap: 52px; }
+.case-hero-visual { max-width: none; }
+.case-section { padding: 50px 0; }
+.case-section-head { max-width: 860px; }
+.case-section-sub { max-width: 680px; }
+.case-split { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 56px; }
+.feature-grid, .highlight-grid, .journey, .gallery, .wk-flow-grid, .wk-search-grid, .wk-edit-grid, .wk-edge-grid, .mp-mailboxes { margin-top: 34px; }
+.stack-breakdown, .wk-files, .wk-layers { width: 100%; max-width: none; margin-top: 34px; }
+.gallery { gap: 16px; }
+.gallery-side { gap: 16px; }
+.spotlight { margin-top: 34px; padding: 42px 40px; }
+.case-details, .case-cta { margin-top: 34px; }
+.status-strip { width: 100%; max-width: none; }
+
+@media (max-width: 1000px) {
+  .case-page .page-shell { width: min(100% - 32px, 960px); }
+  .case-hero-inner { gap: 40px; }
+  .case-split { gap: 40px; }
+}
+
+@media (max-width: 767px) {
+  .case-page .page-shell { width: calc(100% - 32px); }
+  .case-hero { padding: 104px 0 46px; }
+  .case-hero-inner { grid-template-columns: 1fr; gap: 34px; }
+  .case-section { padding: 52px 0; }
+  .case-section-head { max-width: 100%; }
+  .case-section-sub { max-width: 100%; }
+  .case-split { gap: 26px; }
+  .feature-grid, .highlight-grid, .journey, .gallery, .wk-flow-grid, .wk-search-grid, .wk-edit-grid, .wk-edge-grid, .mp-mailboxes { margin-top: 30px; }
+  .stack-breakdown, .wk-files, .wk-layers { margin-top: 30px; }
+  .spotlight { margin-top: 30px; padding: 32px 22px; }
+}
+
 @media (max-width: 360px) { .page-shell, .site-header { width: calc(100% - 24px); } .about-copy { width: 100%; } .heading-aside { flex-direction: column; align-items: flex-start; gap: 16px; } .hero-tagline { font-size: 15px; } .hero-note-build { right: -3%; } .hero-note-same { right: -6%; } .project-visual { height: 165px; } .tag-list span { font-size: 7.5px; padding: 2px 6px; } }
 
 @media (max-width: 1000px) {
@@ -1139,4 +1175,36 @@ section[id] { scroll-margin-top: 96px; }
 
 @media (prefers-reduced-motion: reduce) {
   .more-preview-card, .more-preview-card-tape, .more-preview-card-play, .more-doodle, .more-video-label, .more-video-placeholder, .more-preview-kicker, .more-preview-hint, .more-preview-card-list, .more-media-head p, .more-closing p { animation: none !important; transform: none !important; }
+}
+
+/* ---- More page: compact hero with the Ujjwal character ---- */
+.more-hero { padding: 122px 0 34px; }
+.more-hero-inner { grid-template-columns: minmax(0, 1fr) minmax(300px, 420px); gap: 28px; align-items: center; }
+.more-hero-art { position: relative; min-height: 330px; display: grid; place-items: end center; }
+.more-hero-character { position: relative; z-index: 1; display: block; width: min(100%, 390px); height: auto; filter: drop-shadow(0 18px 18px rgba(11,11,11,.16)); transform: translateY(8px); }
+.more-hero-doodles { position: absolute; inset: 0; z-index: 2; width: auto; height: auto; }
+.more-media { padding: 0 0 76px; }
+.more-toggle { margin-top: 28px; }
+.more-video-grid { gap: 30px 22px; margin-top: 38px; }
+.more-closing { padding: 76px 0 68px; }
+
+@media (max-width: 1000px) {
+  .more-hero { padding: 108px 0 30px; }
+  .more-hero-inner { grid-template-columns: minmax(0, 1fr) minmax(260px, 36vw); gap: 22px; }
+  .more-hero-art { min-height: 290px; }
+  .more-hero-character { width: min(100%, 320px); }
+  .more-hero-doodles { display: block; }
+  .more-video-grid { gap: 28px 20px; }
+}
+
+@media (max-width: 767px) {
+  .more-hero { padding: 94px 0 28px; }
+  .more-hero-inner { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .more-hero-subtitle { margin-top: 22px; }
+  .more-hero-art { min-height: 250px; margin-top: 4px; }
+  .more-hero-character { width: min(74vw, 300px); transform: translateY(6px); }
+  .more-media { padding: 0 0 64px; }
+  .more-toggle { margin-top: 24px; }
+  .more-video-grid { gap: 28px; margin-top: 30px; }
+  .more-closing { padding: 68px 0 60px; }
 }

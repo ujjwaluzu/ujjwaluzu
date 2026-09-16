@@ -13,6 +13,8 @@ const assetRoot = "/assets";
 
 const shotDims: Record<string, { w: number; h: number }> = {
   "wiki.png": { w: 1920, h: 909 },
+  "wiki-create.png": { w: 1920, h: 910 },
+  "wiki-search.png": { w: 1157, h: 590 },
 };
 
 export function WikiDetail({
@@ -25,7 +27,6 @@ export function WikiDetail({
   const wk = study.wiki!;
   const heroImage = `${assetRoot}/${project.image}`;
   const shots = study.screenshots.filter((s): s is Extract<typeof s, { kind: "image" }> => s.kind === "image");
-  const placeholders = study.screenshots.filter((s): s is Extract<typeof s, { kind: "placeholder" }> => s.kind === "placeholder");
   const mainShot = shots[0];
   const mainDims = mainShot ? shotDims[mainShot.image] ?? { w: 1920, h: 909 } : { w: 1920, h: 909 };
 
@@ -107,7 +108,7 @@ export function WikiDetail({
                   <span className="wk-flow-label">{flow.label}</span>
                   <ol className="wf-path wk-flow-path">
                     {flow.steps.map((step, stepIndex) => (
-                      <li key={step} className="wf-step">
+                      <li key={`${flow.label}-${stepIndex}-${step}`} className="wf-step">
                         <span className="wf-step-num" aria-hidden="true">{stepIndex + 1}</span>
                         <span className="wf-step-label">{step}</span>
                       </li>
@@ -124,7 +125,7 @@ export function WikiDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">WHAT I BUILT</p>
               <h2 className="display-heading case-section-title">The core features.</h2>
-              <p className="case-section-sub">Seven focused features cover the whole encyclopedia — nothing claimed that wasn&apos;t built.</p>
+              <p className="case-section-sub">Seven focused features cover the whole encyclopedia - nothing claimed that wasn&apos;t built.</p>
             </Reveal>
             <div className="feature-grid feature-grid--three">
               {study.featureGroups.map((group, index) => (
@@ -134,7 +135,7 @@ export function WikiDetail({
                     <span className="feature-num">{group.index}</span>
                     <h3 className="feature-card-title">{group.title}</h3>
                     <ul className="feature-card-list">
-                      {group.items.map((item) => <li key={item}>{item}</li>)}
+                      {group.items.map((item, itemIndex) => <li key={`${group.id}-${itemIndex}-${item}`}>{item}</li>)}
                     </ul>
                   </article>
                 </Reveal>
@@ -199,7 +200,7 @@ export function WikiDetail({
             </div>
             <Reveal className="rt-chain" delayMs={120}>
               {wk.markdown.chain.map((item, index) => (
-                <Fragment key={item}>
+                <Fragment key={`markdown-${index}-${item}`}>
                   <span className="rt-chain-step">{item}</span>
                   {index < wk.markdown.chain.length - 1 && <span className="rt-chain-arrow" aria-hidden="true">→</span>}
                 </Fragment>
@@ -224,7 +225,7 @@ export function WikiDetail({
                 <h3 className="wk-edit-title">{wk.edit.create.title}</h3>
                 <ol className="wk-steps">
                   {wk.edit.create.steps.map((step, index) => (
-                    <li key={step}>
+                    <li key={`read-${index}-${step}`}>
                       <b aria-hidden="true">{index + 1}</b>
                       <span>{step}</span>
                     </li>
@@ -236,7 +237,7 @@ export function WikiDetail({
                 <h3 className="wk-edit-title">{wk.edit.existing.title}</h3>
                 <ol className="wk-steps">
                   {wk.edit.existing.steps.map((step, index) => (
-                    <li key={step}>
+                    <li key={`create-${index}-${step}`}>
                       <b aria-hidden="true">{index + 1}</b>
                       <span>{step}</span>
                     </li>
@@ -280,7 +281,7 @@ export function WikiDetail({
                 <Reveal key={entry.label} delayMs={index * 40} className="stack-entry">
                   <span className="stack-label">{entry.label}</span>
                   <div className="stack-pills">
-                    {entry.value.map((pill) => <span key={pill} className="stack-pill">{pill}</span>)}
+                    {entry.value.map((pill, pillIndex) => <span key={`${entry.label}-${pillIndex}-${pill}`} className="stack-pill">{pill}</span>)}
                   </div>
                 </Reveal>
               ))}
@@ -354,7 +355,7 @@ export function WikiDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">PROJECT SCREENSHOTS</p>
               <h2 className="display-heading case-section-title">See it in action.</h2>
-              <p className="case-section-sub">A look at the encyclopedia, with room for more screenshots.</p>
+              <p className="case-section-sub">A look at the encyclopedia screens that are available.</p>
             </Reveal>
             <div className="gallery">
               <Reveal className="gallery-main">
@@ -372,15 +373,17 @@ export function WikiDetail({
                 )}
               </Reveal>
               <div className="gallery-side">
-                {placeholders.map((shot, index) => (
-                  <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
-                    <div className="gallery-item gallery-placeholder">
-                      <span className="gallery-ph" aria-hidden="true">▭</span>
-                      <b>{shot.label}</b>
-                      <i>screenshot placeholder</i>
-                    </div>
-                  </Reveal>
-                ))}
+                {shots.slice(1).map((shot, index) => {
+                  const dims = shotDims[shot.image] ?? { w: 1920, h: 909 };
+                  return (
+                    <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
+                      <figure className="gallery-item gallery-item--image">
+                        <Image src={`${assetRoot}/${shot.image}`} alt={shot.alt} width={dims.w} height={dims.h} sizes="(max-width: 767px) 100vw, 320px" />
+                        <figcaption className="gallery-label">{shot.label}</figcaption>
+                      </figure>
+                    </Reveal>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -391,7 +394,7 @@ export function WikiDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">{wk.structure.eyebrow}</p>
               <h2 className="display-heading case-section-title">{wk.structure.title}</h2>
-              <p className="case-section-sub">The documented project layout — a classic Django-simple structure.</p>
+              <p className="case-section-sub">The documented project layout - a classic Django-simple structure.</p>
             </Reveal>
             <div className="wk-files">
               {wk.structure.files.map((file, index) => (

@@ -13,6 +13,9 @@ const assetRoot = "/assets";
 
 const shotDims: Record<string, { w: number; h: number }> = {
   "auction.png": { w: 1907, h: 915 },
+  "repoteam-listing-detail.png": { w: 1899, h: 916 },
+  "repoteam-create-listing.png": { w: 1899, h: 911 },
+  "repoteam-watchlist.png": { w: 1917, h: 912 },
 };
 
 const closingTones = ["open", "bidding", "closed", "winner"];
@@ -27,7 +30,6 @@ export function CommerceDetail({
   const cm = study.commerce!;
   const heroImage = `${assetRoot}/${project.image}`;
   const shots = study.screenshots.filter((s): s is Extract<typeof s, { kind: "image" }> => s.kind === "image");
-  const placeholders = study.screenshots.filter((s): s is Extract<typeof s, { kind: "placeholder" }> => s.kind === "placeholder");
   const mainShot = shots[0];
   const mainDims = mainShot ? shotDims[mainShot.image] ?? { w: 1907, h: 915 } : { w: 1907, h: 915 };
 
@@ -110,7 +112,7 @@ export function CommerceDetail({
               <Reveal className="wf-path-wrap">
                 <ol className="wf-path">
                   {cm.workflow.path.map((step, index) => (
-                    <li key={step} className="wf-step">
+                    <li key={`workflow-path-${index}-${step}`} className="wf-step">
                       <span className="wf-step-num" aria-hidden="true">{index + 1}</span>
                       <span className="wf-step-label">{step}</span>
                     </li>
@@ -139,7 +141,7 @@ export function CommerceDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">WHAT I BUILT</p>
               <h2 className="display-heading case-section-title">The core features.</h2>
-              <p className="case-section-sub">Eight compact areas cover the whole app — no production features promised yet.</p>
+              <p className="case-section-sub">Eight compact areas cover the whole app - no production features promised yet.</p>
             </Reveal>
             <div className="feature-grid feature-grid--three">
               {study.featureGroups.map((group, index) => (
@@ -149,7 +151,7 @@ export function CommerceDetail({
                     <span className="feature-num">{group.index}</span>
                     <h3 className="feature-card-title">{group.title}</h3>
                     <ul className="feature-card-list">
-                      {group.items.map((item) => <li key={item}>{item}</li>)}
+                      {group.items.map((item, itemIndex) => <li key={`${group.id}-${itemIndex}-${item}`}>{item}</li>)}
                     </ul>
                   </article>
                 </Reveal>
@@ -251,7 +253,7 @@ export function CommerceDetail({
                 <Reveal key={entry.label} delayMs={index * 40} className="stack-entry">
                   <span className="stack-label">{entry.label}</span>
                   <div className="stack-pills">
-                    {entry.value.map((pill) => <span key={pill} className="stack-pill">{pill}</span>)}
+                    {entry.value.map((pill, pillIndex) => <span key={`${entry.label}-${pillIndex}-${pill}`} className="stack-pill">{pill}</span>)}
                   </div>
                 </Reveal>
               ))}
@@ -341,7 +343,7 @@ export function CommerceDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">{cm.learning.outcomes.eyebrow}</p>
               <h2 className="display-heading case-section-title">{cm.learning.outcomes.title}</h2>
-              <p className="case-section-sub">What the build left behind — the skills that rest on the code, not the other way around.</p>
+              <p className="case-section-sub">What the build left behind - the skills that rest on the code, not the other way around.</p>
             </Reveal>
             <ol className="rt-steps outcomes-steps">
               {cm.outcomes.map((outcome, index) => (
@@ -359,7 +361,7 @@ export function CommerceDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">PROJECT SCREENSHOTS</p>
               <h2 className="display-heading case-section-title">See it in action.</h2>
-              <p className="case-section-sub">A look at the auction marketplace, with room for more screenshots.</p>
+              <p className="case-section-sub">A look at the auction marketplace flows.</p>
             </Reveal>
             <div className="gallery">
               <Reveal className="gallery-main">
@@ -377,15 +379,17 @@ export function CommerceDetail({
                 )}
               </Reveal>
               <div className="gallery-side">
-                {placeholders.map((shot, index) => (
-                  <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
-                    <div className="gallery-item gallery-placeholder">
-                      <span className="gallery-ph" aria-hidden="true">▭</span>
-                      <b>{shot.label}</b>
-                      <i>screenshot placeholder</i>
-                    </div>
-                  </Reveal>
-                ))}
+                {shots.slice(1).map((shot, index) => {
+                  const dims = shotDims[shot.image] ?? { w: 1907, h: 915 };
+                  return (
+                    <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
+                      <figure className="gallery-item gallery-item--image">
+                        <Image src={`${assetRoot}/${shot.image}`} alt={shot.alt} width={dims.w} height={dims.h} sizes="(max-width: 767px) 100vw, 320px" />
+                        <figcaption className="gallery-label">{shot.label}</figcaption>
+                      </figure>
+                    </Reveal>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -400,7 +404,7 @@ export function CommerceDetail({
             </Reveal>
             <Reveal className="rt-chain" delayMs={60}>
               {cm.structure.chain.map((item, index) => (
-                <Fragment key={item}>
+                <Fragment key={`commerce-${index}-${item}`}>
                   <span className="rt-chain-step">{item}</span>
                   {index < cm.structure.chain.length - 1 && <span className="rt-chain-arrow" aria-hidden="true">→</span>}
                 </Fragment>
@@ -426,7 +430,7 @@ export function CommerceDetail({
 
             <Reveal className="case-cta" delayMs={80}>
               <h2>Want to see the code?</h2>
-              <p>From Django models to the bidding rules — the whole marketplace is on GitHub.</p>
+              <p>From Django models to the bidding rules - the whole marketplace is on GitHub.</p>
               <a
                 className="view-github view-github--lg"
                 href={project.githubUrl}

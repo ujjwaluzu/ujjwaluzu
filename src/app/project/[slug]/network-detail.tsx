@@ -16,9 +16,6 @@ export function NetworkDetail({
   project: (typeof homeContent.projects)[number];
 }) {
   const net = study.network!;
-  const placeholders = study.screenshots.filter((s): s is Extract<typeof s, { kind: "placeholder" }> => s.kind === "placeholder");
-  const mainPlaceholder = placeholders[0];
-  const sidePlaceholders = placeholders.slice(1);
 
   return (
     <>
@@ -86,7 +83,7 @@ export function NetworkDetail({
               {study.idea.paragraphs.map((paragraph) => <p key={paragraph} className="case-idea-text">{paragraph}</p>)}
               <div className="nt-idea-combo" aria-label="Network combines users, posts, following, likes, AJAX, and pagination">
                 {net.ideaCombo.map((item, index) => (
-                  <Fragment key={item}>
+                  <Fragment key={`idea-${index}-${item}`}>
                     {index > 0 && <span className="nt-idea-plus" aria-hidden="true">+</span>}
                     <span className="nt-idea-chip">{item}</span>
                   </Fragment>
@@ -110,7 +107,7 @@ export function NetworkDetail({
                   <span className="wk-flow-label">{flow.label}</span>
                   <ol className="wf-path wk-flow-path">
                     {flow.steps.map((step, stepIndex) => (
-                      <li key={step} className="wf-step">
+                      <li key={`${flow.label}-${stepIndex}-${step}`} className="wf-step">
                         <span className="wf-step-num" aria-hidden="true">{stepIndex + 1}</span>
                         <span className="wf-step-label">{step}</span>
                       </li>
@@ -127,7 +124,7 @@ export function NetworkDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">WHAT I BUILT</p>
               <h2 className="display-heading case-section-title">Seven core flows, one connected app.</h2>
-              <p className="case-section-sub">Every feature the network needs — built around the documented spec.</p>
+              <p className="case-section-sub">Every feature the network needs - built around the documented spec.</p>
             </Reveal>
             <div className="feature-grid feature-grid--three">
               {study.featureGroups.map((group, index) => (
@@ -137,7 +134,7 @@ export function NetworkDetail({
                     <span className="feature-num">{group.index}</span>
                     <h3 className="feature-card-title">{group.title}</h3>
                     <ul className="feature-card-list">
-                      {group.items.map((item) => <li key={item}>{item}</li>)}
+                      {group.items.map((item, itemIndex) => <li key={`${group.id}-${itemIndex}-${item}`}>{item}</li>)}
                     </ul>
                   </article>
                 </Reveal>
@@ -156,13 +153,13 @@ export function NetworkDetail({
             <Reveal className="rt-server nt-ajax-support" delayMs={60}>
               <h3 className="display-heading rt-server-title">AJAX-driven interactions</h3>
               <div className="rt-server-chips">
-                {net.ajax.interactions.map((interaction) => <span key={interaction} className="rt-server-chip">{interaction}</span>)}
+                {net.ajax.interactions.map((interaction, index) => <span key={`ajax-${index}-${interaction}`} className="rt-server-chip">{interaction}</span>)}
               </div>
-              <p className="rt-server-text">These are the actions that update the page in place — no full browser refresh.</p>
+              <p className="rt-server-text">These are the actions that update the page in place - no full browser refresh.</p>
             </Reveal>
             <Reveal className="rt-chain" delayMs={80}>
               {net.ajax.chain.map((item, index) => (
-                <Fragment key={item}>
+                <Fragment key={`ajax-chain-${index}-${item}`}>
                   <span className="rt-chain-step rt-chain-step--alt">{item}</span>
                   {index < net.ajax.chain.length - 1 && <span className="rt-chain-arrow" aria-hidden="true">→</span>}
                 </Fragment>
@@ -184,7 +181,7 @@ export function NetworkDetail({
             <Reveal className="nt-post-loop" delayMs={60}>
               <ol className="wf-path wk-flow-path nt-post-loop-path">
                 {net.posts.chain.map((step, index) => (
-                  <li key={step} className="wf-step">
+                  <li key={`posts-${index}-${step}`} className="wf-step">
                     <span className="wf-step-num" aria-hidden="true">{index + 1}</span>
                     <span className="wf-step-label">{step}</span>
                   </li>
@@ -209,7 +206,7 @@ export function NetworkDetail({
                   <span className="nt-profile-name">@user</span>
                   <span className="nt-profile-meta">posts · followers · following</span>
                   <div className="nt-profile-stats" aria-hidden="true">
-                    {net.profiles.items.map((item) => <span key={item} className="nt-profile-stat"><b>{item}</b></span>)}
+                    {net.profiles.items.map((item, index) => <span key={`profile-${index}-${item}`} className="nt-profile-stat"><b>{item}</b></span>)}
                   </div>
                 </div>
               </Reveal>
@@ -229,7 +226,7 @@ export function NetworkDetail({
             </Reveal>
             <Reveal className="rt-chain" delayMs={60}>
               {net.following.chain.map((item, index) => (
-                <Fragment key={item}>
+                <Fragment key={`following-${index}-${item}`}>
                   <span className="rt-chain-step">{item}</span>
                   {index < net.following.chain.length - 1 && <span className="rt-chain-arrow" aria-hidden="true">→</span>}
                 </Fragment>
@@ -237,7 +234,7 @@ export function NetworkDetail({
             </Reveal>
             <Reveal className="rt-server nt-follow-points" delayMs={100}>
               <div className="rt-server-chips rt-server-chips--start">
-                {net.following.points.map((point) => <span key={point} className="rt-server-chip">{point}</span>)}
+                {net.following.points.map((point, index) => <span key={`following-point-${index}-${point}`} className="rt-server-chip">{point}</span>)}
               </div>
             </Reveal>
           </div>
@@ -255,7 +252,7 @@ export function NetworkDetail({
                 <Reveal key={chain[0]} delayMs={index * 80} className="nt-like-card">
                   <ol className="rt-chain nt-like-chain">
                     {chain.map((item, stepIndex) => (
-                      <Fragment key={item}>
+                      <Fragment key={`like-${stepIndex}-${item}`}>
                         <li className="rt-chain-step nt-like-step">{item}</li>
                         {stepIndex < chain.length - 1 && <span className="rt-chain-arrow nt-like-arrow" aria-hidden="true">→</span>}
                       </Fragment>
@@ -304,7 +301,7 @@ export function NetworkDetail({
                 <Reveal key={entry.label} delayMs={index * 40} className="stack-entry">
                   <span className="stack-label">{entry.label}</span>
                   <div className="stack-pills">
-                    {entry.value.map((pill) => <span key={pill} className="stack-pill">{pill}</span>)}
+                    {entry.value.map((pill, pillIndex) => <span key={`${entry.label}-${pillIndex}-${pill}`} className="stack-pill">{pill}</span>)}
                   </div>
                 </Reveal>
               ))}
@@ -314,7 +311,7 @@ export function NetworkDetail({
                 <Reveal key={column.label} delayMs={index * 40} className="mp-hood-col">
                   <b className="mp-hood-label">{column.label}</b>
                   <ul className="mp-hood-list">
-                    {column.items.map((item) => <li key={item}>{item}</li>)}
+                    {column.items.map((item, itemIndex) => <li key={`${column.label}-${itemIndex}-${item}`}>{item}</li>)}
                   </ul>
                 </Reveal>
               ))}
@@ -357,7 +354,7 @@ export function NetworkDetail({
             </Reveal>
             <Reveal className="rt-progress mp-auth-progress" delayMs={60}>
               {net.auth.steps.map((step, index) => (
-                <Fragment key={step}>
+                <Fragment key={`auth-${index}-${step}`}>
                   <span className="rt-progress-step">
                     <b aria-hidden="true">{index + 1}</b>
                     {step}
@@ -417,7 +414,7 @@ export function NetworkDetail({
             <Reveal className="nt-post-loop" delayMs={60}>
               <ol className="wf-path wk-flow-path nt-post-loop-path">
                 {net.structure.chain.map((step, index) => (
-                  <li key={step} className="wf-step">
+                  <li key={`structure-${index}-${step}`} className="wf-step">
                     <span className="wf-step-num" aria-hidden="true">{index + 1}</span>
                     <span className="wf-step-label">{step}</span>
                   </li>
@@ -425,40 +422,8 @@ export function NetworkDetail({
               </ol>
             </Reveal>
             <Reveal className="wk-md-note nt-note-need" delayMs={100}>
-              <span aria-hidden="true">→</span> conceptual architecture — layout verified in the repository
+              <span aria-hidden="true">→</span> conceptual architecture - layout verified in the repository
             </Reveal>
-          </div>
-        </section>
-
-        <section className="case-section case-gallery" id="screenshots">
-          <div className="page-shell">
-            <Reveal className="case-section-head">
-              <p className="section-eyebrow">PROJECT SCREENSHOTS</p>
-              <h2 className="display-heading case-section-title">See it in action.</h2>
-              <p className="case-section-sub">A look at the social network, with room for more screenshots.</p>
-            </Reveal>
-            <div className="gallery">
-              {mainPlaceholder && (
-                <Reveal className="gallery-main">
-                  <div className="gallery-item gallery-placeholder">
-                    <span className="gallery-ph" aria-hidden="true">▭</span>
-                    <b>{mainPlaceholder.label}</b>
-                    <i>screenshot placeholder</i>
-                  </div>
-                </Reveal>
-              )}
-              <div className="gallery-side">
-                {sidePlaceholders.map((shot, index) => (
-                  <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
-                    <div className="gallery-item gallery-placeholder">
-                      <span className="gallery-ph" aria-hidden="true">▭</span>
-                      <b>{shot.label}</b>
-                      <i>screenshot placeholder</i>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
@@ -472,7 +437,7 @@ export function NetworkDetail({
             <Reveal className="mp-pipeline nt-flow" delayMs={80}>
               <ol className="mp-pipeline-chain">
                 {net.flow.chain.map((item, index) => (
-                  <Fragment key={item}>
+                  <Fragment key={`flow-${index}-${item}`}>
                     <li className="mp-pipeline-step"><span aria-hidden="true">{index + 1}</span>{item}</li>
                     {index < net.flow.chain.length - 1 && <span className="mp-pipeline-arrow" aria-hidden="true">↓</span>}
                   </Fragment>

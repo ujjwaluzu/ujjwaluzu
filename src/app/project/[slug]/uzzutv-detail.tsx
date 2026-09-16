@@ -10,6 +10,14 @@ import { homeContent } from "@/lib/home-content";
 
 const assetRoot = "/assets";
 
+const shotDims: Record<string, { w: number; h: number }> = {
+  "uzzutv.png": { w: 1904, h: 911 },
+  "uzzutv-movie.png": { w: 1898, h: 915 },
+  "uzzutv-watch-page.png": { w: 1902, h: 911 },
+  "uzzutv-aniuzu.png": { w: 1896, h: 906 },
+  "uzzutv-watch-party.png": { w: 1885, h: 900 },
+};
+
 export function UzzutvDetail({
   study,
   project,
@@ -22,6 +30,9 @@ export function UzzutvDetail({
   const aniuzu = study.aniuzu!;
   const continueWatching = study.continueWatching!;
   const journey = study.journey!;
+  const shots = study.screenshots.filter((s): s is Extract<typeof s, { kind: "image" }> => s.kind === "image");
+  const mainShot = shots[0];
+  const mainDims = mainShot ? shotDims[mainShot.image] ?? { w: 1904, h: 911 } : { w: 1904, h: 911 };
 
   return (
     <>
@@ -93,7 +104,7 @@ export function UzzutvDetail({
                     <span className="feature-num">{group.index}</span>
                     <h3 className="feature-card-title">{group.title}</h3>
                     <ul className="feature-card-list">
-                      {group.items.map((item) => <li key={item}>{item}</li>)}
+                      {group.items.map((item, itemIndex) => <li key={`${group.id}-${itemIndex}-${item}`}>{item}</li>)}
                     </ul>
                   </article>
                 </Reveal>
@@ -114,7 +125,7 @@ export function UzzutvDetail({
                 <Reveal key={entry.label} delayMs={index * 40} className="stack-entry">
                   <span className="stack-label">{entry.label}</span>
                   <div className="stack-pills">
-                    {entry.value.map((pill) => <span key={pill} className="stack-pill">{pill}</span>)}
+                    {entry.value.map((pill, pillIndex) => <span key={`${entry.label}-${pillIndex}-${pill}`} className="stack-pill">{pill}</span>)}
                   </div>
                 </Reveal>
               ))}
@@ -155,7 +166,7 @@ export function UzzutvDetail({
                 <p className="spotlight-text">{watchParty.text}</p>
                 <p className="spotlight-call-title">{watchParty.callTitle}</p>
                 <div className="spotlight-chips">
-                  {watchParty.callControls.map((control) => <span key={control} className="spotlight-chip">{control}</span>)}
+                  {watchParty.callControls.map((control, index) => <span key={`watch-party-${index}-${control}`} className="spotlight-chip">{control}</span>)}
                 </div>
                 <p className="spotlight-note" aria-hidden="true">{watchParty.note}</p>
               </div>
@@ -170,7 +181,7 @@ export function UzzutvDetail({
                   <i className="is-accept">✓</i>
                   <i>◎</i>
                   <i>●</i>
-                  <i>—</i>
+                  <i>-</i>
                 </div>
               </div>
             </Reveal>
@@ -182,7 +193,7 @@ export function UzzutvDetail({
               </div>
               <p className="spotlight-anime-text">{aniuzu.text}</p>
               <ul className="spotlight-anime-chips">
-                {aniuzu.items.map((item) => <li key={item}>{item}</li>)}
+                {aniuzu.items.map((item, index) => <li key={`aniuzu-${index}-${item}`}>{item}</li>)}
               </ul>
             </Reveal>
           </div>
@@ -231,38 +242,35 @@ export function UzzutvDetail({
             <Reveal className="case-section-head">
               <p className="section-eyebrow">PROJECT SCREENSHOTS</p>
               <h2 className="display-heading case-section-title">See it in action.</h2>
-              <p className="case-section-sub">A look at the discovery experience, with room for more screenshots.</p>
+              <p className="case-section-sub">A look at the discovery, watch, anime, and watch-party experience.</p>
             </Reveal>
             <div className="gallery">
               <Reveal className="gallery-main">
-                <figure className="gallery-item gallery-item--image">
-                  <Image
-                    src={heroImage}
-                    alt={study.screenshots[0]?.kind === "image" ? study.screenshots[0].alt : "UzzUTV interface screenshot"}
-                    width={1904}
-                    height={911}
-                    sizes="(max-width: 767px) 100vw, 720px"
-                  />
-                  <figcaption className="gallery-label">{study.screenshots[0]?.kind === "image" ? study.screenshots[0].label : "Home / discovery"}</figcaption>
-                </figure>
+                {mainShot && (
+                  <figure className="gallery-item gallery-item--image">
+                    <Image
+                      src={`${assetRoot}/${mainShot.image}`}
+                      alt={mainShot.alt}
+                      width={mainDims.w}
+                      height={mainDims.h}
+                      sizes="(max-width: 767px) 100vw, 720px"
+                    />
+                    <figcaption className="gallery-label">{mainShot.label}</figcaption>
+                  </figure>
+                )}
               </Reveal>
               <div className="gallery-side">
-                {study.screenshots.slice(1).map((shot, index) => (
+                {shots.slice(1).map((shot, index) => {
+                  const dims = shotDims[shot.image] ?? { w: 1904, h: 911 };
+                  return (
                   <Reveal key={shot.label} delayMs={index * 60} className="gallery-side-item">
-                    {shot.kind === "image" ? (
-                      <figure className="gallery-item gallery-item--image">
-                        <Image src={`${assetRoot}/${shot.image}`} alt={shot.alt} width={1904} height={911} sizes="(max-width: 767px) 100vw, 320px" />
-                        <figcaption className="gallery-label">{shot.label}</figcaption>
-                      </figure>
-                    ) : (
-                      <div className="gallery-item gallery-placeholder">
-                        <span className="gallery-ph" aria-hidden="true">▭</span>
-                        <b>{shot.label}</b>
-                        <i>screenshot placeholder</i>
-                      </div>
-                    )}
+                    <figure className="gallery-item gallery-item--image">
+                      <Image src={`${assetRoot}/${shot.image}`} alt={shot.alt} width={dims.w} height={dims.h} sizes="(max-width: 767px) 100vw, 320px" />
+                      <figcaption className="gallery-label">{shot.label}</figcaption>
+                    </figure>
                   </Reveal>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
