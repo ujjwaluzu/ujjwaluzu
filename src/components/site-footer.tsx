@@ -11,7 +11,7 @@ export function SiteFooter() {
           <Image src={`${assetRoot}/faviconicon.webp`} alt="" width={23} height={23} className="footer-favicon" />
         </Link>
         <span>© 2026 Ujjwaluzu</span>
-        <Link className="footer-status" href="/contact" aria-label="Get in Touch">Get in Touch</Link>
+        <Link className="footer-status" href="https://blog.ujjwaluzu.in" target="_blank" rel="noopener noreferrer" aria-label="Blog">Blog</Link>
       </div>
     </footer>
   );

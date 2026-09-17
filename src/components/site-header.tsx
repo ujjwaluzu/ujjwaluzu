@@ -15,7 +15,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const isContactPage = pathname === "/contact";
   const isProjectPage = pathname === "/project" || pathname.startsWith("/project/");
-  const links = ["About", "Projects", "Experience", "Contact"];
+  const links = ["About", "Projects", "Experience", "Blog", "Contact"];
   const [isHiddenWhileScrolling, setIsHiddenWhileScrolling] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -94,7 +94,12 @@ export function SiteHeader() {
 
   const homepageHref = (section: string) => `/${section === "top" ? "" : `#${section}`}`;
 
-  const navHref = (link: string) => (link.toLowerCase() === "projects" ? "/project" : `/#${link.toLowerCase()}`);
+  const navHref = (link: string) => {
+    const l = link.toLowerCase();
+    if (l === "projects") return "/project";
+    if (l === "blog") return "https://blog.ujjwaluzu.in";
+    return `/#${l}`;
+  };
 
   const navClass = (link: string) => {
     const l = link.toLowerCase();
@@ -112,13 +117,23 @@ export function SiteHeader() {
 
       <nav className="desktop-nav" aria-label="Primary navigation">
         <Link className={!isContactPage && !isProjectPage && activeSection === "top" ? "active" : ""} href="/">Home</Link>
-        {links.map((link) => (
-          <Link
-            key={link}
-            className={navClass(link)}
-            href={navHref(link)}
-          >{link}</Link>
-        ))}
+        {links.map((link) =>
+          link.toLowerCase() === "blog" ? (
+            <Link
+              key={link}
+              className={navClass(link)}
+              href="https://blog.ujjwaluzu.in"
+              target="_blank"
+              rel="noopener noreferrer"
+            >{link}</Link>
+          ) : (
+            <Link
+              key={link}
+              className={navClass(link)}
+              href={navHref(link)}
+            >{link}</Link>
+          ),
+        )}
       </nav>
 
       <Link className="button button-dark header-cta" href="/contact">Let&apos;s Chat <Arrow /></Link>
@@ -137,14 +152,25 @@ export function SiteHeader() {
         </button>
         <nav id="mobile-nav" className="mobile-menu-nav" aria-label="Mobile navigation">
           <Link href={homepageHref("top")} onClick={closeMenu}>Home</Link>
-          {links.map((link) => (
-            <Link
-              key={link}
-              className={navClass(link)}
-              href={navHref(link)}
-              onClick={closeMenu}
-            >{link}</Link>
-          ))}
+          {links.map((link) =>
+            link.toLowerCase() === "blog" ? (
+              <Link
+                key={link}
+                className={navClass(link)}
+                href="https://blog.ujjwaluzu.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+              >{link}</Link>
+            ) : (
+              <Link
+                key={link}
+                className={navClass(link)}
+                href={navHref(link)}
+                onClick={closeMenu}
+              >{link}</Link>
+            ),
+          )}
           <Link className="button button-dark" href="/contact" onClick={closeMenu}>Let&apos;s Chat <Arrow /></Link>
         </nav>
       </div>
