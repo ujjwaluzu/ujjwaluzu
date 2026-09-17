@@ -218,6 +218,10 @@ section[id] { scroll-margin-top: 96px; }
 .project-row-actions .round-arrow:hover .button-arrow, .project-row-actions .round-arrow:focus-visible .button-arrow { transform: translateX(3px); }
 
 .case-page { position: relative; overflow-x: clip; }
+.case-page :where(ul, ol) { font-family: inherit; }
+.case-page :where(ul, ol) li { font-family: inherit; }
+.case-page :where(ul, ol) li::marker { color: var(--orange); }
+.case-page :where(ul, ol) :where(ul, ol) { margin-top: 8px; padding-left: 18px; }
 .case-hero { position: relative; padding: 150px 0 54px; }
 .case-hero-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 470px); gap: 64px; align-items: center; }
 .case-hero-copy { position: relative; z-index: 2; }
@@ -751,9 +755,9 @@ section[id] { scroll-margin-top: 96px; }
 .mp-hood { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
 .mp-hood-col { padding: 24px 22px 26px; border: 1px solid rgba(11,11,11,.14); border-radius: 14px; background: rgba(255,255,255,.4); }
 .mp-hood-label { display: inline-block; margin-bottom: 15px; padding: 6px 12px; border-radius: 999px; background: var(--ink); font-size: 9px; font-weight: 800; letter-spacing: .14em; color: #fff; text-transform: uppercase; }
-.mp-hood-list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0 0 0 18px; }
-.mp-hood-list li { font-size: 13px; line-height: 1.5; color: rgba(11,11,11,.72); }
-.mp-hood-list li::marker { color: var(--orange); }
+.mp-hood-list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0 0 0 18px; list-style: none; }
+.mp-hood-list li { position: relative; font-size: 13px; line-height: 1.5; color: rgba(11,11,11,.72); }
+.mp-hood-list li::before { content: "•"; position: absolute; left: -16px; top: 0; color: var(--orange); font-size: 14px; line-height: 1.5; }
 
 .wk-file--featured { position: relative; margin: 6px 0; padding: 14px 16px; border: 1px solid rgba(11,11,11,.24); border-bottom-color: transparent; border-radius: 12px; background: rgba(255,216,120,.16); }
 .wk-file--featured .wk-file-path { color: var(--orange); }
