@@ -1,3 +1,5 @@
+<img align="right" width="240" alt="Illustrated Ujjwal character with a frog on his head" src="https://ujjwaluzu.in/assets/ujjwal-character.webp" />
+
 ### Hey, I'm [ujjwaluzu](https://www.ujjwaluzu.in/) 👋
 
 #### Web Developer Intern at [IntelligenceX](https://www.intelligencex.org/) ☼ | Building things I find interesting ☾
