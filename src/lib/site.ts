@@ -1,6 +1,6 @@
 export const site = {
   name: "ujjwaluzu",
-  domain: "https://ujjwaluzu.in",
+  domain: "https://www.ujjwaluzu.in",
   description:
     "Ujjwal Baunthiyal is a web developer exploring ideas, building products, and turning concepts into real experiences.",
 

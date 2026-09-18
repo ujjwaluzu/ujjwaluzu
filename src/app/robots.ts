@@ -10,6 +10,5 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ["/api/"],
     },
     sitemap: `${site.domain}/sitemap.xml`,
-    host: site.domain,
   };
 }
