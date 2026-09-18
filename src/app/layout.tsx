@@ -59,9 +59,9 @@ export const metadata: Metadata = {
     images: ["/assets/ujjwal-character.webp"],
   },
   icons: {
-    icon: "/assets/faviconicon.webp",
-    shortcut: "/assets/faviconicon.webp",
-    apple: "/assets/faviconicon.webp",
+    icon: "/assets/favicon-new.png",
+    shortcut: "/assets/favicon-new.png",
+    apple: "/assets/favicon-new.png",
   },
   robots: {
     index: true,
