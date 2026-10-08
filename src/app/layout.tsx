@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Anton, Cormorant_Garamond, Geist } from "next/font/google";
 
 import { site } from "@/lib/site";
+import { WebMcpTools } from "@/components/webmcp-tools";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -78,8 +79,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js');" }} />
+        <WebMcpTools />
         {children}
       </body>
     </html>
   );
 }
+
