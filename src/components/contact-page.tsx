@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import type { FormEvent } from "react";
@@ -115,7 +115,7 @@ export function ContactPage() {
             <div className="contact-form-card">
               {status === "success" && (
                 <div className="contact-success" role="status">
-                  <span className="contact-success-mark" aria-hidden="true">✓</span>
+                  <span className="contact-success-mark" aria-hidden="true">âœ“</span>
                   <h2 className="contact-success-title display-heading">Message sent!</h2>
                   <p className="contact-success-text">Thanks for reaching out - I&apos;ll get back to you soon.</p>
                   <button type="button" className="button button-dark contact-success-back" onClick={handleReset}>
@@ -129,7 +129,7 @@ export function ContactPage() {
                 <h2 className="contact-form-title display-heading">Send me a message</h2>
                 <span className="contact-form-note" aria-hidden="true">tell me everything :D</span>
               </div>
-              <form className="contact-form" onSubmit={handleSubmit} noValidate aria-label="Contact form">
+              <form className="contact-form" onSubmit={handleSubmit} noValidate aria-label="Contact form" {...{ toolname: "sendContactMessage", tooldescription: "Send a message to Ujjwal through the portfolio contact form." }}>
                 <div className="contact-honeypot" aria-hidden="true">
                   <label htmlFor="contact-website">Website</label>
                   <input
@@ -148,6 +148,7 @@ export function ContactPage() {
                     <input
                       id="contact-name"
                       name="name"
+                    {...{ toolparamdescription: "Your name, between 2 and 50 characters." }}
                       type="text"
                       required
                       autoComplete="name"
@@ -172,6 +173,7 @@ export function ContactPage() {
                     <input
                       id="contact-email"
                       name="email"
+                      {...{ toolparamdescription: "Your reply email address." }}
                       type="email"
                       required
                       autoComplete="email"
@@ -196,9 +198,10 @@ export function ContactPage() {
                   <textarea
                     id="contact-message"
                     name="message"
+                    {...{ toolparamdescription: "Your message, between 10 and 1000 characters." }}
                     required
                     rows={5}
-                    placeholder="Tell me about your idea…"
+                    placeholder="Tell me about your ideaâ€¦"
                     value={message}
                     maxLength={MSG_MAX}
                     aria-invalid={messageShownInvalid}
@@ -221,17 +224,17 @@ export function ContactPage() {
                     type="submit"
                     disabled={status === "submitting"}
                   >
-                    {status === "submitting" ? "Sending…" : "Send Message"} <Arrow />
+                    {status === "submitting" ? "Sendingâ€¦" : "Send Message"} <Arrow />
                   </button>
                   {status === "error" && (
                     <p className="contact-form-feedback contact-form-feedback--error" role="alert">
-                      <span className="contact-form-feedback-mark" aria-hidden="true">✕</span>
+                      <span className="contact-form-feedback-mark" aria-hidden="true">âœ•</span>
                       Something went wrong. Please try again.
                     </p>
                   )}
                   {submitAttempted && !isFormValid && status !== "submitting" && (
                     <p className="contact-form-feedback contact-form-feedback--error" role="alert">
-                      <span className="contact-form-feedback-mark" aria-hidden="true">✕</span>
+                      <span className="contact-form-feedback-mark" aria-hidden="true">âœ•</span>
                       Please fix the {invalidSummary.length === 1 ? invalidSummary[0] : invalidSummary.join(" and ")}.
                     </p>
                   )}
@@ -246,3 +249,7 @@ export function ContactPage() {
     </main>
   );
 }
+
+
+
+
