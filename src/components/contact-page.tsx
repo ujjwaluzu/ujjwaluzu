@@ -115,7 +115,7 @@ export function ContactPage() {
             <div className="contact-form-card">
               {status === "success" && (
                 <div className="contact-success" role="status">
-                  <span className="contact-success-mark" aria-hidden="true">âœ“</span>
+                  <span className="contact-success-mark" aria-hidden="true">✓</span>
                   <h2 className="contact-success-title display-heading">Message sent!</h2>
                   <p className="contact-success-text">Thanks for reaching out - I&apos;ll get back to you soon.</p>
                   <button type="button" className="button button-dark contact-success-back" onClick={handleReset}>
@@ -201,7 +201,7 @@ export function ContactPage() {
                     {...{ toolparamdescription: "Your message, between 10 and 1000 characters." }}
                     required
                     rows={5}
-                    placeholder="Tell me about your ideaâ€¦"
+                    placeholder="Tell me about your idea"
                     value={message}
                     maxLength={MSG_MAX}
                     aria-invalid={messageShownInvalid}
@@ -224,17 +224,17 @@ export function ContactPage() {
                     type="submit"
                     disabled={status === "submitting"}
                   >
-                    {status === "submitting" ? "Sendingâ€¦" : "Send Message"} <Arrow />
+                    {status === "submitting" ? "Sending" : "Send Message"} <Arrow />
                   </button>
                   {status === "error" && (
                     <p className="contact-form-feedback contact-form-feedback--error" role="alert">
-                      <span className="contact-form-feedback-mark" aria-hidden="true">âœ•</span>
+                      <span className="contact-form-feedback-mark" aria-hidden="true">OK•</span>
                       Something went wrong. Please try again.
                     </p>
                   )}
                   {submitAttempted && !isFormValid && status !== "submitting" && (
                     <p className="contact-form-feedback contact-form-feedback--error" role="alert">
-                      <span className="contact-form-feedback-mark" aria-hidden="true">âœ•</span>
+                      <span className="contact-form-feedback-mark" aria-hidden="true">OK</span>
                       Please fix the {invalidSummary.length === 1 ? invalidSummary[0] : invalidSummary.join(" and ")}.
                     </p>
                   )}
