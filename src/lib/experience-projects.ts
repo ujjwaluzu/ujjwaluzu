@@ -1,121 +1,300 @@
+// Product facts reviewed against linked first-party sources on 2026-10-23.
+// Contributions: existing portfolio record plus the owner-supplied Sep–Oct 2026 work tracker.
+// Keep completed work, pending publication, and product capabilities distinct.
 export const experienceProjects = [
   {
-    slug: "xrepai",
-    name: "xRepAI",
-    url: "https://www.xrepai.com/",
-    category: "AI sales development representative",
-    logo: "/assets/experience-xrepai-logo.webp",
-    logoWidth: 1189,
-    logoHeight: 524,
-    about: "xRepAI is an AI sales development representative for business websites. Its on-screen representative, xRep, can appear as Lina and engage visitors by text, voice, or live video; answer from approved business content; qualify and enrich leads; book calendar meetings; sync supported CRM details; and hand complex conversations to a person.",
-    work: [
-      "Built the frontend and API integrations for the project, taking ownership of that implementation work.",
-      "Implemented the approved UI reference across the frontend in approximately two to three days.",
-      "Created the AI avatar and designed the creative hero sections across the pages.",
+    "slug": "xrepai",
+    "name": "XrepAI",
+    "url": "https://www.xrepai.com/",
+    "category": "AI sales development representative",
+    "logo": "/assets/experience-xrepai-logo.webp",
+    "logoWidth": 1189,
+    "logoHeight": 524,
+    "about": "XrepAI is an AI sales development representative for websites. It answers from approved business content, qualifies visitors, enriches leads where supported, connects conversations to CRM and calendar workflows, and hands conversations to salespeople.",
+    "work": [
+      "Implemented the landing page and the updated home, how-it-works, features, integrations, pricing, and footer-page interfaces.",
+      "Integrated Mailgun for newsletter, support, and pricing flows; tested email sending for contact, newsletter, and pricing forms.",
+      "Added form and email validation, sign-in and demo-scheduling interfaces, pricing popups, and email-status UI.",
+      "Created AI avatars and hero visuals, added homepage scroll animation, and tested layouts across mobile and desktop viewports.",
+      "Updated content and homepage title, description, metadata, and JSON-LD; fixed reported UI bugs and the trust-page document-request flow."
     ],
-    detail: {
-      seoTitle: "xRepAI | AI Sales Representative: IntelligenceX Experience",
-      seoDescription: "xRepAI experience: website AI sales engagement and Ujjwal Baunthiyal’s documented frontend, API integration, and design work during an IntelligenceX internship.",
-      heading: "xRepAI: Building an AI-Powered Sales Experience",
-      title: "An AI sales representative for website conversations",
-      intro: "xRepAI is an AI sales development representative (AI SDR) for B2B websites. The product puts xRep, whose on-screen assistant is named Lina, into the visitor journey to answer questions from approved company content, qualify prospects, enrich lead details, and help book a meeting. The product presents text, voice, and live-video conversation as ways for a prospect to engage, with human handoff for conversations that need a sales representative.",
-      sections: [
-        { title: "The gap between interest and a sales conversation", text: "A prospect may arrive with a product or pricing question while a sales team is unavailable. xRepAI is designed to respond in that moment rather than leave the visitor with only a form. It supports first-touch engagement and qualification; it is positioned to work alongside salespeople, who take over for more complex conversations and relationship work." },
-        { title: "How a visitor moves through xRep", text: "The conversation can begin as text, voice, or live video. Lina answers using the business information configured for the representative, then gathers qualification details using criteria such as budget, authority, need, and timing. The product describes enriching a lead from a business email, writing qualified lead details and conversation context to supported CRMs, and offering calendar times from connected availability. When a human should take over, the handoff can include the conversation history so the visitor does not need to start again." },
-        { title: "Knowledge, integrations, and human control", text: "Grounding answers in approved product information, FAQs, and pricing gives the representative a defined business context. CRM and calendar connections move the conversation into the team's existing workflow; the official integrations page also lists communication, voice, and automation connections. Specific integrations and capabilities vary by configuration and plan. Human handoff preserves a route to a person when the question or buying conversation calls for judgment." },
-        { title: "My contribution", text: "During my Web Developer Internship at IntelligenceX, I built the frontend and API integrations, implemented the finalized UI reference in approximately two to three days, created the AI avatar, and designed the hero sections across the pages. This describes my interface and integration work; it does not claim authorship of xRepAI's sales, AI, CRM, or voice systems." },
+    "detail": {
+      "seoTitle": "XrepAI | AI Sales Representative — IntelligenceX Experience",
+      "seoDescription": "XrepAI’s AI sales workflow and Ujjwal Baunthiyal’s IntelligenceX experience: frontend UI, Mailgun flows, form validation, shared API helpers, and responsive testing.",
+      "heading": "XrepAI: Building an AI Sales Experience",
+      "title": "An AI sales representative for website conversations",
+      "intro": "XrepAI is an AI sales development representative (AI SDR) for business websites. It helps sales, marketing, and revenue operations teams turn visitor questions into qualified leads and scheduled conversations. This portfolio account covers my frontend, API integration, and visual design work during an IntelligenceX internship.",
+      "sections": [
+        {
+          "title": "XrepAI, xRep, and Lina",
+          "text": "The official website styles the product name as xRepAI and calls its website representative xRep. Lina is an AI assistant persona presented in the experience. The product’s terms identify its service provider as xRepAI, Inc. My work is recorded here under my IntelligenceX internship; that experience context does not establish the product’s corporate ownership.",
+          "sources": [
+            "identity",
+            "terms"
+          ]
+        },
+        {
+          "title": "The gap between interest and a sales conversation",
+          "text": "A visitor comparing software or pricing may need an answer before they are ready to fill out a form. XrepAI supports that first conversation using approved website content, documentation, FAQs, and pricing. B2B SaaS teams can use it for product questions and demo qualification; sales and revenue operations teams can use the collected context for follow-up.",
+          "sources": [
+            "website"
+          ]
+        },
+        {
+          "title": "From a visitor question to a qualified meeting",
+          "text": "The published workflow starts with engagement by text, voice, or live video, depending on configuration. Answers draw on the business’s approved content. Qualification gathers budget, authority, need, and timing (BANT); enrichment can add available company information from a business email. A prospect can then choose a meeting time from connected calendar availability. Human handoff carries the conversation and qualification context into the next sales conversation.",
+          "sources": [
+            "workflow"
+          ]
+        },
+        {
+          "title": "Connecting the conversation to the sales stack",
+          "text": "The integrations directory lists Salesforce and HubSpot among CRM options, Google Calendar and Calendly for scheduling, and Slack and Microsoft Teams for communication. These connections support a workflow from website conversation to lead record, meeting, and follow-up. Availability and synchronization behavior depend on the integration, plan, permissions, and configuration. The directory describes product capabilities; it does not identify which individual integrations I implemented.",
+          "sources": [
+            "integrations"
+          ]
+        }
       ],
-      skills: ["Frontend development", "API integration", "UI implementation", "Hero and visual design", "AI avatar creation"],
-      links: [
-        { label: "Official xRepAI website", url: "https://www.xrepai.com/" },
-        { label: "xRepAI product workflow", url: "https://www.xrepai.com/how-it-works" },
-        { label: "xRepAI integrations directory", url: "https://www.xrepai.com/integrations" },
+      "skills": [
+        "Frontend implementation",
+        "Mailgun API integration",
+        "Form validation",
+        "Responsive UI testing",
+        "Metadata and JSON-LD",
+        "Avatar and hero design"
       ],
-      faq: [
-        { question: "What is xRepAI?", answer: "xRepAI is an AI SDR for websites. Its representative, xRep, engages visitors, answers from approved business content, qualifies and enriches leads, helps book meetings, and can hand a conversation to a human sales representative." },
-        { question: "Who is Lina?", answer: "Lina is the named on-screen AI assistant persona shown for xRep. xRep is the website representative experience; xRepAI is the product and platform name." },
-        { question: "What did Ujjwal Baunthiyal contribute to xRepAI?", answer: "During an IntelligenceX internship, Ujjwal built the frontend and API integrations, implemented the finalized UI reference, created the AI avatar, and designed the hero sections." },
+      "links": [
+        {
+          "id": "website",
+          "label": "Official XrepAI website",
+          "url": "https://www.xrepai.com/"
+        },
+        {
+          "id": "workflow",
+          "label": "XrepAI visitor-to-meeting workflow",
+          "url": "https://www.xrepai.com/how-it-works"
+        },
+        {
+          "id": "integrations",
+          "label": "XrepAI integrations and availability",
+          "url": "https://www.xrepai.com/integrations"
+        },
+        {
+          "id": "identity",
+          "label": "About xRep and Lina",
+          "url": "https://www.xrepai.com/about"
+        },
+        {
+          "id": "terms",
+          "label": "XrepAI service provider identity",
+          "url": "https://www.xrepai.com/terms"
+        }
       ],
+      "contributionContext": "My work tracker records this interface and integration work across September and October 2026. It includes both the initial landing page and a later UI implementation across the main product pages. The work covers website presentation and communication flows; it does not establish authorship of the sales agent or its underlying AI systems.",
+      "engineeringNotes": [
+        {
+          "title": "Consolidating repeated email and API code",
+          "text": "During the cleanup, I merged duplicate API and Mailgun code into shared helpers, removed unused components and dead CSS, and parked the signup flow. Contact, newsletter, and pricing email sending were tested alongside form validation. This made the communication flows a concrete part of my implementation work, beyond the visual layout."
+        },
+        {
+          "title": "Shipping the UI through responsive checks",
+          "text": "I implemented the revised home, how-it-works, features, and integrations pages, created AI avatars, and corrected reported interface bugs. My tracker records repeated viewport testing and a completed trust-page document-request fix. The later avatar-video and voice refinements were still marked in progress, so they are not presented here as completed deliverables."
+        }
+      ]
     },
+    "socialImage": "/assets/experience-xrepai-social.png"
   },
   {
-    slug: "aiptx",
-    name: "AIPTx",
-    url: "https://www.aiptx.io/",
-    category: "AI-powered penetration testing",
-    logo: "/assets/experience-aiptx-logo.webp",
-    logoWidth: 668,
-    logoHeight: 134,
-    about: "AIPTx is an AI-powered penetration-testing platform for security teams. Its published workflow maps an authorized attack surface, tests for vulnerabilities, attempts safe exploit validation, records evidence for confirmed findings, then classifies and prioritizes issues for remediation and retesting.",
-    work: [
-      "Worked on the product UI and its presentation.",
-      "Integrated Mailgun APIs with the application.",
-      "Tested the backend as part of the project work.",
+    "slug": "aiptx",
+    "name": "AIPTx",
+    "url": "https://www.aiptx.io/",
+    "category": "AI-powered penetration testing",
+    "logo": "/assets/experience-aiptx-logo.webp",
+    "logoWidth": 668,
+    "logoHeight": 134,
+    "about": "AIPTx is an AI-powered penetration-testing and vulnerability-assessment platform for security teams. Its published workflow discovers an authorized attack surface, tests candidate weaknesses, captures evidence for validated findings, and prioritizes remediation and retesting.",
+    "work": [
+      "Updated product UI and imagery across platform, industry, solution, and feature pages, including corrections below the platform hero.",
+      "Worked on SEO for the retail industry page and website discoverability for automated agents.",
+      "Integrated Mailgun APIs and tested the backend as recorded in the existing project account.",
+      "Worked on deployment configuration using render.yaml, compose.yaml, and dockerfile.api, and recorded a temporary test deployment."
     ],
-    detail: {
-      seoTitle: "AIPTx | AI-Powered Penetration Testing: IntelligenceX Experience",
-      seoDescription: "AIPTx experience: AI penetration testing and Ujjwal Baunthiyal’s product UI, Mailgun integration, and backend testing work during an IntelligenceX internship.",
-      heading: "AIPTx: AI-Powered Security Testing",
-      title: "From attack-surface discovery to a retestable finding",
-      intro: "AIPTx is an AI-powered penetration-testing and vulnerability-assessment platform. It is designed to help security teams test authorized web applications, APIs, networks, and other in-scope assets through a repeatable sequence: map the reachable surface, discover candidate weaknesses, validate safely where possible, capture evidence, and give teams a prioritized path to remediation.",
-      sections: [
-        { title: "Why discovery needs validation", text: "An identified pattern or version match is a candidate, not automatically proof that an attacker can exploit it in a particular environment. AIPTx describes agents that test what reconnaissance finds and attempt to demonstrate impact. Its platform distinguishes findings confirmed by an executed attack and captured evidence from those that cannot be safely proven, which gives security and engineering teams a clearer basis for deciding what to investigate." },
-        { title: "AIPTx's assessment sequence", text: "The official platform describes scope and authorization checks before a run, followed by reconnaissance and attack-surface modeling. Agents test discovered web routes, API surfaces, services, and supplied roles; validated findings carry request and response evidence and a reproducible command. The platform then classifies findings, examines multi-step attack chains in deeper assessments, ranks remediation work using risk context, and supports reports and retests after a fix. A chain matters because individually moderate issues can combine into a more consequential path." },
-        { title: "Evidence makes remediation actionable", text: "A confirmed finding is more useful when a developer can reproduce the request, inspect the observed response, understand the impact, and see remediation guidance. AIPTx documents exports and integrations for carrying results into security workflows, including CI/CD systems. The official product also distinguishes destructive actions and out-of-scope targets through engagement controls; assessments are intended for systems the customer owns or is authorized to test." },
-        { title: "My contribution", text: "During my Web Developer Internship at IntelligenceX, I worked on the product UI and presentation, integrated Mailgun APIs with the application, and tested the backend. Those are the documented areas of my contribution; I am not claiming to have built AIPTx's penetration-testing agents, exploit engine, or risk model." },
+    "detail": {
+      "seoTitle": "AIPTx | AI-Powered Penetration Testing — IntelligenceX Experience",
+      "seoDescription": "AIPTx’s penetration-testing workflow and Ujjwal Baunthiyal’s IntelligenceX experience with product UI, Mailgun integration, backend testing, SEO, and deployment.",
+      "heading": "AIPTx: AI-Powered Security Testing",
+      "title": "From attack-surface discovery to a retestable finding",
+      "intro": "AIPTx is an AI-powered penetration-testing and vulnerability-assessment platform for security teams assessing authorized applications, APIs, and networks. It connects attack-surface discovery with exploit validation, evidence, and remediation. My IntelligenceX internship work covered product UI, Mailgun API integration, and backend testing.",
+      "sections": [
+        {
+          "title": "Why discovery needs validation",
+          "text": "A version match or suspicious response can suggest a weakness without proving that it is exploitable in that environment. AIPTx describes testing those candidates and attempting to reproduce their impact. Validated findings include the request, response, and a reproducible command. Evidence helps an engineer distinguish an observed security failure from a hypothesis that still needs investigation; it does not make testing exhaustive.",
+          "sources": [
+            "website",
+            "platform"
+          ]
+        },
+        {
+          "title": "From authorized scope to evidence",
+          "text": "The commercial platform documents scope verification before testing, with destructive actions disabled by default. Reconnaissance maps reachable assets and entry points; agents test candidate vulnerabilities, classify findings, and assess attack chains in deeper runs. Web applications, API targets, and network ranges have different configuration needs. Authenticated testing can compare supplied roles to investigate access-control failures.",
+          "sources": [
+            "platform",
+            "docs"
+          ]
+        },
+        {
+          "title": "Prioritizing fixes and checking the result",
+          "text": "AIPTx’s risk model considers exploitability, impact, asset value, and exposure alongside vulnerability severity. That context helps teams decide which issue to fix first. Reports carry evidence and remediation guidance into engineering workflows, with documented CI/CD integrations and export formats including SARIF. Retesting checks whether a reported issue can still be reproduced after a change.",
+          "sources": [
+            "risk",
+            "platform",
+            "company"
+          ]
+        },
+        {
+          "title": "Commercial assessments and the public framework",
+          "text": "IntelligenceX lists AIPTx as a penetration-testing service with offensive specialists validating findings. Separately, the public AIPTx repository describes an AI-assisted framework for scan orchestration, static and dynamic analysis, and reporting. Its README states that configuration and human judgment remain necessary and that it does not replace manual penetration testing. The repository is useful implementation context, but should not be treated as a complete description of the commercial service.",
+          "sources": [
+            "company",
+            "repository"
+          ]
+        }
       ],
-      skills: ["Product UI", "Frontend presentation", "Mailgun API integration", "Backend testing"],
-      links: [
-        { label: "Official AIPTx website", url: "https://www.aiptx.io/" },
-        { label: "AIPTx platform and assessment workflow", url: "https://www.aiptx.io/platform" },
-        { label: "AIPTx technical documentation", url: "https://docs.aiptx.io/" },
-        { label: "AIPTx public source repository", url: "https://github.com/aiptx/aiptx" },
+      "skills": [
+        "Product UI",
+        "Mailgun API integration",
+        "Backend testing",
+        "Technical SEO",
+        "Docker and deployment configuration"
       ],
-      faq: [
-        { question: "What is AIPTx?", answer: "AIPTx is an AI-powered penetration-testing platform that maps authorized attack surfaces, discovers candidate vulnerabilities, validates findings where safely possible, and provides evidence and remediation workflows." },
-        { question: "How does AIPTx distinguish a suspected issue from a confirmed finding?", answer: "AIPTx describes attempting to exploit candidate issues and capturing request and response evidence for confirmed findings. Findings that are not safely validated remain distinguished from proven ones." },
-        { question: "What did Ujjwal Baunthiyal contribute to AIPTx?", answer: "Ujjwal worked on the product UI and presentation, integrated Mailgun APIs, and tested the backend during an IntelligenceX internship." },
+      "links": [
+        {
+          "id": "website",
+          "label": "Official AIPTx website",
+          "url": "https://www.aiptx.io/"
+        },
+        {
+          "id": "platform",
+          "label": "AIPTx assessment workflow and technical scope",
+          "url": "https://www.aiptx.io/platform"
+        },
+        {
+          "id": "risk",
+          "label": "AIPTx risk prioritization",
+          "url": "https://www.aiptx.io/features/risk-prioritization"
+        },
+        {
+          "id": "docs",
+          "label": "AIPTx technical documentation",
+          "url": "https://docs.aiptx.io/"
+        },
+        {
+          "id": "repository",
+          "label": "AIPTx public framework and documented limits",
+          "url": "https://github.com/aiptx/aiptx"
+        },
+        {
+          "id": "company",
+          "label": "IntelligenceX’s AIPTx service",
+          "url": "https://www.intelligencex.org/en/products/aiptx"
+        }
       ],
+      "contributionContext": "My work tracker adds specific page, SEO, and deployment tasks to the existing record of UI, Mailgun integration, and backend testing. These contributions concern the product website and application delivery. They do not establish ownership of the penetration-testing agents, exploit validation, or risk model.",
+      "engineeringNotes": [
+        {
+          "title": "Interface and deployment work around the product",
+          "text": "I corrected imagery and UI below the platform hero and updated visuals across platform, industry, solution, and feature pages. I also worked on the retail page’s SEO. For a temporary deployment, my tracker names Render configuration, a Compose file, and an API Dockerfile. That records deployment work, not a claim about AIPTx’s current production architecture."
+        }
+      ]
     },
+    "socialImage": "/assets/experience-aiptx-social.png"
   },
   {
-    slug: "cspmx",
-    name: "CSPMX",
-    url: "https://www.cspmx.io/",
-    category: "Cloud security posture management",
-    logo: "/assets/experience-cspmx-logo.webp",
-    logoWidth: 668,
-    logoHeight: 134,
-    about: "CSPMX is a Cloud Security Posture Management (CSPM) platform. Its current product material describes cloud misconfiguration and compliance-risk detection, continuous monitoring, risk context, automated remediation, and security baselines. The official CSPMX site identifies AWS, Microsoft Azure, and Google Cloud support.",
-    work: [
-      "Primarily added and updated content across the project.",
-      "Made UI changes alongside the content work.",
+    "slug": "cspmx",
+    "name": "CSPMX",
+    "url": "https://www.cspmx.io/",
+    "category": "Cloud security posture management",
+    "logo": "/assets/experience-cspmx-logo.webp",
+    "logoWidth": 668,
+    "logoHeight": 134,
+    "about": "CSPMX is a cloud security posture management platform for security, IT, and DevSecOps teams. It provides visibility into AWS, Azure, and Google Cloud configurations, identifies misconfigurations and compliance gaps, and supports prioritized remediation and continuous monitoring.",
+    "work": [
+      "Added and updated content across the CSPMX project.",
+      "Made UI changes alongside the content implementation.",
+      "Recorded website changes for automated-agent discoverability in the October work tracker; production publication was still pending at that checkpoint."
     ],
-    detail: {
-      seoTitle: "CSPMX | Cloud Security Posture Management: IntelligenceX Experience",
-      seoDescription: "CSPMX experience: cloud posture management and Ujjwal Baunthiyal’s documented content and UI work during an IntelligenceX internship.",
-      heading: "CSPMX: Cloud Security Posture Management",
-      title: "Cloud posture is a continuous operating task",
-      intro: "CSPMX is a Cloud Security Posture Management platform for teams that need to find and manage cloud configuration risk as environments change. Its official product material describes continuous detection of misconfigurations and compliance risks, context around the risk of an issue, and automated remediation. The CSPMX site names AWS, Microsoft Azure, and Google Cloud as supported environments.",
-      sections: [
-        { title: "From configuration drift to prioritized action", text: "Cloud accounts accumulate services, identity policies, network rules, and storage settings over time. CSPMX describes connecting cloud accounts, scanning assets for misconfigurations and critical issues, and presenting context to help teams understand the risk behind an alert. The goal is to help a cloud or security team move from an issue list toward decisions about what needs attention and why." },
-        { title: "Monitoring, remediation, and compliance", text: "CSPMX's published flow is connect, scan, remediate, and comply. Continuous scanning is intended to surface posture changes and configuration problems; automated remediation and best-practice baselines are presented as ways to correct or prevent recurring misconfigurations. Compliance management maps cloud posture to frameworks and audit requirements. The product site names AWS, Azure, and Google Cloud, but does not publish a detailed integration catalog or deployment architecture in the material reviewed here." },
-        { title: "How CSPMX differs from AIPTx", text: "CSPMX focuses on cloud configuration posture and ongoing compliance across cloud environments. AIPTx focuses on penetration testing: actively testing authorized targets to validate exploitable weaknesses. The products address related security work, but their primary workflows are different." },
-        { title: "My contribution", text: "During my Web Developer Internship at IntelligenceX, I primarily added and updated content across the CSPMX project and made UI changes alongside that work. The available project record does not establish a role in cloud scanning, remediation automation, integrations, or security architecture, so I do not attribute those platform capabilities to my implementation." },
+    "detail": {
+      "seoTitle": "CSPMX | Cloud Security Posture Management — IntelligenceX Experience",
+      "seoDescription": "Explore CSPMX’s cloud misconfiguration, compliance, and remediation workflow, alongside Ujjwal Baunthiyal’s content implementation and UI work at IntelligenceX.",
+      "heading": "CSPMX: Cloud Security Posture Management",
+      "title": "Cloud posture is a continuous operating task",
+      "intro": "CSPMX is a cloud security posture management (CSPM) platform for security, IT, and DevSecOps teams. It helps teams see configuration risks across AWS, Microsoft Azure, and Google Cloud and act on misconfigurations and compliance gaps as environments change. My IntelligenceX internship contribution focused on content implementation and UI updates.",
+      "sections": [
+        {
+          "title": "From configuration drift to prioritized action",
+          "text": "Cloud accounts change as teams add services, adjust permissions, and expose resources. A periodic assessment can miss later changes. CSPMX describes continuous assessment and monitoring to surface configuration risks and policy violations. Its centralized view connects a finding to the affected resources, relevant compliance controls, and remediation steps so teams can understand why an issue needs attention.",
+          "sources": [
+            "website",
+            "coverage"
+          ]
+        },
+        {
+          "title": "Connect, assess, and monitor",
+          "text": "The published workflow begins by connecting cloud environments and assessing assets, configurations, and compliance risks. Teams review the resulting posture and prioritize findings before moving into ongoing monitoring. The official about page names AWS, Microsoft Azure, and Google Cloud. Its public material establishes cloud coverage, but does not specify the connector permissions or deployment architecture needed for each provider.",
+          "sources": [
+            "website",
+            "coverage"
+          ]
+        },
+        {
+          "title": "Remediation and compliance in the same workflow",
+          "text": "CSPMX describes automated correction of predefined misconfigurations and enforcement of security baselines, with manual intervention for complex issues. Compliance checks, audits, and reporting help teams track gaps as configurations change. A mapped control is useful evidence for review; it is not itself a certification or a guarantee of compliance. IntelligenceX’s product entry describes this cycle as connect, scan, remediate, and comply.",
+          "sources": [
+            "website",
+            "company"
+          ]
+        },
+        {
+          "title": "Cloud posture and penetration testing serve different needs",
+          "text": "CSPMX focuses on ongoing configuration visibility, cloud misconfiguration detection, and compliance management. Penetration testing instead actively tests authorized targets to establish exploitability and impact. The two workflows can inform each other: a posture finding identifies a configuration needing attention, while a penetration test can investigate what that exposure makes possible.",
+          "sources": [
+            "company"
+          ]
+        }
       ],
-      skills: ["Content implementation", "UI updates", "Cloud security product communication"],
-      links: [
-        { label: "Official CSPMX website", url: "https://www.cspmx.io/" },
-        { label: "CSPMX about and cloud coverage", url: "https://www.cspmx.io/about" },
-        { label: "IntelligenceX product directory entry for CSPMX", url: "https://www.intelligencex.org/en/products/cspmx" },
+      "skills": [
+        "Content implementation",
+        "UI updates",
+        "Website discoverability",
+        "Cloud security product communication"
       ],
-      faq: [
-        { question: "What is CSPMX?", answer: "CSPMX is a Cloud Security Posture Management platform for continuously identifying cloud misconfigurations and compliance risks, adding risk context, and supporting remediation." },
-        { question: "Which cloud providers does CSPMX list?", answer: "The official CSPMX site lists AWS, Microsoft Azure, and Google Cloud." },
-        { question: "What did Ujjwal Baunthiyal contribute to CSPMX?", answer: "Ujjwal primarily added and updated project content and made UI changes during an IntelligenceX internship." },
+      "links": [
+        {
+          "id": "website",
+          "label": "Official CSPMX workflow and capabilities",
+          "url": "https://www.cspmx.io/"
+        },
+        {
+          "id": "coverage",
+          "label": "CSPMX audience and supported clouds",
+          "url": "https://www.cspmx.io/about"
+        },
+        {
+          "id": "company",
+          "label": "IntelligenceX’s CSPMX product overview",
+          "url": "https://www.intelligencex.org/en/products/cspmx"
+        }
       ],
+      "contributionContext": "My CSPMX work focused on content and UI, with a later website discoverability task recorded in October 2026. The tracker noted that those later changes still needed publication from the main branch. I therefore do not present that task as a verified production improvement or claim a measured search outcome.",
+      "engineeringNotes": [
+        {
+          "title": "Keeping the contribution scoped to the website",
+          "text": "The available project record supports content implementation, UI updates, and work on website discoverability for automated agents. It does not identify the specific discoverability files changed or attribute the cloud connectors, scanning rules, or remediation automation to me."
+        }
+      ]
     },
-  },
+    "socialImage": "/assets/experience-cspmx-social.png"
+  }
 ] as const;
 
 export type ExperienceProject = (typeof experienceProjects)[number];

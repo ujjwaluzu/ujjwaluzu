@@ -750,6 +750,9 @@ section[id] { scroll-margin-top: 96px; }
 .experience-detail-section { margin: 0 0 31px; }
 .experience-detail-section h3 { margin: 0 0 9px; font-family: var(--hand); font-size: 22px; }
 .experience-detail-section p { margin: 0; color: rgba(11,11,11,.8); font-size: 15px; line-height: 1.8; }
+.experience-detail-sources { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 12px 0 0; padding: 0; list-style: none; font-size: 12px; line-height: 1.6; }
+.experience-detail-sources a { text-underline-offset: 3px; }
+.experience-detail-section .experience-project-contributions + p { margin-top: 14px; }
 .experience-detail-skills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .experience-detail-skills li { padding: 8px 11px; border: 1px solid rgba(11,11,11,.25); border-radius: 999px; font-size: 12px; font-weight: 650; }
 .experience-detail-faq { margin-top: 50px; padding-top: 28px; border-top: 1px solid rgba(11,11,11,.22); }

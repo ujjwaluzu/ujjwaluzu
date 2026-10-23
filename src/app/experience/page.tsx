@@ -12,7 +12,7 @@ import { site } from "@/lib/site";
 const pageUrl = `${site.domain}/experience`;
 const pageTitle = "Web Developer Intern at IntelligenceX | Ujjwal Baunthiyal";
 const pageDescription =
-  "Ujjwal Baunthiyal’s work experience, including a three-month Web Developer Internship at IntelligenceX and contributions to XRepAI, AIPTX, and CSPMX.";
+  "Ujjwal Baunthiyal’s work experience, including a three-month Web Developer Internship at IntelligenceX and contributions to XrepAI, AIPTx, and CSPMX.";
 
 export const metadata: Metadata = {
   title: pageTitle,

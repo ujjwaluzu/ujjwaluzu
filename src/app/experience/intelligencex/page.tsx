@@ -11,9 +11,9 @@ import { breadcrumbSchema, defaultSocialImage, personSchema } from "@/lib/seo-sc
 import { site } from "@/lib/site";
 
 const pageUrl = `${site.domain}/experience/intelligencex`;
-const pageTitle = "Ujjwal at IntelligenceX: XRepAI, AIPTX & CSPMX";
+const pageTitle = "Ujjwal at IntelligenceX: XrepAI, AIPTx & CSPMX";
 const pageDescription =
-  "Ujjwal Baunthiyal’s three-month Web Developer Internship at IntelligenceX, with project work on XRepAI, AIPTX, and CSPMX.";
+  "Ujjwal Baunthiyal’s three-month Web Developer Internship at IntelligenceX, with project work on XrepAI, AIPTx, and CSPMX.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -90,7 +90,7 @@ export default function ExperiencePage() {
                   <a href={experience.companyUrl} target="_blank" rel="noopener noreferrer">{experience.company}</a> {experience.companyDescription}
                 </p>
                 <p className="experience-page-summary">
-                  During my three-month internship at IntelligenceX, I contributed to XRepAI, AIPTX, and CSPMX. Here’s what each product does and the work I did on it.
+                  During my three-month internship at IntelligenceX, I contributed to XrepAI, AIPTx, and CSPMX. Here’s what each product does and the work I did on it.
                 </p>
               </div>
               <Image
@@ -142,7 +142,7 @@ export default function ExperiencePage() {
                         {project.work.map((item) => <li key={item}>{item}</li>)}
                       </ul>
                     </section>
-                    <span className="experience-project-read-more">Read the project story <span aria-hidden="true">→</span></span>
+                    <span className="experience-project-read-more">Explore {project.name}: {project.category} <span aria-hidden="true">→</span></span>
                   </article>
                 </Link>
                 <a className="experience-project-external" href={project.url} target="_blank" rel="noopener noreferrer">

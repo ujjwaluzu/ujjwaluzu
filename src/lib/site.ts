@@ -1,6 +1,7 @@
 export const site = {
   name: "ujjwaluzu",
-  domain: "https://www.ujjwaluzu.in",
+  // Keep the hosting provider's primary-domain redirect aligned with this origin.
+  domain: "https://ujjwaluzu.in",
   description:
     "Ujjwal Baunthiyal is a web developer exploring ideas, building products, and turning concepts into real experiences.",
 

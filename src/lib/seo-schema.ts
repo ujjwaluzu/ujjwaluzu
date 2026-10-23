@@ -7,6 +7,17 @@ type Project = (typeof homeContent.projects)[number];
 
 export const defaultSocialImage = `${site.domain}/assets/ujjwal-character.webp`;
 
+export function websiteSchema() {
+  return {
+    "@type": "WebSite",
+    "@id": `${site.domain}/#website`,
+    url: site.domain,
+    name: site.name,
+    description: site.description,
+    publisher: { "@id": `${site.domain}/#ujjwal-baunthiyal` },
+  };
+}
+
 export function personSchema() {
   return {
     "@type": "Person",

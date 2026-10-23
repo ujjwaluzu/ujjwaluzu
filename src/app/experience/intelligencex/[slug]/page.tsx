@@ -7,7 +7,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SeoJsonLd } from "@/components/seo-json-ld";
 import { experienceProjects, getExperienceProject } from "@/lib/experience-projects";
-import { breadcrumbSchema } from "@/lib/seo-schema";
+import { homeContent } from "@/lib/home-content";
+import { breadcrumbSchema, personSchema, websiteSchema } from "@/lib/seo-schema";
 import { site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -26,11 +27,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${site.domain}/experience/intelligencex/${project.slug}`;
   const title = project.detail.seoTitle;
   const description = project.detail.seoDescription;
-  const image = `${site.domain}${project.logo}`;
+  const image = {
+    url: `${site.domain}${project.socialImage}`,
+    width: 1200,
+    height: 630,
+    alt: `${project.name} — ${project.category}. Ujjwal Baunthiyal’s IntelligenceX experience.`,
+  };
 
   return {
     title,
     description,
+    keywords: null,
     openGraph: {
       title,
       description,
@@ -38,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: site.name,
       locale: "en_US",
       type: "website",
-      images: [{ url: image, alt: `${project.name} logo` }],
+      images: [image],
     },
     twitter: { card: "summary_large_image", title, description, images: [image] },
     alternates: { canonical: url },
@@ -51,9 +58,18 @@ export default async function ExperienceProjectPage({ params }: Props) {
   if (!project) notFound();
 
   const pageUrl = `${site.domain}/experience/intelligencex/${project.slug}`;
+  const company = homeContent.experience;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      personSchema(),
+      websiteSchema(),
+      {
+        "@type": "Organization",
+        "@id": `${company.companyUrl}/#organization`,
+        name: company.company,
+        url: company.companyUrl,
+      },
       {
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
@@ -61,7 +77,30 @@ export default async function ExperienceProjectPage({ params }: Props) {
         name: project.detail.seoTitle,
         description: project.detail.intro,
         isPartOf: { "@id": `${site.domain}/#website` },
-        about: { "@type": "Thing", name: project.name, sameAs: project.url },
+        author: { "@id": `${site.domain}/#ujjwal-baunthiyal` },
+        inLanguage: "en",
+        about: {
+          "@type": "Thing",
+          "@id": `${pageUrl}#product`,
+          name: project.name,
+          url: project.url,
+          sameAs: project.url,
+          description: project.about,
+        },
+        mentions: { "@id": `${company.companyUrl}/#organization` },
+        citation: project.detail.links.map((source) => source.url),
+        relatedLink: [
+          `${site.domain}/experience/intelligencex`,
+          ...experienceProjects.filter((item) => item.slug !== project.slug)
+            .map((item) => `${site.domain}/experience/intelligencex/${item.slug}`),
+        ],
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${site.domain}${project.logo}`,
+          width: project.logoWidth,
+          height: project.logoHeight,
+          caption: `${project.name} logo`,
+        },
         breadcrumb: { "@id": `${pageUrl}#breadcrumbs` },
       },
       {
@@ -113,7 +152,7 @@ export default async function ExperienceProjectPage({ params }: Props) {
         <div className="page-shell experience-detail-body">
           <aside className="experience-detail-facts" aria-label={`${project.name} project details`}>
             <div><span>PROJECT</span><strong>{project.name}</strong></div>
-            <div><span>COMPANY</span><strong>IntelligenceX</strong></div>
+            <div><span>INTERNSHIP AT</span><strong><a href={company.companyUrl} target="_blank" rel="noopener noreferrer">{company.company}</a></strong></div>
             <div><span>ROLE</span><strong>Web Developer Intern</strong></div>
             <div><span>FOCUS</span><strong>{project.category}</strong></div>
           </aside>
@@ -124,6 +163,11 @@ export default async function ExperienceProjectPage({ params }: Props) {
               <section key={section.title} className="experience-detail-section">
                 <h3>{section.title}</h3>
                 <p>{section.text}</p>
+                <ul className="experience-detail-sources" aria-label={`Sources for ${section.title}`}>
+                  {project.detail.links.filter((source) => section.sources.some((id) => id === source.id)).map((source) => (
+                    <li key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} <span aria-hidden="true">↗</span></a></li>
+                  ))}
+                </ul>
               </section>
             ))}
             <section className="experience-detail-section">
@@ -131,7 +175,14 @@ export default async function ExperienceProjectPage({ params }: Props) {
               <ul className="experience-project-contributions">
                 {project.work.map((item) => <li key={item}>{item}</li>)}
               </ul>
+              <p>{project.detail.contributionContext}</p>
             </section>
+            {project.detail.engineeringNotes.map((note) => (
+              <section key={note.title} className="experience-detail-section">
+                <h3>{note.title}</h3>
+                <p>{note.text}</p>
+              </section>
+            ))}
             <section className="experience-detail-section">
               <h3>Skills and focus areas</h3>
               <ul className="experience-detail-skills">
@@ -147,16 +198,6 @@ export default async function ExperienceProjectPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-            </section>
-            <section className="experience-detail-faq" aria-labelledby="experience-detail-faq-title">
-              <p className="experience-page-eyebrow">QUICK ANSWERS</p>
-              <h2 id="experience-detail-faq-title">Frequently asked about {project.name}</h2>
-              {project.detail.faq.map((item) => (
-                <details key={item.question}>
-                  <summary>{item.question}</summary>
-                  <p>{item.answer}</p>
-                </details>
-              ))}
             </section>
           </article>
         </div>

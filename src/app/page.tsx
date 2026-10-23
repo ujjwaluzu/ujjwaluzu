@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { PortfolioPage } from "@/components/portfolio-page";
 import { SeoJsonLd } from "@/components/seo-json-ld";
 import { homeContent } from "@/lib/home-content";
-import { defaultSocialImage, personSchema } from "@/lib/seo-schema";
+import { defaultSocialImage, personSchema, websiteSchema } from "@/lib/seo-schema";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -41,14 +41,7 @@ const homepageJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     personSchema(),
-    {
-      "@type": "WebSite",
-      "@id": `${site.domain}/#website`,
-      url: site.domain,
-      name: "ujjwaluzu",
-      description: site.description,
-      publisher: { "@id": `${site.domain}/#ujjwal-baunthiyal` },
-    },
+    websiteSchema(),
     {
       "@type": "ProfilePage",
       url: site.domain,
