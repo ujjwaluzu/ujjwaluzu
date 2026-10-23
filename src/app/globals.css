@@ -707,8 +707,11 @@ section[id] { scroll-margin-top: 96px; }
 .experience-project-card--2:hover { transform: translateY(-3px); }
 .experience-project-card-head { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .experience-project-index { color: rgba(11,11,11,.43); font-family: var(--hand); font-size: 14px; transform: rotate(-7deg); }
-.experience-project-link { display: inline-flex; align-items: center; gap: 9px; min-height: 46px; padding: 0 0 3px; border-bottom: 3px solid var(--ink); font-family: var(--display); font-size: clamp(25px, 2.7vw, 38px); line-height: 1; letter-spacing: .01em; }
-.experience-project-link .button-arrow { font-family: var(--font-geist-sans), Arial, sans-serif; font-size: 17px; }
+.experience-project-link { display: inline-flex; align-items: center; min-height: 66px; max-width: 100%; }
+.experience-project-logo { display: block; max-width: 100%; object-fit: contain; }
+.experience-project-logo--xrepai { width: 150px; height: 66px; }
+.experience-project-logo--aiptx { width: 190px; height: 44px; padding: 6px 8px; border-radius: 4px; background: #0b1020; }
+.experience-project-logo--cspmx { width: 190px; height: 40px; }
 .experience-project-about, .experience-project-work { position: relative; z-index: 1; }
 .experience-project-about h3, .experience-project-work h3 { margin: 0 0 11px; font-family: var(--hand); font-size: 17px; font-weight: 700; }
 .experience-project-about p { margin: 0; color: rgba(11,11,11,.78); font-size: 14px; line-height: 1.7; }
@@ -716,6 +719,12 @@ section[id] { scroll-margin-top: 96px; }
 .experience-project-contributions li { padding: 9px 0; border-top: 1px solid rgba(11,11,11,.13); }
 .experience-page-back-wrap { display: flex; justify-content: center; margin-top: 33px; }
 .experience-page-back { min-height: 44px; gap: 8px; }
+.experience-company-github { margin-top: 42px; padding: 28px; border: 1px solid rgba(11,11,11,.48); border-radius: 8px; background: #0d1117; color: #f5f7fa; }
+.experience-company-github .experience-page-eyebrow { margin-bottom: 14px; border-color: rgba(245,247,250,.4); color: rgba(245,247,250,.84); }
+.experience-company-github-copy h2 { margin: 0; font-family: var(--display); font-size: clamp(26px, 3.5vw, 40px); line-height: 1.05; }
+.experience-company-github-copy > p:last-child { margin: 10px 0 22px; color: rgba(245,247,250,.76); font-size: 14px; line-height: 1.6; }
+.experience-company-github-figure { margin: 0; }
+.experience-company-github-figure img { display: block; width: 100%; height: auto; }
 
 @media (max-width: 1000px) {
   .experience-page-intro { grid-template-columns: minmax(0,1fr) 160px; gap: 19px; }
@@ -735,14 +744,13 @@ section[id] { scroll-margin-top: 96px; }
   .experience-projects-section { padding: 12px 0 65px; }
   .experience-projects-grid { grid-template-columns: 1fr; gap: 14px; }
   .experience-project-card { grid-template-columns: 1fr; gap: 20px; padding: 23px; }
-  .experience-project-link { font-size: 34px; }
   .experience-project-about p, .experience-project-contributions { font-size: 14px; }
+  .experience-company-github { margin-top: 28px; padding: 18px; }
   .experience-page-back-wrap { justify-content: flex-start; margin-top: 24px; }
 }
 @media (max-width: 360px) {
   .experience-page-title { font-size: 39px; }
   .experience-project-card { padding-right: 19px; padding-left: 19px; }
-  .experience-project-link { font-size: 30px; }
 }
 
 @media (max-width: 1000px) {

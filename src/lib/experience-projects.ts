@@ -2,6 +2,9 @@ export const experienceProjects = [
   {
     name: "XRepAI",
     url: "https://xrepai.com",
+    logo: "/assets/experience-xrepai-logo.webp",
+    logoWidth: 1189,
+    logoHeight: 524,
     about: "xRepAI is an AI sales development representative for websites. It engages visitors 24/7, answers product and pricing questions, qualifies prospects, and books meetings directly on the sales team’s calendar. By responding while the team is busy or offline, it helps sales teams focus on high-intent prospects, meaningful conversations, and closing deals.",
     work: [
       "Built the project independently, taking ownership of the frontend and API integrations.",
@@ -13,6 +16,9 @@ export const experienceProjects = [
   {
     name: "AIPTX",
     url: "https://aiptx.io",
+    logo: "/assets/experience-aiptx-logo.png",
+    logoWidth: 668,
+    logoHeight: 134,
     about: "AIPTX is an AI-powered penetration testing platform built for security teams. It tests APIs, web apps, networks, and CI/CD pipelines with real-world attack validation, then provides reproducible evidence and actionable remediation, including generated fixes and compliance reports.",
     work: [
       "Worked on the product UI and its presentation.",
@@ -23,6 +29,9 @@ export const experienceProjects = [
   {
     name: "CSPMX",
     url: "https://cspmx.io",
+    logo: "/assets/experience-cspmx-logo.png",
+    logoWidth: 668,
+    logoHeight: 134,
     about: "CSPMX is a cloud security posture management platform that continuously identifies and remediates cloud misconfigurations. It also provides context around each issue so teams can understand its full risk profile and prioritize remediation.",
     work: [
       "Primarily added and updated content across the project.",

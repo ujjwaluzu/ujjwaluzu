@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Arrow, SiteHeader } from "@/components/site-header";
+import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SeoJsonLd } from "@/components/seo-json-ld";
 import { experienceProjects } from "@/lib/experience-projects";
@@ -101,7 +101,14 @@ export default function ExperiencePage() {
                     rel="noopener noreferrer"
                     aria-label={`Visit ${project.name} website, opens in a new tab`}
                   >
-                    <span>{project.name}</span><Arrow />
+                    <Image
+                      className={`experience-project-logo experience-project-logo--${project.name.toLowerCase()}`}
+                      src={project.logo}
+                      alt={`${project.name} logo`}
+                      width={project.logoWidth}
+                      height={project.logoHeight}
+                      sizes="(max-width: 767px) 170px, 200px"
+                    />
                   </a>
                 </div>
                 <section className="experience-project-about" aria-labelledby={`about-${project.name}`}>
@@ -117,6 +124,22 @@ export default function ExperiencePage() {
               </article>
             ))}
           </div>
+          <section className="page-shell experience-company-github" aria-labelledby="experience-company-github-title">
+            <div className="experience-company-github-copy">
+              <p className="experience-page-eyebrow">COMPANY ACCOUNT</p>
+              <h2 id="experience-company-github-title">My GitHub work at IntelligenceX</h2>
+              <p>This contribution graph is from my work GitHub account at IntelligenceX.</p>
+            </div>
+            <figure className="experience-company-github-figure">
+              <Image
+                src="/assets/intelligencex-github-contributions.png"
+                alt="GitHub contribution chart from my IntelligenceX work account, showing 278 contributions in the last year for 2026."
+                width={1106}
+                height={270}
+                sizes="(max-width: 767px) 100vw, 1100px"
+              />
+            </figure>
+          </section>
           <div className="page-shell experience-page-back-wrap">
             <Link className="button button-outline experience-page-back" href="/#experience"><span aria-hidden="true">←</span> Back to experience</Link>
           </div>
