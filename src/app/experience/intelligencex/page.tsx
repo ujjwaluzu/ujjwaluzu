@@ -159,7 +159,7 @@ export default function ExperiencePage() {
             </div>
             <figure className="experience-company-github-figure">
               <Image
-                src="/assets/intelligencex-github-contributions.png"
+                src="/assets/intelligencex-github-contributions.webp"
                 alt="GitHub contribution chart from my IntelligenceX work account, showing 278 contributions in the last year for 2026."
                 width={1106}
                 height={270}

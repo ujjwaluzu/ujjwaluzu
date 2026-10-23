@@ -14,9 +14,9 @@ export const experienceProjects = [
       "Created the AI avatar and designed the creative hero sections across the pages.",
     ],
     detail: {
-      seoTitle: "xRepAI | AI Sales Representative — IntelligenceX Experience",
+      seoTitle: "xRepAI | AI Sales Representative: IntelligenceX Experience",
       seoDescription: "xRepAI experience: website AI sales engagement and Ujjwal Baunthiyal’s documented frontend, API integration, and design work during an IntelligenceX internship.",
-      heading: "xRepAI — Building an AI-Powered Sales Experience",
+      heading: "xRepAI: Building an AI-Powered Sales Experience",
       title: "An AI sales representative for website conversations",
       intro: "xRepAI is an AI sales development representative (AI SDR) for B2B websites. The product puts xRep, whose on-screen assistant is named Lina, into the visitor journey to answer questions from approved company content, qualify prospects, enrich lead details, and help book a meeting. The product presents text, voice, and live-video conversation as ways for a prospect to engage, with human handoff for conversations that need a sales representative.",
       sections: [
@@ -43,7 +43,7 @@ export const experienceProjects = [
     name: "AIPTx",
     url: "https://www.aiptx.io/",
     category: "AI-powered penetration testing",
-    logo: "/assets/experience-aiptx-logo.png",
+    logo: "/assets/experience-aiptx-logo.webp",
     logoWidth: 668,
     logoHeight: 134,
     about: "AIPTx is an AI-powered penetration-testing platform for security teams. Its published workflow maps an authorized attack surface, tests for vulnerabilities, attempts safe exploit validation, records evidence for confirmed findings, then classifies and prioritizes issues for remediation and retesting.",
@@ -53,9 +53,9 @@ export const experienceProjects = [
       "Tested the backend as part of the project work.",
     ],
     detail: {
-      seoTitle: "AIPTx | AI-Powered Penetration Testing — IntelligenceX Experience",
+      seoTitle: "AIPTx | AI-Powered Penetration Testing: IntelligenceX Experience",
       seoDescription: "AIPTx experience: AI penetration testing and Ujjwal Baunthiyal’s product UI, Mailgun integration, and backend testing work during an IntelligenceX internship.",
-      heading: "AIPTx — AI-Powered Security Testing",
+      heading: "AIPTx: AI-Powered Security Testing",
       title: "From attack-surface discovery to a retestable finding",
       intro: "AIPTx is an AI-powered penetration-testing and vulnerability-assessment platform. It is designed to help security teams test authorized web applications, APIs, networks, and other in-scope assets through a repeatable sequence: map the reachable surface, discover candidate weaknesses, validate safely where possible, capture evidence, and give teams a prioritized path to remediation.",
       sections: [
@@ -83,7 +83,7 @@ export const experienceProjects = [
     name: "CSPMX",
     url: "https://www.cspmx.io/",
     category: "Cloud security posture management",
-    logo: "/assets/experience-cspmx-logo.png",
+    logo: "/assets/experience-cspmx-logo.webp",
     logoWidth: 668,
     logoHeight: 134,
     about: "CSPMX is a Cloud Security Posture Management (CSPM) platform. Its current product material describes cloud misconfiguration and compliance-risk detection, continuous monitoring, risk context, automated remediation, and security baselines. The official CSPMX site identifies AWS, Microsoft Azure, and Google Cloud support.",
@@ -92,9 +92,9 @@ export const experienceProjects = [
       "Made UI changes alongside the content work.",
     ],
     detail: {
-      seoTitle: "CSPMX | Cloud Security Posture Management — IntelligenceX Experience",
+      seoTitle: "CSPMX | Cloud Security Posture Management: IntelligenceX Experience",
       seoDescription: "CSPMX experience: cloud posture management and Ujjwal Baunthiyal’s documented content and UI work during an IntelligenceX internship.",
-      heading: "CSPMX — Cloud Security Posture Management",
+      heading: "CSPMX: Cloud Security Posture Management",
       title: "Cloud posture is a continuous operating task",
       intro: "CSPMX is a Cloud Security Posture Management platform for teams that need to find and manage cloud configuration risk as environments change. Its official product material describes continuous detection of misconfigurations and compliance risks, context around the risk of an issue, and automated remediation. The CSPMX site names AWS, Microsoft Azure, and Google Cloud as supported environments.",
       sections: [
