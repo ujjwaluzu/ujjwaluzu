@@ -19,7 +19,7 @@ export const experienceProjects = [
       "Updated content and homepage title, description, metadata, and JSON-LD; fixed reported UI bugs and the trust-page document-request flow."
     ],
     "detail": {
-      "seoTitle": "XrepAI | AI Sales Representative — IntelligenceX Experience",
+      "seoTitle": "XrepAI | AI Sales Representative: IntelligenceX Experience",
       "seoDescription": "XrepAI’s AI sales workflow and Ujjwal Baunthiyal’s IntelligenceX experience: frontend UI, Mailgun flows, form validation, shared API helpers, and responsive testing.",
       "heading": "XrepAI: Building an AI Sales Experience",
       "title": "An AI sales representative for website conversations",
@@ -120,7 +120,7 @@ export const experienceProjects = [
       "Worked on deployment configuration using render.yaml, compose.yaml, and dockerfile.api, and recorded a temporary test deployment."
     ],
     "detail": {
-      "seoTitle": "AIPTx | AI-Powered Penetration Testing — IntelligenceX Experience",
+      "seoTitle": "AIPTx | AI-Powered Penetration Testing: IntelligenceX Experience",
       "seoDescription": "AIPTx’s penetration-testing workflow and Ujjwal Baunthiyal’s IntelligenceX experience with product UI, Mailgun integration, backend testing, SEO, and deployment.",
       "heading": "AIPTx: AI-Powered Security Testing",
       "title": "From attack-surface discovery to a retestable finding",
@@ -224,7 +224,7 @@ export const experienceProjects = [
       "Recorded website changes for automated-agent discoverability in the October work tracker; production publication was still pending at that checkpoint."
     ],
     "detail": {
-      "seoTitle": "CSPMX | Cloud Security Posture Management — IntelligenceX Experience",
+      "seoTitle": "CSPMX | Cloud Security Posture Management: IntelligenceX Experience",
       "seoDescription": "Explore CSPMX’s cloud misconfiguration, compliance, and remediation workflow, alongside Ujjwal Baunthiyal’s content implementation and UI work at IntelligenceX.",
       "heading": "CSPMX: Cloud Security Posture Management",
       "title": "Cloud posture is a continuous operating task",

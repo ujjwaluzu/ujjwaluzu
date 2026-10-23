@@ -199,8 +199,6 @@ section[id] { scroll-margin-top: 96px; }
 .project-row-index { padding-top: 5px; color: rgba(11,11,11,.3); font-family: var(--display); font-size: 30px; letter-spacing: .02em; }
 .project-row-main { min-width: 0; }
 .project-badge { display: inline-flex; align-items: center; width: fit-content; padding: 5px 11px; border: 1px solid rgba(11,11,11,.24); border-radius: 999px; color: rgba(11,11,11,.7); font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
-.project-badge--green { border-color: rgba(45,128,18,.5); color: #2d8012; }
-.project-badge--warm { border-color: rgba(164,112,0,.5); color: #8a5c00; }
 .project-row-title { margin: 16px 0 12px; font-family: var(--display); font-weight: 400; font-size: clamp(34px, 3.6vw, 54px); letter-spacing: .01em; line-height: .92; text-transform: uppercase; transition: transform .3s cubic-bezier(.22,1,.36,1); }
 .project-row:hover .project-row-title { transform: translateX(5px); }
 .project-row-desc { max-width: 580px; margin: 0; color: rgba(11,11,11,.72); font-size: 15px; line-height: 1.6; letter-spacing: .01em; }

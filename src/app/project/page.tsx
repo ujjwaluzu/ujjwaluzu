@@ -103,7 +103,7 @@ export default function ProjectArchivePage() {
                   {String(index + 1).padStart(2, "0")}
                 </div>
                 <div className="project-row-main">
-                  <span className={`project-badge${project.category === "MVP" ? " project-badge--green" : project.category === "Streaming platform" ? " project-badge--warm" : ""}`}>{project.category}</span>
+                  <span className="project-badge">{project.category}</span>
                   <h2 className="project-row-title">{project.name}</h2>
                   <p className="project-row-desc">{project.description}</p>
                   <ul className="project-row-tags">

@@ -56,9 +56,9 @@ Product statements have contextual source links. Repeated FAQ answers and the du
 
 | Route suffix | Title |
 | --- | --- |
-| `/xrepai` | XrepAI \| AI Sales Representative — IntelligenceX Experience |
-| `/aiptx` | AIPTx \| AI-Powered Penetration Testing — IntelligenceX Experience |
-| `/cspmx` | CSPMX \| Cloud Security Posture Management — IntelligenceX Experience |
+| `/xrepai` | XrepAI \| AI Sales Representative: IntelligenceX Experience |
+| `/aiptx` | AIPTx \| AI-Powered Penetration Testing: IntelligenceX Experience |
+| `/cspmx` | CSPMX \| Cloud Security Posture Management: IntelligenceX Experience |
 
 - Unique descriptions reflect each product and the specific contribution. Each page retains one brand-led H1 and meaningful H2/H3 structure in the initial HTML.
 - Unique Open Graph/Twitter titles, descriptions, canonical URLs, and 1200 × 630 PNG cards. Cards show the existing product logo, product category, contributor, and portfolio context. Original transparent artwork is unchanged. Image dimensions and alt text are declared.

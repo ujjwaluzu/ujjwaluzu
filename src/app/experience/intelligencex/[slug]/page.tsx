@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     url: `${site.domain}${project.socialImage}`,
     width: 1200,
     height: 630,
-    alt: `${project.name} — ${project.category}. Ujjwal Baunthiyal’s IntelligenceX experience.`,
+    alt: `${project.name}, ${project.category}. Ujjwal Baunthiyal’s IntelligenceX experience.`,
   };
 
   return {
