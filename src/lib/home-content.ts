@@ -119,7 +119,7 @@ export const homeContent = {
     companyUrl: "https://intelligencex.org",
     duration: "3 months",
     companyDescription: "IntelligenceX is a cybersecurity company providing penetration testing, managed security, and compliance services.",
-    period: "July 2026 - present",
+    period: "July 2026 - Oct 2026",
     description:
       "Building and maintaining web applications, exploring modern technologies, and contributing to impactful products.",
     quote: "Build with curiosity. Ship with purpose.",
