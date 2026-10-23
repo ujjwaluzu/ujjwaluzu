@@ -15,7 +15,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const isContactPage = pathname === "/contact";
   const isProjectPage = pathname === "/project" || pathname.startsWith("/project/");
-  const links = ["About", "Projects", "Experience", "Blog", "Contact"];
+  const links = ["About", "Projects", "Experience", "Blog", "Tools", "Contact"];
   const [isHiddenWhileScrolling, setIsHiddenWhileScrolling] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -98,8 +98,11 @@ export function SiteHeader() {
     const l = link.toLowerCase();
     if (l === "projects") return "/project";
     if (l === "blog") return "https://blog.ujjwaluzu.in";
+    if (l === "tools") return "https://tools.ujjwaluzu.in";
     return `/#${l}`;
   };
+
+  const isExternalLink = (link: string) => ["blog", "tools"].includes(link.toLowerCase());
 
   const navClass = (link: string) => {
     const l = link.toLowerCase();
@@ -118,7 +121,7 @@ export function SiteHeader() {
       <nav className="desktop-nav" aria-label="Primary navigation">
         <Link className={!isContactPage && !isProjectPage && activeSection === "top" ? "active" : ""} href="/">Home</Link>
         {links.map((link) =>
-          link.toLowerCase() === "blog" ? (
+          isExternalLink(link) ? (
             <Link
               key={link}
               className={navClass(link)}
@@ -153,7 +156,7 @@ export function SiteHeader() {
         <nav id="mobile-nav" className="mobile-menu-nav" aria-label="Mobile navigation">
           <Link href={homepageHref("top")} onClick={closeMenu}>Home</Link>
           {links.map((link) =>
-            link.toLowerCase() === "blog" ? (
+            isExternalLink(link) ? (
               <Link
                 key={link}
                 className={navClass(link)}
