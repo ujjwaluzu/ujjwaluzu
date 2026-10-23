@@ -166,7 +166,7 @@ export default async function ExperienceProjectPage({ params }: Props) {
           <h2 id="experience-detail-more-title">Explore the other projects</h2>
           <div className="experience-detail-more-grid">
             {otherProjects.map((item) => (
-              <Link key={item.slug} href={`/experience/intelligencex/${item.slug}`} className="experience-detail-more-card">
+              <Link key={item.slug} href={`/experience/intelligencex/${item.slug}`} className={`experience-detail-more-card experience-detail-more-card--${item.slug}`}>
                 <Image src={item.logo} alt="" width={item.logoWidth} height={item.logoHeight} sizes="(max-width: 767px) 160px, 200px" />
                 <span>{item.category}</span>
                 <strong>{item.name} <span aria-hidden="true">→</span></strong>
