@@ -99,6 +99,7 @@ export function SiteHeader() {
     const l = link.toLowerCase();
     if (l === "projects") return "/project";
     if (l === "experience") return "/experience";
+    if (l === "contact") return "/contact";
     if (l === "blog") return "https://blog.ujjwaluzu.in";
     if (l === "tools") return "https://tools.ujjwaluzu.in";
     return `/#${l}`;
