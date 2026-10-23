@@ -14,6 +14,7 @@ export function Arrow() {
 export function SiteHeader() {
   const pathname = usePathname();
   const isContactPage = pathname === "/contact";
+  const isExperiencePage = pathname.startsWith("/experience");
   const isProjectPage = pathname === "/project" || pathname.startsWith("/project/");
   const links = ["About", "Projects", "Experience", "Blog", "Tools", "Contact"];
   const [isHiddenWhileScrolling, setIsHiddenWhileScrolling] = useState(false);
@@ -106,8 +107,8 @@ export function SiteHeader() {
 
   const navClass = (link: string) => {
     const l = link.toLowerCase();
-    if (isContactPage || isProjectPage) {
-      return l === (isContactPage ? "contact" : "projects") ? "active" : "";
+    if (isContactPage || isProjectPage || isExperiencePage) {
+      return l === (isContactPage ? "contact" : isProjectPage ? "projects" : "experience") ? "active" : "";
     }
     return activeSection === l ? "active" : "";
   };
