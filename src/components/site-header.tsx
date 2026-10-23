@@ -98,7 +98,7 @@ export function SiteHeader() {
     const l = link.toLowerCase();
     if (l === "projects") return "/project";
     if (l === "blog") return "https://blog.ujjwaluzu.in";
-    if (l === "tools") return "https://blog.ujjwaluzu.in";
+    if (l === "tools") return "https://tools.ujjwaluzu.in";
     return `/#${l}`;
   };
 
@@ -125,7 +125,7 @@ export function SiteHeader() {
             <Link
               key={link}
               className={navClass(link)}
-              href="https://blog.ujjwaluzu.in"
+              href={navHref(link)}
               target="_blank"
               rel="noopener noreferrer"
             >{link}</Link>
@@ -160,7 +160,7 @@ export function SiteHeader() {
               <Link
                 key={link}
                 className={navClass(link)}
-                href="https://blog.ujjwaluzu.in"
+                href={navHref(link)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
