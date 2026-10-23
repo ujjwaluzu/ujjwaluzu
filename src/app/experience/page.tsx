@@ -10,14 +10,13 @@ import { breadcrumbSchema, defaultSocialImage, personSchema } from "@/lib/seo-sc
 import { site } from "@/lib/site";
 
 const pageUrl = `${site.domain}/experience`;
-const pageTitle = "Work Experience | Ujjwal Baunthiyal";
+const pageTitle = "Web Developer Intern at IntelligenceX | Ujjwal Baunthiyal";
 const pageDescription =
-  "Explore Ujjwal Baunthiyal's work experience, including a three-month Web Developer Internship at IntelligenceX.";
+  "Ujjwal Baunthiyal’s work experience, including a three-month Web Developer Internship at IntelligenceX and contributions to XRepAI, AIPTX, and CSPMX.";
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
-  keywords: ["Ujjwal Baunthiyal experience", "Web Developer Intern", "IntelligenceX"],
   openGraph: {
     title: pageTitle,
     description: pageDescription,
@@ -66,9 +65,9 @@ export default function ExperienceIndexPage() {
         <section className="experience-directory-hero">
           <div className="page-shell">
             <p className="experience-page-eyebrow">CAREER <span aria-hidden="true">/</span> EXPERIENCE</p>
-            <h1 className="display-heading experience-directory-title">WHERE I’VE WORKED</h1>
+            <h1 className="display-heading experience-directory-title">WORK EXPERIENCE</h1>
             <p className="experience-directory-summary">
-              A look at the teams I’ve worked with and the projects I’ve contributed to.
+              My role as a Web Developer Intern at IntelligenceX and the projects I contributed to during my three-month internship.
             </p>
           </div>
         </section>

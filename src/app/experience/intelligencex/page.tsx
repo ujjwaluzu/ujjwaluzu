@@ -11,14 +11,13 @@ import { breadcrumbSchema, defaultSocialImage, personSchema } from "@/lib/seo-sc
 import { site } from "@/lib/site";
 
 const pageUrl = `${site.domain}/experience/intelligencex`;
-const pageTitle = "IntelligenceX Internship Projects | Ujjwal Baunthiyal";
+const pageTitle = "Ujjwal at IntelligenceX: XRepAI, AIPTX & CSPMX";
 const pageDescription =
-  "Three projects Ujjwal Baunthiyal contributed to during a three-month Web Developer Internship at IntelligenceX: CSPMX, AIPTX, and XRepAI.";
+  "Ujjwal Baunthiyal’s three-month Web Developer Internship at IntelligenceX, with project work on XRepAI, AIPTX, and CSPMX.";
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
-  keywords: ["Ujjwal Baunthiyal internship", "Web Developer Intern projects", "CSPMX", "AIPTX", "XRepAI"],
   openGraph: {
     title: pageTitle,
     description: pageDescription,
@@ -48,10 +47,26 @@ const experienceJsonLd = {
       description: pageDescription,
       isPartOf: { "@id": `${site.domain}/#website` },
       about: personSchema(),
+      mainEntity: {
+        "@type": "ItemList",
+        name: "Projects Ujjwal Baunthiyal contributed to at IntelligenceX",
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        numberOfItems: experienceProjects.length,
+        itemListElement: experienceProjects.map((project, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "SoftwareApplication",
+            name: project.name,
+            url: project.url,
+            description: project.about,
+          },
+        })),
+      },
     },
     breadcrumbSchema([
       { name: "Home", url: site.domain },
-      { name: "Experience", url: `${site.domain}/#experience` },
+      { name: "Experience", url: `${site.domain}/experience` },
       { name: "IntelligenceX Projects", url: pageUrl },
     ]),
   ],
@@ -70,21 +85,21 @@ export default function ExperiencePage() {
             <p className="experience-page-eyebrow">INTERNSHIP <span aria-hidden="true">/</span> 3 PROJECTS</p>
             <div className="experience-page-intro">
               <div>
-                <h1 className="display-heading experience-page-title">THREE PROJECTS.<br />THREE MONTHS.</h1>
+                <h1 className="display-heading experience-page-title">WEB DEVELOPER<br />INTERN AT<br />INTELLIGENCEX.</h1>
                 <p className="experience-page-company">
                   <a href={experience.companyUrl} target="_blank" rel="noopener noreferrer">{experience.company}</a> {experience.companyDescription}
                 </p>
                 <p className="experience-page-summary">
-                  During my three-month Web Developer Internship, I contributed to three projects for the company.
+                  During my three-month internship at IntelligenceX, I contributed to XRepAI, AIPTX, and CSPMX. Here’s what each product does and the work I did on it.
                 </p>
               </div>
               <Image
-                className="experience-page-character"
-                src="/assets/hero-char.webp"
-                alt="Illustrated portrait of Ujjwal with a frog on his head"
-                width={1024}
-                height={1536}
-                sizes="(max-width: 1000px) 140px, 150px"
+                className="experience-page-company-logo"
+                src="/assets/intelligencex-logo.svg"
+                alt="IntelligenceX logo"
+                width={1110}
+                height={60}
+                sizes="(max-width: 767px) 200px, (max-width: 1000px) 280px, 300px"
                 priority
               />
             </div>
@@ -92,6 +107,9 @@ export default function ExperiencePage() {
         </section>
 
         <section className="experience-projects-section" aria-label="Internship projects">
+          <div className="page-shell">
+            <h2 className="experience-projects-heading">Three projects. Three months.</h2>
+          </div>
           <div className="page-shell experience-projects-grid">
             {experienceProjects.map((project, index) => (
               <article key={project.name} className={`experience-project-card experience-project-card--${index + 1}`}>

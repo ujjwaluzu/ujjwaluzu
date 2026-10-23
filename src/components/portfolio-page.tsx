@@ -185,7 +185,7 @@ export function ExperienceSection() {
     <section className="experience-section dark-texture" id="experience">
       <Reveal className="page-shell">
         <div className="experience-grid">
-          <div className="experience-entry"><Image src="/assets/company.webp" alt="Company logo" width={48} height={48} className="experience-icon" /><div><h2><Link href="/experience">{experience.role}</Link></h2><h3><a href={experience.companyUrl} target="_blank" rel="noopener noreferrer">{experience.company}</a></h3><p>{experience.description}</p></div><span className="experience-mark">{experience.period}</span></div>
+          <div className="experience-entry"><Image src="/assets/company.webp" alt="Company logo" width={48} height={48} className="experience-icon" /><div><h2><Link href="/experience/intelligencex">{experience.role}</Link></h2><h3><a href={experience.companyUrl} target="_blank" rel="noopener noreferrer">{experience.company}</a></h3><p>{experience.description}</p></div><span className="experience-mark">{experience.period}</span></div>
           <blockquote><span aria-hidden="true">“</span><p>{experience.quote}</p><span aria-hidden="true">”</span></blockquote>
         </div>
       </Reveal>

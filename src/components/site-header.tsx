@@ -111,6 +111,7 @@ export function SiteHeader() {
     if (isContactPage || isProjectPage || isExperiencePage) {
       return l === (isContactPage ? "contact" : isProjectPage ? "projects" : "experience") ? "active" : "";
     }
+    if (l === "experience") return "";
     return activeSection === l ? "active" : "";
   };
 
