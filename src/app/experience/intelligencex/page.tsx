@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SeoJsonLd } from "@/components/seo-json-ld";
 import { experienceProjects } from "@/lib/experience-projects";
+import { homeContent } from "@/lib/home-content";
 import { breadcrumbSchema, defaultSocialImage, personSchema } from "@/lib/seo-schema";
 import { site } from "@/lib/site";
 
@@ -57,6 +58,8 @@ const experienceJsonLd = {
 };
 
 export default function ExperiencePage() {
+  const { experience } = homeContent;
+
   return (
     <>
       <SeoJsonLd data={experienceJsonLd} />
@@ -69,7 +72,7 @@ export default function ExperiencePage() {
               <div>
                 <h1 className="display-heading experience-page-title">THREE PROJECTS.<br />THREE MONTHS.</h1>
                 <p className="experience-page-company">
-                  <a href="https://intelligencex.org" target="_blank" rel="noopener noreferrer">IntelligenceX</a> is a cybersecurity company providing penetration testing, managed security, and compliance services.
+                  <a href={experience.companyUrl} target="_blank" rel="noopener noreferrer">{experience.company}</a> {experience.companyDescription}
                 </p>
                 <p className="experience-page-summary">
                   During my three-month Web Developer Internship, I contributed to three projects for the company.
@@ -141,7 +144,7 @@ export default function ExperiencePage() {
             </figure>
           </section>
           <div className="page-shell experience-page-back-wrap">
-            <Link className="button button-outline experience-page-back" href="/#experience"><span aria-hidden="true">←</span> Back to experience</Link>
+            <Link className="button button-outline experience-page-back" href="/experience"><span aria-hidden="true">←</span> Back to experience</Link>
           </div>
         </section>
       </main>

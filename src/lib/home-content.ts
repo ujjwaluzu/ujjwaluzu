@@ -116,6 +116,9 @@ export const homeContent = {
     eyebrow: "EXPERIENCE",
     role: "Web Developer Intern",
     company: "IntelligenceX",
+    companyUrl: "https://intelligencex.org",
+    duration: "3 months",
+    companyDescription: "IntelligenceX is a cybersecurity company providing penetration testing, managed security, and compliance services.",
     period: "July 2026 - present",
     description:
       "Building and maintaining web applications, exploring modern technologies, and contributing to impactful products.",

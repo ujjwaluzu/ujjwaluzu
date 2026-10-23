@@ -725,6 +725,24 @@ section[id] { scroll-margin-top: 96px; }
 .experience-company-github-copy > p:last-child { margin: 10px 0 22px; color: rgba(245,247,250,.76); font-size: 14px; line-height: 1.6; }
 .experience-company-github-figure { margin: 0; }
 .experience-company-github-figure img { display: block; width: 100%; height: auto; }
+.experience-directory { min-height: 100vh; padding-bottom: 28px; }
+.experience-directory-hero { padding: 142px 0 34px; }
+.experience-directory-title { margin: 0; font-size: clamp(54px, 7vw, 92px); line-height: .92; }
+.experience-directory-summary { max-width: 620px; margin: 21px 0 0 5px; color: rgba(11,11,11,.8); font-size: 16px; line-height: 1.65; }
+.experience-directory-list { padding: 8px 0 90px; }
+.experience-directory-kicker { margin: 0 0 13px 4px; color: rgba(11,11,11,.55); font-size: 11px; font-weight: 750; letter-spacing: .15em; }
+.experience-directory-card { position: relative; display: grid; grid-template-columns: 62px minmax(0, 1fr) auto; align-items: start; gap: 22px; padding: 27px; border: 1px solid rgba(11,11,11,.52); border-radius: 7px; background: rgba(255,253,245,.8); box-shadow: 0 5px 13px rgba(11,11,11,.035); transition: transform .25s ease, box-shadow .25s ease; }
+.experience-directory-card:hover { transform: translateY(-3px); box-shadow: 0 12px 23px rgba(11,11,11,.1); }
+.experience-directory-logo-wrap { display: grid; place-items: center; width: 58px; height: 58px; border: 1px solid rgba(11,11,11,.14); border-radius: 7px; background: #fff; }
+.experience-directory-logo-wrap img { display: block; width: 48px; height: 48px; object-fit: contain; }
+.experience-directory-copy { display: grid; justify-items: start; }
+.experience-directory-company { font-family: var(--display); font-size: clamp(28px, 3vw, 38px); line-height: 1; }
+.experience-directory-role { margin-top: 7px; color: rgba(11,11,11,.66); font-size: 14px; font-weight: 650; }
+.experience-directory-description { max-width: 760px; margin-top: 15px; color: rgba(11,11,11,.82); font-size: 14px; line-height: 1.65; }
+.experience-directory-action { display: inline-flex; align-items: center; gap: 9px; margin-top: 20px; color: var(--ink); font-size: 11px; font-weight: 750; letter-spacing: .08em; }
+.experience-directory-action span { font-size: 17px; transition: transform .2s ease; }
+.experience-directory-card:hover .experience-directory-action span { transform: translateX(4px); }
+.experience-directory-duration { align-self: start; padding: 9px 13px; border: 1px solid rgba(11,11,11,.4); border-radius: 999px; color: rgba(11,11,11,.76); font-size: 12px; font-weight: 700; white-space: nowrap; }
 
 @media (max-width: 1000px) {
   .experience-page-intro { grid-template-columns: minmax(0,1fr) 160px; gap: 19px; }
@@ -733,6 +751,16 @@ section[id] { scroll-margin-top: 96px; }
   .experience-project-card-head { grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: space-between; }
 }
 @media (max-width: 767px) {
+  .experience-directory-hero { padding: 108px 0 24px; }
+  .experience-directory-title { font-size: clamp(42px, 11vw, 66px); }
+  .experience-directory-summary { margin: 16px 0 0 2px; font-size: 14px; }
+  .experience-directory-list { padding: 8px 0 65px; }
+  .experience-directory-card { grid-template-columns: 58px minmax(0, 1fr); gap: 14px; padding: 18px; }
+  .experience-directory-logo-wrap { grid-row: 1; grid-column: 1; width: 52px; height: 52px; }
+  .experience-directory-logo-wrap img { width: 44px; height: 44px; }
+  .experience-directory-duration { grid-row: 1; grid-column: 2; justify-self: end; padding: 7px 10px; font-size: 11px; }
+  .experience-directory-copy { grid-row: 2; grid-column: 1 / -1; }
+  .experience-directory-description { font-size: 14px; }
   .experience-page-hero { padding: 108px 0 24px; }
   .experience-page-eyebrow { margin-bottom: 18px; font-size: 9px; }
   .experience-page-intro { grid-template-columns: minmax(0,1fr) 72px; gap: 10px; min-height: auto; }

@@ -98,6 +98,7 @@ export function SiteHeader() {
   const navHref = (link: string) => {
     const l = link.toLowerCase();
     if (l === "projects") return "/project";
+    if (l === "experience") return "/experience";
     if (l === "blog") return "https://blog.ujjwaluzu.in";
     if (l === "tools") return "https://tools.ujjwaluzu.in";
     return `/#${l}`;
@@ -120,7 +121,7 @@ export function SiteHeader() {
       </Link>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
-        <Link className={!isContactPage && !isProjectPage && activeSection === "top" ? "active" : ""} href="/">Home</Link>
+        <Link className={!isContactPage && !isProjectPage && !isExperiencePage && activeSection === "top" ? "active" : ""} href="/">Home</Link>
         {links.map((link) =>
           isExternalLink(link) ? (
             <Link
