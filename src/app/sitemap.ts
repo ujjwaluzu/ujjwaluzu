@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { caseStudySlugs } from "@/lib/case-studies";
+import { experienceProjects } from "@/lib/experience-projects";
 import { allVideos } from "@/lib/more-content";
 import { site } from "@/lib/site";
 
@@ -20,11 +21,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
   }));
 
+  const experienceProjectRoutes = experienceProjects.map((project) => ({
+    url: `${site.domain}/experience/intelligencex/${project.slug}`,
+    priority: 0.75,
+    changeFrequency: "monthly" as const,
+  }));
+
   const videoRoutes = allVideos.map((video) => ({
     url: `${site.domain}/more/${video.id}`,
     priority: 0.7,
     changeFrequency: "monthly" as const,
   }));
 
-  return [...staticRoutes, ...projectRoutes, ...videoRoutes];
+  return [...staticRoutes, ...projectRoutes, ...experienceProjectRoutes, ...videoRoutes];
 }

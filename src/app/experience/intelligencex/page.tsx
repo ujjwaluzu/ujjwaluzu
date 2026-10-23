@@ -56,9 +56,9 @@ const experienceJsonLd = {
           "@type": "ListItem",
           position: index + 1,
           item: {
-            "@type": "SoftwareApplication",
+            "@type": "WebPage",
             name: project.name,
-            url: project.url,
+            url: `${pageUrl}/${project.slug}`,
             description: project.about,
           },
         })),
@@ -112,37 +112,43 @@ export default function ExperiencePage() {
           </div>
           <div className="page-shell experience-projects-grid">
             {experienceProjects.map((project, index) => (
-              <article key={project.name} className={`experience-project-card experience-project-card--${index + 1}`}>
-                <div className="experience-project-card-head">
-                  <span className="experience-project-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                  <a
-                    className="experience-project-link"
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${project.name} website, opens in a new tab`}
-                  >
-                    <Image
-                      className={`experience-project-logo experience-project-logo--${project.name.toLowerCase()}`}
-                      src={project.logo}
-                      alt={`${project.name} logo`}
-                      width={project.logoWidth}
-                      height={project.logoHeight}
-                      sizes="(max-width: 767px) 170px, 200px"
-                    />
-                  </a>
-                </div>
-                <section className="experience-project-about" aria-labelledby={`about-${project.name}`}>
-                  <h3 id={`about-${project.name}`}>About the project</h3>
-                  <p>{project.about}</p>
-                </section>
-                <section className="experience-project-work" aria-labelledby={`work-${project.name}`}>
-                  <h3 id={`work-${project.name}`}>My work</h3>
-                  <ul className="experience-project-contributions">
-                    {project.work.map((item) => <li key={item}>{item}</li>)}
-                  </ul>
-                </section>
-              </article>
+              <div key={project.name} className={`experience-project-card-wrap experience-project-card-wrap--${index + 1}`}>
+                <Link
+                  className="experience-project-card"
+                  href={`/experience/intelligencex/${project.slug}`}
+                  aria-label={`Read Ujjwal's ${project.name} project case study`}
+                >
+                  <article>
+                    <div className="experience-project-card-head">
+                      <span className="experience-project-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="experience-project-link">
+                        <Image
+                          className={`experience-project-logo experience-project-logo--${project.name.toLowerCase()}`}
+                          src={project.logo}
+                          alt={`${project.name} logo`}
+                          width={project.logoWidth}
+                          height={project.logoHeight}
+                          sizes="(max-width: 767px) 170px, 200px"
+                        />
+                      </span>
+                    </div>
+                    <section className="experience-project-about" aria-labelledby={`about-${project.name}`}>
+                      <h3 id={`about-${project.name}`}>About the project</h3>
+                      <p>{project.about}</p>
+                    </section>
+                    <section className="experience-project-work" aria-labelledby={`work-${project.name}`}>
+                      <h3 id={`work-${project.name}`}>My work</h3>
+                      <ul className="experience-project-contributions">
+                        {project.work.map((item) => <li key={item}>{item}</li>)}
+                      </ul>
+                    </section>
+                    <span className="experience-project-read-more">Read the project story <span aria-hidden="true">→</span></span>
+                  </article>
+                </Link>
+                <a className="experience-project-external" href={project.url} target="_blank" rel="noopener noreferrer">
+                  Visit {project.name} <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             ))}
           </div>
           <section className="page-shell experience-company-github" aria-labelledby="experience-company-github-title">

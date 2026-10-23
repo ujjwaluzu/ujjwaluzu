@@ -15,7 +15,6 @@ export function personSchema() {
     alternateName: ["Ujjwal", "ujjwaluzu"],
     url: site.domain,
     jobTitle: "Web Developer",
-    worksFor: { "@type": "Organization", name: "IntelligenceX" },
     sameAs: [site.socials.github, site.socials.linkedin, site.socials.x],
   };
 }
