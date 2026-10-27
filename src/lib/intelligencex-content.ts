@@ -26,7 +26,7 @@ export const intelligencexContent = {
   socialImage: "/assets/intelligencex-guide-social.png",
   socialImageAlt: "IntelligenceX company guide and my developer experience: Ujjwal Baunthiyal, personal portfolio",
   author: "Ujjwal Baunthiyal",
-  disclosure: "This is my personal account of IntelligenceX and the web development work I contributed during my internship. Company information is attributed to official sources; implementation details describe my contributions.",
+  disclosure: "This is my personal website documenting the web development work I contributed during my internship at IntelligenceX. Company information is attributed to official sources; implementation details describe my contributions.",
   introduction: "IntelligenceX, at intelligencex.org, is a cybersecurity company whose published services span offensive testing, managed defence, cloud security and compliance. This guide introduces those services and its platform directory, then explains my work on three projects during a three-month Web Developer Internship.",
   identityNote: "The domain matters: this page concerns the company at intelligencex.org. Similar names in search results should not be treated as the same organisation; use the official website linked here to identify the company discussed in this account.",
   atAGlance: [
