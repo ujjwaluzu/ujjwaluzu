@@ -696,6 +696,59 @@ section[id] { scroll-margin-top: 96px; }
   .spotlight { margin-top: 30px; padding: 32px 22px; }
 }
 
+/* UzzUTV case study: adapt the saved streaming-page reference to the portfolio canvas. */
+.uzzutv-page .case-hero-title { max-width: 9ch; }
+.uzzutv-page .case-frame { transform: rotate(.4deg); }
+.uzzutv-page .case-frame:hover { transform: rotate(0) translateY(-3px); }
+.uzzutv-page .feature-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+.uzzutv-page .feature-grid > .reveal:nth-child(1) { grid-column: span 4; }
+.uzzutv-page .feature-grid > .reveal:nth-child(2) { grid-column: span 2; }
+.uzzutv-page .feature-grid > .reveal:nth-child(3),
+.uzzutv-page .feature-grid > .reveal:nth-child(4) { grid-column: span 3; }
+.uzzutv-page .feature-card { padding: 27px 27px 29px; border-radius: 11px; box-shadow: 0 8px 18px rgba(11,11,11,.055); }
+.uzzutv-page .feature-card--discovery,
+.uzzutv-page .feature-card--watching,
+.uzzutv-page .feature-card--social,
+.uzzutv-page .feature-card--anime { background: #fff; }
+.uzzutv-page .feature-card--discovery .feature-card-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 22px; }
+.uzzutv-page .gallery { gap: 24px; margin-top: 42px; }
+.uzzutv-page .gallery-side { display: flex; flex-wrap: wrap; column-gap: 20px; row-gap: 20px; }
+.uzzutv-page .gallery-side-item { flex: 0 0 calc((100% - 20px) / 2); width: calc((100% - 20px) / 2); min-width: 0; padding: 0; }
+.uzzutv-page .gallery-item { border-radius: 12px; box-shadow: 0 8px 18px rgba(11,11,11,.08); }
+.uzzutv-page .stack-breakdown { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.uzzutv-page .stack-entry,
+.uzzutv-page .stack-entry:first-child { min-width: 0; grid-template-columns: 125px minmax(0, 1fr); gap: 16px; padding: 18px; border: 1px solid rgba(11,11,11,.12); border-radius: 10px; background: rgba(255,255,255,.42); }
+.uzzutv-page .stack-entry:last-child { grid-column: 1 / -1; }
+.uzzutv-page .stack-label { font-size: 13px; }
+.uzzutv-page .stack-pill { background: rgba(255,255,255,.52); }
+.uzzutv-page .journey-step { min-height: 142px; border-top-width: 4px; border-radius: 0 0 10px 10px; }
+.uzzutv-page .journey-step:nth-child(2) { border-color: var(--orange); }
+.uzzutv-page .journey-step:nth-child(3) { border-color: var(--pink); }
+.uzzutv-page .journey-step:nth-child(4) { border-color: var(--blue); }
+.uzzutv-page .continue-body { padding: 26px; border: 1px solid rgba(11,11,11,.12); border-radius: 12px; background: #fffdf3; box-shadow: 0 8px 18px rgba(11,11,11,.045); }
+.uzzutv-page .continue-bar { height: 9px; }
+
+@media (max-width: 1000px) {
+  .uzzutv-page .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .uzzutv-page .feature-grid > .reveal:nth-child(n) { grid-column: span 1; }
+  .uzzutv-page .feature-grid > .reveal:first-child { grid-column: 1 / -1; }
+  .uzzutv-page .stack-entry,
+  .uzzutv-page .stack-entry:first-child { grid-template-columns: 1fr; gap: 10px; }
+}
+
+@media (max-width: 767px) {
+  .uzzutv-page .feature-grid { grid-template-columns: 1fr; gap: 14px; }
+  .uzzutv-page .feature-grid > .reveal:nth-child(n) { grid-column: 1; }
+  .uzzutv-page .feature-card { padding: 24px 22px 26px; }
+  .uzzutv-page .feature-card--discovery .feature-card-list { grid-template-columns: 1fr; }
+  .uzzutv-page .gallery { gap: 18px; margin-top: 30px; }
+  .uzzutv-page .gallery-side { column-gap: 20px; row-gap: 20px; }
+  .uzzutv-page .gallery-side-item { flex-basis: calc((100% - 20px) / 2); width: calc((100% - 20px) / 2); }
+  .uzzutv-page .stack-breakdown { grid-template-columns: 1fr; }
+  .uzzutv-page .stack-entry:last-child { grid-column: auto; }
+  .uzzutv-page .continue-body { padding: 21px 18px; }
+}
+
 @media (max-width: 360px) { .page-shell, .site-header { width: calc(100% - 24px); } .about-copy { width: 100%; } .heading-aside { flex-direction: column; align-items: flex-start; gap: 16px; } .hero-tagline { font-size: 15px; } .hero-note-build { right: -3%; } .hero-note-same { right: -6%; } .project-visual { height: 165px; } .tag-list span { font-size: 7.5px; padding: 2px 6px; } }
 
 .experience-page { min-height: 100vh; padding-bottom: 30px; }

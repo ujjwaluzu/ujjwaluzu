@@ -37,7 +37,7 @@ export function UzzutvDetail({
   return (
     <>
       <SiteHeader />
-      <main className="case-page">
+      <main className="case-page uzzutv-page">
         <section className="case-hero paper-texture" id="top">
           <div className="page-shell case-hero-inner">
             <div className="case-hero-copy">
