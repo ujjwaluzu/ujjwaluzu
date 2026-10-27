@@ -12,18 +12,20 @@ export const experienceProjects = [
     "logoHeight": 524,
     "about": "XrepAI is an AI sales development representative for websites. It answers from approved business content, qualifies visitors, enriches leads where supported, connects conversations to CRM and calendar workflows, and hands conversations to salespeople.",
     "work": [
-      "Implemented the landing page and the updated home, how-it-works, features, integrations, pricing, and footer-page interfaces.",
+      "Built the XrepAI website as my first solo project. I started with a supplied homepage template, implemented a few sections, then independently built the full site UI and all pages.",
       "Integrated Mailgun for newsletter, support, and pricing flows; tested email sending for contact, newsletter, and pricing forms.",
-      "Added form and email validation, sign-in and demo-scheduling interfaces, pricing popups, and email-status UI.",
-      "Created AI avatars and hero visuals, added homepage scroll animation, and tested layouts across mobile and desktop viewports.",
-      "Updated content and homepage title, description, metadata, and JSON-LD; fixed reported UI bugs and the trust-page document-request flow."
+      "Built form validation, demo-scheduling interfaces, pricing popups, and email-status UI.",
+      "Created AI avatars, avatar videos, and hero visuals, and added the homepage scroll animation.",
+      "Updated site content and homepage metadata, fixed UI issues, and repaired the trust-page document-request flow.",
+      "Satyam Sir later added ConsentX cookie management and the Ask Lina bot; those additions were not part of my implementation.",
+      "Prepared the site’s content for AI agents; the IsItAgentReady content-profile scan for XrepAI scored 86."
     ],
     "detail": {
       "seoTitle": "XrepAI | AI Sales Representative: IntelligenceX Experience",
-      "seoDescription": "XrepAI’s AI sales workflow and Ujjwal Baunthiyal’s IntelligenceX experience: frontend UI, Mailgun flows, form validation, shared API helpers, and responsive testing.",
+      "seoDescription": "My first solo project: I built the XrepAI website, Mailgun flows, UI and AI avatars; its IsItAgentReady content scan scored 86.",
       "heading": "XrepAI: Building an AI Sales Experience",
       "title": "An AI sales representative for website conversations",
-      "intro": "XrepAI is an AI sales development representative (AI SDR) for business websites. It helps sales, marketing, and revenue operations teams turn visitor questions into qualified leads and scheduled conversations. This portfolio account covers my frontend, API integration, and visual design work during an IntelligenceX internship.",
+      "intro": "XrepAI is an AI sales development representative (AI SDR) for business websites. It helps sales, marketing, and revenue operations teams turn visitor questions into qualified leads and scheduled conversations. It was my first solo project: starting from a supplied homepage template, I implemented a few sections, then built the site's UI and pages independently. I also integrated Mailgun and created AI avatars and videos. Satyam Sir later added ConsentX cookie management and the Ask Lina bot.",
       "sections": [
         {
           "title": "XrepAI, xRep, and Lina",
@@ -88,17 +90,26 @@ export const experienceProjects = [
           "id": "terms",
           "label": "XrepAI service provider identity",
           "url": "https://www.xrepai.com/terms"
-        }
-      ],
-      "contributionContext": "My work tracker records this interface and integration work across September and October 2026. It includes both the initial landing page and a later UI implementation across the main product pages. The work covers website presentation and communication flows; it does not establish authorship of the sales agent or its underlying AI systems.",
-      "engineeringNotes": [
-        {
-          "title": "Consolidating repeated email and API code",
-          "text": "During the cleanup, I merged duplicate API and Mailgun code into shared helpers, removed unused components and dead CSS, and parked the signup flow. Contact, newsletter, and pricing email sending were tested alongside form validation. This made the communication flows a concrete part of my implementation work, beyond the visual layout."
         },
         {
-          "title": "Shipping the UI through responsive checks",
-          "text": "I implemented the revised home, how-it-works, features, and integrations pages, created AI avatars, and corrected reported interface bugs. My tracker records repeated viewport testing and a completed trust-page document-request fix. The later avatar-video and voice refinements were still marked in progress, so they are not presented here as completed deliverables."
+          "id": "agentReadiness",
+          "label": "IsItAgentReady content-profile scan for XrepAI (score: 86)",
+          "url": "https://isitagentready.com/xrepai.com?profile=content"
+        }
+      ],
+      "contributionContext": "I built the XrepAI website independently after beginning from a supplied homepage template. My work covered the page UI, Mailgun and website visuals, not the underlying sales agent or AI system. Satyam Sir later added ConsentX cookie management and the Ask Lina bot; those features were not part of my implementation.",
+      "engineeringNotes": [
+        {
+          "title": "Building the site and its email flows",
+          "text": "After implementing a few homepage sections from the supplied template, I built the remaining site UI and pages on my own. I connected Mailgun for contact, newsletter, support, and pricing messages and tested the sending flows with form validation."
+        },
+        {
+          "title": "Creating the visual identity and later additions",
+          "text": "I created the AI avatars and avatar videos, hero visuals, and a homepage scroll animation. Satyam Sir later added the ConsentX cookie-management feature and Ask Lina bot; those later additions are distinct from the site I built."
+        },
+        {
+          "title": "Preparing XrepAI’s content for AI agents",
+          "text": "I also prepared the site’s content for AI agents. The IsItAgentReady content-profile scan for XrepAI scored 86."
         }
       ]
     },
@@ -114,17 +125,19 @@ export const experienceProjects = [
     "logoHeight": 134,
     "about": "AIPTx is an AI-powered penetration-testing and vulnerability-assessment platform for security teams. Its published workflow discovers an authorized attack surface, tests candidate weaknesses, captures evidence for validated findings, and prioritizes remediation and retesting.",
     "work": [
-      "Updated product UI and imagery across platform, industry, solution, and feature pages, including corrections below the platform hero.",
-      "Worked on SEO for the retail industry page and website discoverability for automated agents.",
-      "Integrated Mailgun APIs and tested the backend as recorded in the existing project account.",
-      "Worked on deployment configuration using render.yaml, compose.yaml, and dockerfile.api, and recorded a temporary test deployment."
+      "Built every AIPTx website page except the homepage. Later, improved the UI across all Solutions and Features pages and several Resources pages.",
+      "Built the login and signup pages, fixed broken Mailgun implementations, and tested the backend.",
+      "Fixed major backend bugs: the dashboard could be opened without completing onboarding, and the pricing page showed $500 while payment was ₹500.",
+      "Configured the backend with Render and Neon and got it working.",
+      "Designed an R2-D2-inspired robot for the pricing section and a Star Wars-inspired call-to-action section.",
+      "Prepared the content for AI agents; IsItAgentReady scored it 86 on the content profile and 60 across all checks."
     ],
     "detail": {
       "seoTitle": "AIPTx | AI-Powered Penetration Testing: IntelligenceX Experience",
-      "seoDescription": "AIPTx’s penetration-testing workflow and Ujjwal Baunthiyal’s IntelligenceX experience with product UI, Mailgun integration, backend testing, SEO, and deployment.",
+      "seoDescription": "AIPTx: Ujjwal’s site, backend, Render, Neon and UI work; IsItAgentReady scores of 86 for content and 60 across all checks.",
       "heading": "AIPTx: AI-Powered Security Testing",
       "title": "From attack-surface discovery to a retestable finding",
-      "intro": "AIPTx is an AI-powered penetration-testing and vulnerability-assessment platform for security teams assessing authorized applications, APIs, and networks. It connects attack-surface discovery with exploit validation, evidence, and remediation. My IntelligenceX internship work covered product UI, Mailgun API integration, and backend testing.",
+      "intro": "AIPTx is an AI-powered penetration-testing and vulnerability-assessment platform for security teams assessing authorized applications, APIs, and networks. It connects attack-surface discovery with exploit validation, evidence, and remediation. During my IntelligenceX internship, I built the AIPTx website except for its homepage, later refined the Solutions, Features and Resources pages, and worked on its login and signup pages, Mailgun integration and backend.",
       "sections": [
         {
           "title": "Why discovery needs validation",
@@ -161,11 +174,13 @@ export const experienceProjects = [
         }
       ],
       "skills": [
+        "Website implementation",
         "Product UI",
+        "Login and signup pages",
         "Mailgun API integration",
-        "Backend testing",
-        "Technical SEO",
-        "Docker and deployment configuration"
+        "Backend testing and bug fixes",
+        "Render and Neon configuration",
+        "Illustration and visual design"
       ],
       "links": [
         {
@@ -197,13 +212,31 @@ export const experienceProjects = [
           "id": "company",
           "label": "IntelligenceX’s AIPTx service",
           "url": "https://www.intelligencex.org/en/products/aiptx"
+        },
+        {
+          "id": "agentReadiness",
+          "label": "IsItAgentReady content-profile scan for AIPTx (score: 86)",
+          "url": "https://isitagentready.com/aiptx.io?profile=content"
+        },
+        {
+          "id": "agentReadinessAll",
+          "label": "IsItAgentReady scan across all checks for AIPTx (score: 60)",
+          "url": "https://isitagentready.com/aiptx.io"
         }
       ],
-      "contributionContext": "My work tracker adds specific page, SEO, and deployment tasks to the existing record of UI, Mailgun integration, and backend testing. These contributions concern the product website and application delivery. They do not establish ownership of the penetration-testing agents, exploit validation, or risk model.",
+      "contributionContext": "My AIPTx work combined website development and visual design with backend integration, bug fixing and deployment configuration. It covered the product site and app setup, not authorship of the underlying penetration-testing agents or risk model.",
       "engineeringNotes": [
         {
-          "title": "Interface and deployment work around the product",
-          "text": "I corrected imagery and UI below the platform hero and updated visuals across platform, industry, solution, and feature pages. I also worked on the retail page’s SEO. For a temporary deployment, my tracker names Render configuration, a Compose file, and an API Dockerfile. That records deployment work, not a claim about AIPTx’s current production architecture."
+          "title": "Fixing backend issues in the product",
+          "text": "While testing the backend, I fixed a dashboard access issue that let users skip onboarding. I also corrected a mismatch where the pricing page displayed $500 while the payment amount was ₹500."
+        },
+        {
+          "title": "Getting the backend running and shaping the interface",
+          "text": "I configured the backend with Render and Neon and got it working. I also designed an R2-D2-inspired robot for the pricing section and a Star Wars-inspired call-to-action section, carrying the theme into two prominent parts of the site."
+        },
+        {
+          "title": "Preparing AIPTx content for AI agents",
+          "text": "I prepared the site's content for AI agents. Its IsItAgentReady content-profile scan scored 86; the scan across all checks scored 60."
         }
       ]
     },
@@ -219,16 +252,17 @@ export const experienceProjects = [
     "logoHeight": 134,
     "about": "CSPMX is a cloud security posture management platform for security, IT, and DevSecOps teams. It provides visibility into AWS, Azure, and Google Cloud configurations, identifies misconfigurations and compliance gaps, and supports prioritized remediation and continuous monitoring.",
     "work": [
-      "Added and updated content across the CSPMX project.",
-      "Made UI changes alongside the content implementation.",
-      "Recorded website changes for automated-agent discoverability in the October work tracker; production publication was still pending at that checkpoint."
+      "Wrote and integrated the supplied content across the site, fixing UI issues as they came up.",
+      "Built the login and signup page UIs, then commented out those pages because authentication functionality had not been built. Also built all industry and legal pages.",
+      "Repaired the broken Mailgun integration.",
+      "Prepared the site’s content for AI agents; its IsItAgentReady content scan scored 86."
     ],
     "detail": {
       "seoTitle": "CSPMX | Cloud Security Posture Management: IntelligenceX Experience",
-      "seoDescription": "Explore CSPMX’s cloud misconfiguration, compliance, and remediation workflow, alongside Ujjwal Baunthiyal’s content implementation and UI work at IntelligenceX.",
+      "seoDescription": "My CSPMX work: site content and UI, commented-out login and signup page UIs, industry and legal pages, a Mailgun fix, and an IsItAgentReady content scan score of 86.",
       "heading": "CSPMX: Cloud Security Posture Management",
       "title": "Cloud posture is a continuous operating task",
-      "intro": "CSPMX is a cloud security posture management (CSPM) platform for security, IT, and DevSecOps teams. It helps teams see configuration risks across AWS, Microsoft Azure, and Google Cloud and act on misconfigurations and compliance gaps as environments change. My IntelligenceX internship contribution focused on content implementation and UI updates.",
+      "intro": "CSPMX is a cloud security posture management (CSPM) platform for security, IT, and DevSecOps teams. It helps teams see configuration risks across AWS, Microsoft Azure, and Google Cloud and act on misconfigurations and compliance gaps as environments change.",
       "sections": [
         {
           "title": "From configuration drift to prioritized action",
@@ -265,7 +299,10 @@ export const experienceProjects = [
       "skills": [
         "Content implementation",
         "UI updates",
-        "Website discoverability",
+        "Login and signup pages",
+        "Industry and legal pages",
+        "Mailgun integration troubleshooting",
+        "AI-agent readiness",
         "Cloud security product communication"
       ],
       "links": [
@@ -283,13 +320,18 @@ export const experienceProjects = [
           "id": "company",
           "label": "IntelligenceX’s CSPMX product overview",
           "url": "https://www.intelligencex.org/en/products/cspmx"
+        },
+        {
+          "id": "agentReadiness",
+          "label": "IsItAgentReady content-profile scan for CSPMX.io (score: 86)",
+          "url": "https://isitagentready.com/cspmx.io?profile=content"
         }
       ],
-      "contributionContext": "My CSPMX work focused on content and UI, with a later website discoverability task recorded in October 2026. The tracker noted that those later changes still needed publication from the main branch. I therefore do not present that task as a verified production improvement or claim a measured search outcome.",
+      "contributionContext": "My contribution spanned the CSPMX website, from implementing its supplied content and resolving UI issues to building the login, signup, industry and legal page UIs and repairing the Mailgun integration. The login and signup pages are commented out for now because authentication functionality has not been built.",
       "engineeringNotes": [
         {
-          "title": "Keeping the contribution scoped to the website",
-          "text": "The available project record supports content implementation, UI updates, and work on website discoverability for automated agents. It does not identify the specific discoverability files changed or attribute the cloud connectors, scanning rules, or remediation automation to me."
+          "title": "Preparing CSPMX’s content for AI agents",
+          "text": "I also prepared the site’s content for AI agents. The IsItAgentReady content-profile scan for CSPMX.io scored 86."
         }
       ]
     },

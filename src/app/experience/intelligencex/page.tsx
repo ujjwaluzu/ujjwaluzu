@@ -1,178 +1,127 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SeoJsonLd } from "@/components/seo-json-ld";
-import { experienceProjects } from "@/lib/experience-projects";
-import { homeContent } from "@/lib/home-content";
-import { breadcrumbSchema, defaultSocialImage, personSchema } from "@/lib/seo-schema";
+import { intelligencexContent as content, intelligencexSources } from "@/lib/intelligencex-content";
+import { intelligencexGuideSchema } from "@/lib/intelligencex-schema";
 import { site } from "@/lib/site";
 
-const pageUrl = `${site.domain}/experience/intelligencex`;
-const pageTitle = "Ujjwal at IntelligenceX: XrepAI, AIPTx & CSPMX";
-const pageDescription =
-  "Ujjwal Baunthiyal’s three-month Web Developer Internship at IntelligenceX, with project work on XrepAI, AIPTx, and CSPMX.";
+const pageUrl = `${site.domain}${content.path}`;
+const socialImage = { url: `${site.domain}${content.socialImage}`, width: 1200, height: 630, alt: content.socialImageAlt };
 
 export const metadata: Metadata = {
-  title: pageTitle,
-  description: pageDescription,
+  title: content.title,
+  description: content.description,
+  keywords: null,
   openGraph: {
-    title: pageTitle,
-    description: pageDescription,
-    url: pageUrl,
-    siteName: site.name,
-    locale: "en_US",
-    type: "website",
-    images: [{ url: defaultSocialImage, alt: "Ujjwal Baunthiyal illustrated portrait" }],
+    title: content.title, description: content.description, url: pageUrl,
+    siteName: site.name, locale: "en_US", type: "website", images: [socialImage],
   },
-  twitter: {
-    card: "summary",
-    title: pageTitle,
-    description: pageDescription,
-    images: [defaultSocialImage],
-  },
+  twitter: { card: "summary_large_image", title: content.title, description: content.description, images: [socialImage] },
   alternates: { canonical: pageUrl },
 };
 
-const experienceJsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": `${pageUrl}#webpage`,
-      url: pageUrl,
-      name: pageTitle,
-      description: pageDescription,
-      isPartOf: { "@id": `${site.domain}/#website` },
-      about: personSchema(),
-      mainEntity: {
-        "@type": "ItemList",
-        name: "Projects Ujjwal Baunthiyal contributed to at IntelligenceX",
-        itemListOrder: "https://schema.org/ItemListOrderAscending",
-        numberOfItems: experienceProjects.length,
-        itemListElement: experienceProjects.map((project, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          item: {
-            "@type": "WebPage",
-            name: project.name,
-            url: `${pageUrl}/${project.slug}`,
-            description: project.about,
-          },
-        })),
-      },
-    },
-    breadcrumbSchema([
-      { name: "Home", url: site.domain },
-      { name: "Experience", url: `${site.domain}/experience` },
-      { name: "IntelligenceX Projects", url: pageUrl },
-    ]),
-  ],
-};
+function SourceLink({ id }: { id: keyof typeof intelligencexSources }) {
+  const source = intelligencexSources[id];
+  return <a className="guide-source-link" href={source.url}>{source.label} <span aria-hidden="true">↗</span></a>;
+}
 
-export default function ExperiencePage() {
-  const { experience } = homeContent;
+function GuideSection({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+  return <section className="guide-section page-shell" id={id} aria-labelledby={`${id}-title`}>
+    <h2 id={`${id}-title`}>{title}</h2>{children}
+  </section>;
+}
 
-  return (
-    <>
-      <SeoJsonLd data={experienceJsonLd} />
-      <SiteHeader />
-      <main className="experience-page paper-texture">
-        <section className="experience-page-hero">
-          <div className="page-shell">
-            <p className="experience-page-eyebrow">INTERNSHIP <span aria-hidden="true">/</span> 3 PROJECTS</p>
-            <div className="experience-page-intro">
-              <div>
-                <h1 className="display-heading experience-page-title">WEB DEVELOPER<br />INTERN AT<br />INTELLIGENCEX.</h1>
-                <p className="experience-page-company">
-                  <a href={experience.companyUrl} target="_blank" rel="noopener noreferrer">{experience.company}</a> {experience.companyDescription}
-                </p>
-                <p className="experience-page-summary">
-                  During my three-month internship at IntelligenceX, I contributed to XrepAI, AIPTx, and CSPMX. Here’s what each product does and the work I did on it.
-                </p>
-              </div>
-              <Image
-                className="experience-page-company-logo"
-                src="/assets/intelligencex-logo.svg"
-                alt="IntelligenceX logo"
-                width={1110}
-                height={60}
-                sizes="(max-width: 767px) 200px, (max-width: 1000px) 280px, 300px"
-                priority
-              />
-            </div>
-          </div>
-        </section>
+export default function IntelligencexPage() {
+  return <>
+    <SeoJsonLd data={intelligencexGuideSchema()} />
+    <SiteHeader />
+    <main className="experience-page intelligencex-guide paper-texture">
+      <header className="experience-page-hero">
+        <div className="page-shell">
+          <nav className="experience-detail-breadcrumbs" aria-label="Breadcrumb">
+            <Link href="/">Home</Link><span aria-hidden="true">/</span>
+            <Link href="/experience">Experience</Link><span aria-hidden="true">/</span>
+            <span aria-current="page">IntelligenceX</span>
+          </nav>
+          <p className="experience-page-eyebrow">COMPANY GUIDE <span aria-hidden="true">/</span> DEVELOPER EXPERIENCE</p>
+          <h1 className="display-heading guide-title">{content.heading}</h1>
+          <p className="guide-byline">By <Link href="/">{content.author}</Link> · Updated <time dateTime={content.updated}>{content.dateLabel}</time></p>
+          <p className="guide-disclosure">{content.disclosure}</p>
+          <nav className="guide-toc" aria-label="On this page">
+            <strong>In this guide</strong>
+            <ul>{content.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.label}</a></li>)}</ul>
+          </nav>
+        </div>
+      </header>
 
-        <section className="experience-projects-section" aria-label="Internship projects">
-          <div className="page-shell">
-            <h2 className="experience-projects-heading">Three projects. Three months.</h2>
+      <GuideSection id="company" title="What is IntelligenceX?">
+        <div className="guide-company-intro">
+          <div><p>{content.introduction}</p><SourceLink id="company" /><p>{content.identityNote}</p></div>
+          <Image src="/assets/intelligencex-logo.svg" alt="IntelligenceX logo" width={1110} height={60} sizes="(max-width: 767px) 230px, 300px" />
+        </div>
+        <h3>Company at a glance</h3>
+        <dl className="guide-facts">
+          {content.atAGlance.map((fact) => <div key={fact.title}><dt>{fact.title}</dt><dd>{fact.text}<SourceLink id={fact.source} /></dd></div>)}
+          <div><dt>My relationship</dt><dd>{content.relationship}<a className="guide-source-link" href="#my-work">My recorded contributions ↓</a></dd></div>
+        </dl>
+      </GuideSection>
+
+      <GuideSection id="services" title="IntelligenceX services, explained">
+        <div className="guide-service-grid">{content.services.map((service, index) => <article key={service.title} className={`guide-service guide-service--${index}`}>
+          <h3>{service.title}</h3><p>{service.text}</p><SourceLink id={service.source} />
+        </article>)}</div>
+      </GuideSection>
+
+      <GuideSection id="platforms" title="IntelligenceX platform directory">
+        <p>{content.platformIntro}</p><SourceLink id="platforms" />
+        <table className="guide-platform-table">
+          <caption>Eight platforms in the official company directory</caption>
+          <thead><tr><th scope="col">Platform / official overview</th><th scope="col">Published purpose</th></tr></thead>
+          <tbody>{content.platforms.map((platform) => <tr key={platform.slug}>
+            <th scope="row"><a href={platform.url}>{platform.name} <span aria-hidden="true">↗</span></a></th><td>{platform.purpose}</td>
+          </tr>)}</tbody>
+        </table>
+      </GuideSection>
+
+      <GuideSection id="my-work" title="My developer work at IntelligenceX">
+        <p>{content.workIntro}</p><p className="guide-note">{content.ownershipNote}</p>
+        <div className="guide-projects">{content.projects.map((project) => <article className="guide-project" key={project.slug}>
+          <div className="guide-project-heading">
+            <h3><Link href={`${content.path}/${project.slug}`}>{project.name}</Link></h3>
+            <span>{project.category}</span>
           </div>
-          <div className="page-shell experience-projects-grid">
-            {experienceProjects.map((project, index) => (
-              <div key={project.name} className={`experience-project-card-wrap experience-project-card-wrap--${index + 1}`}>
-                <Link
-                  className="experience-project-card"
-                  href={`/experience/intelligencex/${project.slug}`}
-                  aria-label={`Read Ujjwal's ${project.name} project case study`}
-                >
-                  <article>
-                    <div className="experience-project-card-head">
-                      <span className="experience-project-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                      <span className="experience-project-link">
-                        <Image
-                          className={`experience-project-logo experience-project-logo--${project.name.toLowerCase()}`}
-                          src={project.logo}
-                          alt={`${project.name} logo`}
-                          width={project.logoWidth}
-                          height={project.logoHeight}
-                          sizes="(max-width: 767px) 170px, 200px"
-                        />
-                      </span>
-                    </div>
-                    <section className="experience-project-about" aria-labelledby={`about-${project.name}`}>
-                      <h3 id={`about-${project.name}`}>About the project</h3>
-                      <p>{project.about}</p>
-                    </section>
-                    <section className="experience-project-work" aria-labelledby={`work-${project.name}`}>
-                      <h3 id={`work-${project.name}`}>My work</h3>
-                      <ul className="experience-project-contributions">
-                        {project.work.map((item) => <li key={item}>{item}</li>)}
-                      </ul>
-                    </section>
-                    <span className="experience-project-read-more">Explore {project.name}: {project.category} <span aria-hidden="true">→</span></span>
-                  </article>
-                </Link>
-                <a className="experience-project-external" href={project.url} target="_blank" rel="noopener noreferrer">
-                  Visit {project.name} <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            ))}
+          <ul>{project.work.map((work) => <li key={work}>{work}</li>)}</ul>
+          <div className="guide-project-actions">
+          {project.detail.links.filter((source) => source.id.startsWith("agentReadiness")).map((source) => (
+            <a className="guide-source-link" href={source.url} key={source.id}>
+              {source.id === "agentReadinessAll" ? "View all-checks scan (60)" : "View content-profile scan (86)"} →
+            </a>
+          ))}
+            <Link className="guide-source-link" href={`${content.path}/${project.slug}`}>Read my {project.name} case study →</Link>
           </div>
-          <section className="page-shell experience-company-github" aria-labelledby="experience-company-github-title">
-            <div className="experience-company-github-copy">
-              <p className="experience-page-eyebrow">COMPANY ACCOUNT</p>
-              <h2 id="experience-company-github-title">My GitHub work at IntelligenceX</h2>
-              <p>This contribution graph is from my work GitHub account at IntelligenceX.</p>
-            </div>
-            <figure className="experience-company-github-figure">
-              <Image
-                src="/assets/intelligencex-github-contributions.webp"
-                alt="GitHub contribution chart from my IntelligenceX work account, showing 278 contributions in the last year for 2026."
-                width={1106}
-                height={270}
-                sizes="(max-width: 767px) 100vw, 1100px"
-              />
-            </figure>
-          </section>
-          <div className="page-shell experience-page-back-wrap">
-            <Link className="button button-outline experience-page-back" href="/experience"><span aria-hidden="true">←</span> Back to experience</Link>
-          </div>
-        </section>
-      </main>
-      <SiteFooter />
-    </>
-  );
+        </article>)}</div>
+        <figure className="guide-evidence">
+          <Image src="/assets/intelligencex-github-contributions.webp" alt="GitHub contribution graph from my IntelligenceX work account, showing activity in 2026." width={1106} height={270} sizes="(max-width: 767px) 100vw, 1100px" />
+          <figcaption>{content.evidenceNote}</figcaption>
+        </figure>
+      </GuideSection>
+
+      <GuideSection id="questions" title="Questions and answers">
+        <div className="guide-questions">{content.questions.map((item) => <section key={item.question}><h3>{item.question}</h3><p>{item.answer}</p></section>)}</div>
+      </GuideSection>
+
+      <GuideSection id="sources" title="Sources and review notes">
+        <p>Official sources checked on <time dateTime={content.reviewed}>{content.dateLabel}</time>.</p>
+        <ul className="guide-sources">{Object.values(intelligencexSources).map((source) => <li key={source.url}><a href={source.url}>{source.label}</a><span>{source.supports}</span></li>)}</ul>
+        {content.reviewNotes.map((note) => <p key={note}>{note}</p>)}
+        <Link className="guide-source-link" href="/experience">← Explore my work experience</Link>
+      </GuideSection>
+    </main>
+    <SiteFooter />
+  </>;
 }

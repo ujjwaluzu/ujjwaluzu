@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SeoJsonLd } from "@/components/seo-json-ld";
 import { experienceProjects, getExperienceProject } from "@/lib/experience-projects";
 import { homeContent } from "@/lib/home-content";
+import { experienceProductId, intelligencexId, intelligencexOrganizationSchema } from "@/lib/intelligencex-schema";
 import { breadcrumbSchema, personSchema, websiteSchema } from "@/lib/seo-schema";
 import { site } from "@/lib/site";
 
@@ -64,12 +65,7 @@ export default async function ExperienceProjectPage({ params }: Props) {
     "@graph": [
       personSchema(),
       websiteSchema(),
-      {
-        "@type": "Organization",
-        "@id": `${company.companyUrl}/#organization`,
-        name: company.company,
-        url: company.companyUrl,
-      },
+      intelligencexOrganizationSchema(),
       {
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
@@ -78,16 +74,17 @@ export default async function ExperienceProjectPage({ params }: Props) {
         description: project.detail.intro,
         isPartOf: { "@id": `${site.domain}/#website` },
         author: { "@id": `${site.domain}/#ujjwal-baunthiyal` },
+        publisher: { "@id": `${site.domain}/#ujjwal-baunthiyal` },
         inLanguage: "en",
         about: {
           "@type": "Thing",
-          "@id": `${pageUrl}#product`,
+          "@id": experienceProductId(project.slug),
           name: project.name,
           url: project.url,
           sameAs: project.url,
           description: project.about,
         },
-        mentions: { "@id": `${company.companyUrl}/#organization` },
+        mentions: { "@id": intelligencexId },
         citation: project.detail.links.map((source) => source.url),
         relatedLink: [
           `${site.domain}/experience/intelligencex`,
@@ -190,7 +187,7 @@ export default async function ExperienceProjectPage({ params }: Props) {
               </ul>
             </section>
             <section className="experience-detail-section" aria-labelledby="experience-detail-links-title">
-              <h3 id="experience-detail-links-title">Official product references</h3>
+              <h3 id="experience-detail-links-title">Project and product references</h3>
               <ul className="experience-project-contributions">
                 {project.detail.links.map((item) => (
                   <li key={item.url}>
@@ -215,7 +212,7 @@ export default async function ExperienceProjectPage({ params }: Props) {
             ))}
           </div>
           <div className="experience-page-back-wrap">
-            <Link className="button button-outline experience-page-back" href="/experience/intelligencex"><span aria-hidden="true">←</span> Back to IntelligenceX projects</Link>
+            <Link className="button button-outline experience-page-back" href="/experience/intelligencex"><span aria-hidden="true">←</span> IntelligenceX company guide &amp; my work</Link>
           </div>
         </section>
       </main>

@@ -1,5 +1,7 @@
 # IntelligenceX experience SEO implementation
 
+Historical record for the 23 October project-page work. The 27 October [company-guide release record](intelligencex-guide-release.md) supersedes this report's parent-page content and AI-input policy; the updated code permits AI search input while excluding GPTBot training crawls.
+
 Audit and implementation date: 23 October 2026.
 
 Implementation is complete in the working tree. It has not been deployed by this task. No Search Console or Bing Webmaster Tools account data was available; indexing, selected canonicals, rankings, traffic changes, and external authority are unverified.
@@ -44,11 +46,11 @@ IntelligenceX's public directory verifies the AIPTx and CSPMX product relationsh
 
 ## Content changes and differentiation
 
-**XrepAI:** Defines the sales product immediately and separates the platform name from xRep and Lina. Explains visitor engagement, grounded answers, qualification, enrichment, calendar booking, CRM continuity, and human handoff. The personal account now covers the landing and product-page UI, Mailgun newsletter/support/pricing flows, form validation, contact-email tests, shared API/Mailgun helpers, cleanup, responsive checks, avatars/hero work, metadata/JSON-LD, and the completed trust-page document-request fix. Later avatar-video and voice tasks remain explicitly unfinished in the source record rather than claimed as shipped.
+**XrepAI:** Defines the sales product immediately and separates the platform name from xRep and Lina. Explains visitor engagement, grounded answers, qualification, enrichment, calendar booking, CRM continuity, and human handoff. Ujjwal describes XrepAI as his first solo project: he began from a supplied homepage template, implemented a few sections, then built the site's UI and remaining pages independently. His work includes Mailgun flows, form validation, AI avatars and videos, hero visuals, homepage animation, metadata updates, a trust-page document-request fix and an IsItAgentReady content-profile score of 86. Satyam Sir later added ConsentX cookie management and the Ask Lina bot.
 
-**AIPTx:** Explains why a candidate weakness is not the same as an evidenced exploit; follows scope, discovery, validation, prioritization, and retesting. Separates commercial assessments from the public AI-assisted framework. Personal work includes platform/industry/solution/feature visuals, retail-page SEO, existing documented Mailgun integration and backend testing, and tracker-supported Render/Compose/API Dockerfile deployment work. A temporary test deployment is not presented as current production architecture.
+**AIPTx:** Explains why a candidate weakness is not the same as an evidenced exploit; follows scope, discovery, validation, prioritization, and retesting. Separates commercial assessments from the public AI-assisted framework. Ujjwal's account covers building every website page except the homepage; a later UI pass across all Solutions and Features pages and several Resources pages; login/signup; broken Mailgun implementations; backend testing and fixes for onboarding access and a USD/INR pricing mismatch; Render/Neon configuration; R2-D2-inspired pricing artwork; a Star Wars-inspired call-to-action; and IsItAgentReady results of 86 for the content profile and 60 across all checks.
 
-**CSPMX:** Explains changing cloud configurations, continuous oversight, affected-resource and control context, prioritization, remediation, and compliance monitoring. Clearly distinguishes posture management from penetration testing. Personal attribution remains content/UI implementation and the tracker-recorded automated-agent discoverability work. Its publication was pending at that tracker checkpoint; no deployed improvement or numeric score is claimed.
+**CSPMX:** Explains changing cloud configurations, continuous oversight, affected-resource and control context, prioritization, remediation, and compliance monitoring. Clearly distinguishes posture management from penetration testing. Ujjwal's personal account covers implementing supplied content across the site, fixing UI issues, building login/signup, industry and legal pages, repairing the broken Mailgun implementation, and making the content site AI-agent-ready. The linked IsItAgentReady content profile for CSPMX.io reports a score of 86.
 
 Product statements have contextual source links. Repeated FAQ answers and the duplicate contribution paragraph were replaced with one contribution list, scope context, and specific engineering notes. Existing visual components, logos, routing, animations, colors, and responsive layouts are retained. Personal content remains centralized in `src/lib/experience-projects.ts`; no fabricated framework, employment dates, customer figures, or results were added.
 
@@ -113,8 +115,8 @@ Local evidence is written under ignored `test-results/`: `experience-seo.json`, 
 ## Remaining information and authority
 
 - Exact frameworks, API endpoints, Mailgun event handling, test cases/results, and user-owned implementation artifacts would support a deeper technical case study. The tracker does not provide those details.
-- AIPTx Mailgun/backend work is retained from the original portfolio; the supplied tracker adds UI, SEO, and deployment tasks but does not detail those earlier integrations/tests.
-- CSPMX's precise agent-discoverability changes and eventual production publication are not established. The tracker scores are omitted because methodology and reproducible evidence were not supplied.
+- The AIPTx account describes the backend fixes and Render/Neon configuration Ujjwal reported; it does not claim authorship of the underlying penetration-testing agents or risk model.
+- The IsItAgentReady content-profile link is provided as a record of the reported score, not as an independent audit or a claim about search ranking or user outcomes.
 - XrepAI's corporate relationship to IntelligenceX is not established by the product sources; only the owner's internship contribution is stated.
 - Private code is not available for independent implementation review. Approved screenshots, redacted code excerpts, or public pull requests could add verifiable detail if the owner can share them.
 - External citations, legitimate employer/product-team attribution, search demand, competing official results, and existing backlink authority remain outside this code change. No external messages, link submissions, or manufactured backlinks were created.

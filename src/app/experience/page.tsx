@@ -10,7 +10,7 @@ import { breadcrumbSchema, defaultSocialImage, personSchema } from "@/lib/seo-sc
 import { site } from "@/lib/site";
 
 const pageUrl = `${site.domain}/experience`;
-const pageTitle = "Web Developer Intern at IntelligenceX | Ujjwal Baunthiyal";
+const pageTitle = "Work Experience | Ujjwal Baunthiyal";
 const pageDescription =
   "Ujjwal Baunthiyal’s work experience, including a three-month Web Developer Internship at IntelligenceX and contributions to XrepAI, AIPTx, and CSPMX.";
 
@@ -83,7 +83,7 @@ export default function ExperienceIndexPage() {
                 <span className="experience-directory-company">{experience.company}</span>
                 <span className="experience-directory-role">{experience.role}</span>
                 <span className="experience-directory-description">{experience.companyDescription}</span>
-                <span className="experience-directory-action">VIEW PROJECTS AND WORK <span aria-hidden="true">→</span></span>
+                <span className="experience-directory-action">INTELLIGENCEX GUIDE &amp; MY WORK <span aria-hidden="true">→</span></span>
               </span>
               <span className="experience-directory-duration">{experience.duration}</span>
             </Link>

@@ -11,10 +11,11 @@ export default async function run(page, baseURL = "http://localhost:3100") {
     if (message.type() === "error") errors.push(message.text());
   });
   await mkdir("test-results/experience-screenshots", { recursive: true });
-  for (const slug of ["xrepai", "aiptx", "cspmx"]) {
+  for (const slug of ["guide", "xrepai", "aiptx", "cspmx"]) {
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({ width, height: 900 });
-      const response = await page.goto(`${baseURL}/experience/intelligencex/${slug}`, { waitUntil: "domcontentloaded" });
+      const path = slug === "guide" ? "/experience/intelligencex" : `/experience/intelligencex/${slug}`;
+      const response = await page.goto(`${baseURL}${path}`, { waitUntil: "domcontentloaded" });
       assert.equal(response.status(), 200);
       await page.evaluate(() => document.fonts.ready);
       for (const img of await page.locator("main img").all()) {
@@ -22,7 +23,7 @@ export default async function run(page, baseURL = "http://localhost:3100") {
         await page.waitForFunction((element) => element.complete && element.naturalWidth > 0, await img.elementHandle());
         await img.evaluate((element) => element.decode());
       }
-      await page.locator(".experience-detail-title").scrollIntoViewIfNeeded();
+      await page.locator("h1").scrollIntoViewIfNeeded();
       await page.evaluate(() => window.scrollTo(0, 0));
       const metrics = await page.evaluate(() => {
         const doc = document.documentElement;
@@ -36,7 +37,7 @@ export default async function run(page, baseURL = "http://localhost:3100") {
           overflows,
           h1Count: main.querySelectorAll("h1").length,
           brokenImages: [...main.querySelectorAll("img")].filter((img) => img.complete && !img.naturalWidth).map((img) => img.src),
-          introVisible: getComputedStyle(main.querySelector(".experience-detail-intro")).visibility === "visible",
+          introVisible: getComputedStyle(main.querySelector(".experience-detail-intro, .guide-disclosure")).visibility === "visible",
         };
       });
       assert.equal(metrics.overflow, false, `${slug} overflows at ${width}px`);
@@ -44,6 +45,27 @@ export default async function run(page, baseURL = "http://localhost:3100") {
       assert.equal(metrics.h1Count, 1);
       assert.equal(metrics.introVisible, true);
       assert.deepEqual(metrics.brokenImages, []);
+      if (slug === "guide") {
+        assert.equal(await page.locator(".guide-platform-table tbody tr").count(), 8);
+        for (const link of await page.locator(".guide-toc a").all()) {
+          await link.click();
+          const id = await link.getAttribute("href");
+          await page.waitForFunction((selector) => {
+            const top = document.querySelector(selector).getBoundingClientRect().top;
+            return top >= 0 && top < 160;
+          }, id);
+          const top = await page.locator(id).evaluate((el) => el.getBoundingClientRect().top);
+          assert.ok(top >= 0 && top < 160, `Anchor hidden at ${width}px: ${id}, ${top}`);
+        }
+        await page.locator(".guide-toc a").first().focus();
+        await page.keyboard.press("Tab");
+        await page.keyboard.press("Shift+Tab");
+        const focus = await page.evaluate(() => getComputedStyle(document.activeElement).outlineStyle);
+        assert.notEqual(focus, "none");
+        await page.keyboard.press("Enter");
+        assert.equal(new URL(page.url()).hash, "#company");
+        await page.evaluate(() => window.scrollTo(0, 0));
+      }
       if (width === 390 || width === 1440) {
         await page.screenshot({ path: `test-results/experience-screenshots/${slug}-${width}.png`, fullPage: true });
       }
@@ -58,5 +80,17 @@ export default async function run(page, baseURL = "http://localhost:3100") {
   assert.equal(motion.reduce, true);
   assert.ok(parseFloat(motion.duration) <= 0.001);
   assert.deepEqual(errors, [], "Browser/hydration errors");
-  return { results, reducedMotion: motion, browserErrors: errors };
+  const noJs = await page.context().browser().newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 900 } });
+  try {
+    const staticPage = await noJs.newPage();
+    const response = await staticPage.goto(`${baseURL}/experience/intelligencex`);
+    assert.equal(response.status(), 200);
+    for (const id of ["company", "services", "platforms", "my-work", "implementation", "questions", "sources"]) {
+      assert.equal(await staticPage.locator(`#${id}`).isVisible(), true);
+    }
+    await staticPage.locator('.guide-toc a[href="#platforms"]').click();
+    assert.equal(new URL(staticPage.url()).hash, "#platforms");
+    await staticPage.screenshot({ path: "test-results/experience-screenshots/guide-no-js.png", fullPage: true });
+  } finally { await noJs.close(); }
+  return { results, reducedMotion: motion, browserErrors: errors, withoutJavaScript: "pass" };
 }

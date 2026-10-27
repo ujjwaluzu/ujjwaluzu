@@ -761,6 +761,22 @@ section[id] { scroll-margin-top: 96px; }
 .experience-page-company a { font-weight: 750; text-decoration: underline; text-decoration-color: var(--ink); text-underline-offset: 3px; }
 .experience-page-summary { max-width: 580px; margin: 24px 0 0 5px; color: rgba(11,11,11,.8); font-size: 16px; line-height: 1.65; }
 .experience-page-company-logo { display: block; width: min(100%, 300px); height: auto; justify-self: center; align-self: center; }
+.experience-company-profile { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 34px 7%; align-items: start; margin-top: 23px; margin-bottom: 48px; padding: clamp(22px, 4vw, 42px); border: 1px solid rgba(11,11,11,.48); border-radius: 8px; background: rgba(255,253,245,.72); box-shadow: 5px 6px 0 rgba(11,11,11,.07); }
+.experience-company-profile-intro .experience-page-eyebrow { margin-bottom: 17px; }
+.experience-company-profile-intro h2 { max-width: 14ch; margin: 0; font-family: var(--display); font-size: clamp(30px, 4vw, 49px); line-height: 1.02; }
+.experience-company-profile-intro > p:not(.experience-page-eyebrow) { max-width: 480px; margin: 17px 0 0; color: rgba(11,11,11,.78); font-size: 15px; line-height: 1.75; }
+.experience-company-profile-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 19px; color: var(--ink); font-size: 12px; font-weight: 800; letter-spacing: .05em; text-underline-offset: 4px; }
+.experience-company-profile-link span { color: var(--orange); font-size: 17px; }
+.experience-company-profile-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+.experience-company-profile-card { min-height: 158px; padding: 18px; border: 1px solid rgba(11,11,11,.3); border-radius: 5px; background: rgba(255,255,255,.42); }
+.experience-company-profile-card--services { background: #fff0b5; }
+.experience-company-profile-card--compliance { background: #f8d8d5; }
+.experience-company-profile-card--platforms { background: #dce9ff; }
+.experience-company-profile-card--sectors { background: #dcedcf; }
+.experience-company-profile-number { display: block; margin-bottom: 13px; color: rgba(11,11,11,.52); font-family: var(--hand); font-size: 13px; }
+.experience-company-profile-card h3 { margin: 0; font-family: var(--display); font-size: 20px; line-height: 1.1; }
+.experience-company-profile-card p { margin: 9px 0 0; color: rgba(11,11,11,.78); font-size: 12px; line-height: 1.65; }
+.experience-company-profile-note { grid-column: 1 / -1; margin: -9px 0 0; padding-top: 15px; border-top: 1px solid rgba(11,11,11,.19); color: rgba(11,11,11,.68); font-size: 12px; line-height: 1.6; }
 .experience-projects-section { padding: 14px 0 82px; }
 .experience-projects-heading { margin: 0 0 18px; color: var(--ink, #0b0b0b); font-size: clamp(24px, 3vw, 38px); line-height: 1.05; }
 .experience-projects-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: stretch; min-width: 0; }
@@ -886,6 +902,13 @@ section[id] { scroll-margin-top: 96px; }
   .experience-page-company { margin: 16px 0 0 2px; font-size: 14px; }
   .experience-page-summary { max-width: 340px; margin: 18px 0 0 2px; font-size: 14px; }
   .experience-page-company-logo { grid-column: 2; width: min(100%, 200px); justify-self: end; align-self: start; }
+  .experience-company-profile { grid-template-columns: 1fr; gap: 25px; margin-top: 16px; margin-bottom: 31px; padding: 21px; }
+  .experience-company-profile-intro h2 { max-width: 17ch; font-size: clamp(30px, 8vw, 42px); }
+  .experience-company-profile-intro > p:not(.experience-page-eyebrow) { font-size: 14px; }
+  .experience-company-profile-card { min-height: 0; padding: 15px; }
+  .experience-company-profile-card h3 { font-size: 18px; }
+  .experience-company-profile-card p { font-size: 12px; }
+  .experience-company-profile-note { margin-top: -5px; }
   .experience-projects-section { padding: 12px 0 65px; }
   .experience-projects-grid { grid-template-columns: 1fr; gap: 14px; }
   .experience-project-card { padding: 23px; }
@@ -913,6 +936,7 @@ section[id] { scroll-margin-top: 96px; }
 }
 @media (max-width: 360px) {
   .experience-page-title { font-size: 39px; }
+  .experience-company-profile-details { grid-template-columns: 1fr; }
   .experience-project-card { padding-right: 19px; padding-left: 19px; }
 }
 
@@ -1486,4 +1510,70 @@ section[id] { scroll-margin-top: 96px; }
   .experience-project-card { width: 100%; max-width: 100%; min-width: 0; }
   .experience-project-card-head { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 6px; }
   .experience-project-link { margin-left: 0; }
+}
+
+/* Company guide: server-rendered editorial content with compact mobile tables. */
+.intelligencex-guide { padding-bottom: 64px; }
+.guide-title { max-width: 24ch; margin: 0; font-size: clamp(38px, 5.8vw, 78px); line-height: 1.06; text-wrap: balance; }
+.guide-byline { margin-top: 24px; font-size: 13px; line-height: 1.7; }
+.guide-disclosure { max-width: 78ch; margin-top: 16px; color: #49443e; font-size: 15px; line-height: 1.75; }
+.intelligencex-guide a:not(.experience-detail-breadcrumbs a) { text-decoration: underline; text-underline-offset: 4px; }
+.intelligencex-guide a:focus-visible { outline: 3px solid #a33b16; outline-offset: 5px; border-radius: 2px; }
+.guide-toc { margin-top: 30px; padding: 22px; border: 1px solid #b5aa96; background: #fff; border-radius: 6px; }
+.guide-toc strong { font-family: var(--hand); font-size: 19px; }
+.guide-toc ul { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; padding: 0; margin: 12px 0 0; font-size: 14px; }
+.guide-toc a { display: inline-block; padding-block: 7px; }
+.guide-section { padding-block: 32px; border-top: 1px solid #c7bdac; scroll-margin-top: 100px; }
+.guide-section h2 { margin: 0 0 24px; font-family: var(--display); font-size: clamp(29px, 3.5vw, 44px); line-height: 1.16; }
+.guide-section h3 { margin: 20px 0 12px; font-size: 20px; line-height: 1.35; }
+.guide-section h4 { margin: 20px 0 8px; font-size: 16px; }
+.guide-section p, .guide-section li, .guide-section dd { font-size: 15px; line-height: 1.8; }
+.guide-section p { max-width: 85ch; margin-block: 14px; }
+.guide-source-link { display: inline-block; margin-block: 8px; font-size: 13px; font-weight: 650; line-height: 1.6; }
+.guide-company-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 300px); gap: 48px; align-items: center; }
+.guide-company-intro img { width: 100%; height: auto; }
+.guide-facts, .guide-service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.guide-facts > div { border: 1px solid #c7bdac; border-radius: 5px; padding: 20px; background: #fffaf0; }
+.guide-facts dt { font-weight: 750; margin-bottom: 8px; }
+.guide-facts dd { margin: 0; }
+.guide-facts dd a { display: block; }
+.guide-service { padding: 24px; border: 1px solid #ac9e88; border-radius: 6px; background: #fff; }
+.guide-service h3 { margin-top: 0; }
+.guide-platform-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 12px; font-size: 15px; line-height: 1.7; }
+.guide-platform-table caption { text-align: left; font-size: 13px; color: #49443e; padding: 12px 0; }
+.guide-platform-table th, .guide-platform-table td { text-align: left; vertical-align: top; padding: 16px 20px; border-bottom: 1px solid #c7bdac; overflow-wrap: anywhere; }
+.guide-platform-table th:first-child { width: 27%; }
+.guide-platform-table thead { background: #1e252c; color: #fffaf0; }
+.guide-platform-table tbody tr:nth-child(odd) { background: #fffaf0; }
+.guide-note { border-left: 3px solid #a33b16; padding-left: 18px; }
+.guide-projects { display: grid; gap: 18px; margin-top: 24px; }
+.guide-project { padding: 24px; border: 1px solid #b5aa96; background: #fffaf0; border-radius: 6px; }
+.guide-project-heading { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.guide-project-heading h3 { margin: 0; font-size: 25px; }
+.guide-project-heading span { font-size: 13px; color: #49443e; }
+.guide-project ul { padding-left: 20px; margin-top: 16px; }
+.guide-project li { padding-block: 4px; }
+.guide-project-actions { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 20px; row-gap: 4px; margin-top: 8px; }
+.guide-project-actions .guide-source-link { margin-block: 4px; text-decoration: underline; text-underline-offset: 4px; }
+.guide-implementation { max-width: 90ch; }
+.guide-implementation article + article { margin-top: 30px; padding-top: 8px; border-top: 1px solid #c7bdac; }
+.guide-evidence { margin: 32px 0 0; padding: 24px; border-radius: 8px; background: #0d1117; color: #e6edf3; }
+.guide-evidence img { display: block; width: 100%; height: auto; }
+.guide-evidence figcaption { margin-top: 16px; font-size: 13px; line-height: 1.7; max-width: 90ch; }
+.guide-questions { max-width: 90ch; }
+.guide-questions section + section { border-top: 1px solid #c7bdac; margin-top: 20px; padding-top: 8px; }
+.guide-sources { padding-left: 20px; }
+.guide-sources li { margin-bottom: 14px; }
+.guide-sources span { display: block; color: #49443e; font-size: 13px; }
+@media (max-width: 767px) {
+  .guide-title { font-size: clamp(35px, 8.5vw, 58px); }
+  .guide-company-intro { grid-template-columns: 1fr; gap: 12px; }
+  .guide-company-intro img { width: min(230px, 100%); margin-block: 12px 20px; }
+  .guide-facts, .guide-service-grid { grid-template-columns: 1fr; }
+  .guide-toc, .guide-project, .guide-service { padding: 18px; }
+  .guide-toc ul { display: grid; gap: 3px; }
+  .guide-platform-table { font-size: 14px; }
+  .guide-platform-table th, .guide-platform-table td { padding: 14px 10px; }
+  .guide-platform-table th:first-child { width: 36%; }
+  .guide-evidence { padding: 14px; }
 }
