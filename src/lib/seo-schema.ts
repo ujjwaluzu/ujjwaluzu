@@ -64,7 +64,7 @@ export function projectSchema(project: Project, study: ProjectCaseStudy) {
         name: project.name,
         description: study.seoDescription,
         url: projectUrl,
-        codeRepository: project.githubUrl,
+        ...(project.githubUrl ? { codeRepository: project.githubUrl } : {}),
         creator: { "@id": `${site.domain}/#ujjwal-baunthiyal` },
         author: { "@id": `${site.domain}/#ujjwal-baunthiyal` },
         programmingLanguage: study.heroTechs,

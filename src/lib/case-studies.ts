@@ -1,5 +1,5 @@
 export type ScreenItem =
-  | { kind: "image"; image: string; label: string; alt: string }
+  | { kind: "image"; image: string; label: string; alt: string; width?: number; height?: number }
   | { kind: "placeholder"; label: string };
 
 export type ProjectCaseStudy = {
@@ -16,61 +16,12 @@ export type ProjectCaseStudy = {
   journey?: { step: string; text: string }[];
   screenshots: ScreenItem[];
   details: { label: string; value: string }[];
-  repoteam?: RepoTeamData;
+  externalLinks?: { label: string; url: string }[];
   commerce?: CommerceData;
   wiki?: WikiData;
   mail?: MailData;
   network?: NetworkData;
   ghprofile?: GhProfileData;
-};
-
-export type RepoTeamData = {
-  status: { eyebrow: string; heading: string; text: string; tag: string };
-  workflow: {
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    path: string[];
-    steps: string[];
-  };
-  issues: {
-    eyebrow: string;
-    title: string;
-    text: string;
-    statuses: string[];
-    priorities: string[];
-  };
-  roles: {
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    note: string;
-    accent: string;
-    ownerNote: string;
-    groups: { name: string; tagline: string; items: string[] }[];
-  };
-  server: { eyebrow: string; title: string; chips: string[]; text: string };
-  dataModel: {
-    eyebrow: string;
-    title: string;
-    chain: string[];
-    assignment: { from: string; arrow: string; to: string; note: string };
-    note: string;
-  };
-  ideaToDone: { eyebrow: string; title: string; steps: string[] };
-  structure: { eyebrow: string; title: string; chain: string[]; note: string };
-  next: {
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    currentLabel: string;
-    currentDesc: string;
-    current: string[];
-    futureLabel: string;
-    futureDesc: string;
-    future: string[];
-    note: string;
-  };
 };
 
 export type CommerceData = {
@@ -493,282 +444,62 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       { label: "License", value: "MIT" },
     ],
   },
-  repoteam: {
-    slug: "repoteam",
-    seoDescription:
-      "RepoTeam is a Django-based collaborative project-management MVP for teams, projects, issue tracking, and role-based access control.",
-    heroTechs: ["Python", "Django", "SQLite", "HTML", "CSS", "JavaScript"],
+  crewlab: {
+    slug: "crewlab",
+    seoDescription: "CrewLab helps builders discover projects that need their skills, form teams through owner-reviewed applications, and coordinate work in a shared project space.",
+    heroTechs: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Row-level security"],
     idea: {
       eyebrow: "THE IDEA",
-      heading: "A central place to organize the work.",
+      heading: "Help good ideas find their people.",
       paragraphs: [
-        "Development teams juggle a lot: who is on which team, what projects exist, what work is open, and who owns it. RepoTeam gives those teams one central place to create teams, organize software projects, track issues, assign work, and collaborate on development-related work.",
-        "The whole product is built around a simple spine: teams contain projects, and projects contain issues. The MVP exists to validate that exact workflow before anything bigger gets layered on.",
+        "A project idea often starts with one person and an incomplete team. CrewLab connects owners who need collaborators with builders looking for work that fits their interests and skills.",
+        "Projects are the organizing unit: owners describe the work and needed skills, builders discover projects and apply, and accepted members coordinate in a shared project space.",
       ],
-      note: "teams → projects → issues.",
+      note: "describe → discover → apply → build together.",
     },
     featureGroups: [
-      {
-        id: "accounts",
-        index: "01",
-        title: "Accounts & authentication",
-        items: [
-          "Registration with username, email, and password confirmation",
-          "Login and CSRF-protected logout",
-          "Personalized welcome screen for authenticated users",
-        ],
-      },
-      {
-        id: "dashboard",
-        index: "02",
-        title: "Dashboard",
-        items: [
-          "Personal workspace summarizing your teams",
-          "Live counters for teams, projects, and open issues",
-          "Quick “Create team” action and team list",
-          "Open and empty states handled",
-        ],
-      },
-      {
-        id: "teams",
-        index: "03",
-        title: "Teams",
-        featured: true,
-        items: [
-          "Create teams with a name and description",
-          "Workspace with member list and project list",
-          "Invite members by username",
-          "Remove members and change roles",
-          "Owner / Admin / Member roles",
-          "Owner-only for role changes",
-        ],
-      },
-      {
-        id: "projects",
-        index: "04",
-        title: "Projects",
-        items: [
-          "Projects belong to a team",
-          "Created inside a team workspace",
-          "Project workspace listing all issues",
-          "Creator metadata on every project",
-        ],
-      },
-      {
-        id: "issues",
-        index: "05",
-        title: "Issues",
-        items: [
-          "Create with title, description, status, priority, and assignee",
-          "Edit any field at any time",
-          "Delete with a confirmation step",
-          "Assign issues to any team member",
-        ],
-      },
-      {
-        id: "permissions",
-        index: "06",
-        title: "Permissions",
-        items: [
-          "Checks on every authenticated page",
-          "Gates for invites, removals, and role changes",
-          "Non-members redirected to the dashboard",
-        ],
-      },
+      { id: "profiles", index: "01", title: "Profiles & onboarding", items: ["Email signup, login, and password reset", "Introduce yourself with a short bio", "Share skills and interests on an editable public profile"] },
+      { id: "discovery", index: "02", title: "Projects & discovery", featured: true, items: ["Create, edit, and remove owned projects", "Browse and filter project listings", "Review each project's stage and requested skills"] },
+      { id: "applications", index: "03", title: "Join applications", items: ["Send an application to a project owner", "Review applications you've sent or received", "Let owners decide who joins their project"] },
+      { id: "crew", index: "04", title: "Crew management", items: ["Track projects you own or have joined", "Owners review applications and manage membership", "Members can leave a crew"] },
+      { id: "discussion", index: "05", title: "Project discussion", items: ["Coordinate with accepted crew members", "Use realtime chat for project discussion"] },
+      { id: "github", index: "06", title: "Optional GitHub context", items: ["Owners can connect a repository to a project", "Crew members get read-only access to repository metadata and activity", "Owner credentials are not shared with project members"] },
     ],
     stack: [
-      { label: "Backend", value: ["Python", "Django 5.2"] },
-      { label: "Database", value: ["SQLite"] },
-      { label: "Templates", value: ["Django Template Language", "HTML"] },
-      { label: "Styling", value: ["Custom CSS", "CSS variables", "Design-system approach"] },
-      { label: "Scripting", value: ["Minimal vanilla JavaScript"] },
+      { label: "Framework", value: ["Next.js App Router", "React"] },
+      { label: "Language & UI", value: ["TypeScript", "Tailwind CSS"] },
+      { label: "Authentication", value: ["Supabase Auth"] },
+      { label: "Data & access", value: ["PostgreSQL", "Database constraints", "Row-level security", "Security-definer RPCs"] },
+      { label: "Marketing site", value: ["Next.js App Router", "TypeScript", "React", "Custom CSS"] },
     ],
     highlights: [
-      {
-        heading: "Page rendering",
-        text: "Every page view is covered by the automated test suite.",
-      },
-      {
-        heading: "Issue CRUD flows",
-        text: "Create, edit, and delete runs are tested end to end.",
-      },
-      {
-        heading: "Team creation",
-        text: "Team setup is exercised from the dashboard flow.",
-      },
-      {
-        heading: "Project creation",
-        text: "Creating a project inside a team is covered.",
-      },
-      {
-        heading: "Issue creation",
-        text: "Issue creation within a project is covered.",
-      },
-      {
-        heading: "Permission checks",
-        text: "Role-based rules for owners, admins, and members are verified.",
-      },
+      { heading: "Owners choose their crew", text: "Join requests go to the project owner for review. Crew membership follows the owner’s decision." },
+      { heading: "Repository access stays read-only", text: "When an owner connects a repository, project members can view relevant repository information. They do not receive the owner’s GitHub credentials." },
+      { heading: "An MVP with a defined scope", text: "CrewLab supports profiles, project discovery and management, applications, crew membership, discussion, and optional GitHub context. It does not promise that a project will find contributors or replace a team’s own planning and development practices." },
+    ],
+    journey: [
+      { step: "Build a profile", text: "Add a name, short introduction, and skills." },
+      { step: "Describe a project", text: "Share its idea, stage, and needed contributions." },
+      { step: "Find a good fit", text: "Builders browse projects and apply to join." },
+      { step: "Form the crew", text: "The owner reviews requests and manages membership." },
+      { step: "Work with context", text: "Accepted members coordinate in project discussion." },
     ],
     screenshots: [
-      {
-        kind: "image",
-        image: "repoteam/dashboard.webp",
-        label: "Dashboard",
-        alt: "RepoTeam dashboard showing the user's teams, team projects, and open issue counters",
-      },
-      {
-        kind: "image",
-        image: "repoteam/team-detail.webp",
-        label: "Team workspace",
-        alt: "RepoTeam team workspace showing the member list and project list",
-      },
-      {
-        kind: "image",
-        image: "repoteam/project-detail.webp",
-        label: "Project workspace",
-        alt: "RepoTeam project workspace listing the team's issues",
-      },
-      {
-        kind: "image",
-        image: "repoteam/home.webp",
-        label: "Homepage",
-        alt: "RepoTeam homepage",
-      },
+      { kind: "image", image: "crewlab-homepage.png", label: "Marketing homepage", alt: "CrewLab marketing homepage with the headline ‘Build products with real people’ and a robot illustration", width: 1534, height: 717 },
+      { kind: "image", image: "crewlab-dashboard.png", label: "App dashboard", alt: "CrewLab dashboard showing project, crew, and application summaries with the My Projects list", width: 1897, height: 912 },
+      { kind: "image", image: "crewlab-projects.png", label: "Project workspace", alt: "CrewLab project detail view with the project description and owner information", width: 1902, height: 915 },
     ],
     details: [
-      { label: "Project", value: "RepoTeam" },
-      { label: "Category", value: "MVP" },
-      { label: "Stack", value: "Python / Django / SQLite / HTML / CSS / JavaScript" },
-      { label: "Architecture", value: "Django server-rendered templates" },
-      { label: "Database", value: "SQLite" },
-      { label: "Status", value: "MVP / Active development" },
-      { label: "License", value: "No license currently selected" },
+      { label: "Product", value: "Collaboration workspace for project owners and builders" },
+      { label: "Stage", value: "MVP" },
+      { label: "Website", value: "crewlab.ujjwaluzu.in" },
     ],
-    repoteam: {
-      status: {
-        eyebrow: "PROJECT STATUS",
-        heading: "MVP - Minimal Viable Product.",
-        text: "RepoTeam is designed to validate the core team → project → issue workflow. It is under active development and not yet production-ready.",
-        tag: "Under active development",
-      },
-      workflow: {
-        eyebrow: "THE CORE WORKFLOW",
-        title: "One spine: team → project → issue.",
-        subtitle: "The MVP is organized around a single path through the product.",
-        path: ["User", "Team", "Project", "Issues", "Track work"],
-        steps: [
-          "Register an account",
-          "Log in",
-          "Create a team",
-          "Invite team members by username",
-          "Create a project inside the team",
-          "Create and assign issues",
-          "Update issue statuses and priorities",
-          "Manage team members and roles",
-          "Track work from dashboard and workspaces",
-        ],
-      },
-      issues: {
-        eyebrow: "ISSUE TRACKING",
-        title: "Issues that move toward done.",
-        text: "Each issue carries a title, description, status, priority, and an optional assignee from the team.",
-        statuses: ["To Do", "In Progress", "In Review", "Done"],
-        priorities: ["Low", "Medium", "High"],
-      },
-      roles: {
-        eyebrow: "WHO CAN DO WHAT?",
-        title: "Three roles, clear boundaries.",
-        subtitle: "Permission checks run on every authenticated page.",
-        note: "Unauthorized actions redirect back to the team page with a message; non-members are redirected to the dashboard.",
-        accent: "roles",
-        ownerNote: "The owner's own membership can't be removed or re-assigned.",
-        groups: [
-          {
-            name: "Owner",
-            tagline: "Runs the team. Full control.",
-            items: [
-              "Full team access",
-              "Invite members",
-              "Remove members, including admins",
-              "Change member roles",
-              "Create projects",
-              "Create, edit, and delete issues",
-            ],
-          },
-          {
-            name: "Admin",
-            tagline: "Full team access, with limits.",
-            items: [
-              "Full team access",
-              "Invite members",
-              "Remove eligible members - never an owner or another admin",
-              "Cannot change roles",
-              "Create projects",
-              "Create, edit, and delete issues",
-            ],
-          },
-          {
-            name: "Member",
-            tagline: "Read access plus issue work.",
-            items: [
-              "Read access to team workspace",
-              "Create projects",
-              "Create, edit, and delete issues",
-            ],
-          },
-        ],
-      },
-      server: {
-        eyebrow: "ENGINEERING NOTE",
-        title: "Server-rendered by design.",
-        chips: ["Django Templates", "Custom CSS", "Minimal Vanilla JS"],
-        text: "RepoTeam deliberately uses Django server-rendered templates rather than a frontend framework. Every page round-trips through Django, a custom CSS design system holds the styling, and interaction stays minimal.",
-      },
-      dataModel: {
-        eyebrow: "THE DATA MODEL",
-        title: "Five models down one spine.",
-        chain: ["User", "Membership", "Team", "Project", "Issue"],
-        assignment: { from: "Issue", arrow: "assigned_to", to: "User", note: "nullable - issues can be unassigned" },
-        note: "A Comment model exists in the data layer, but commenting is not yet implemented in the UI.",
-      },
-      ideaToDone: {
-        eyebrow: "FROM IDEA TO DONE",
-        title: "The issue lifecycle.",
-        steps: ["Create", "Assign", "Set priority", "Update status", "Edit", "Delete"],
-      },
-      structure: {
-        eyebrow: "PROJECT STRUCTURE",
-        title: "A compact Django layout.",
-        chain: ["Django project", "Core app", "Models", "Views", "Forms", "Templates", "Static assets"],
-        note: "manage.py sits at the root; the core app keeps models, views, forms, admin, tests, templates, and static assets together.",
-      },
-      next: {
-        eyebrow: "WHAT'S NEXT",
-        title: "Shipped today, and the direction ahead.",
-        subtitle: "An MVP intentionally draws a line between what exists now and what could come later.",
-        currentLabel: "CURRENT MVP",
-        currentDesc: "Implemented and working in the codebase today.",
-        current: ["Accounts & authentication", "Dashboard", "Teams", "Projects", "Issues", "Permissions"],
-        futureLabel: "FUTURE IDEAS",
-        futureDesc: "Documented as planned or potential - not in the codebase.",
-        future: [
-          "Real-time notifications",
-          "Activity feeds",
-          "Advanced issue filtering & search",
-          "File attachments",
-          "GitHub integration",
-          "Email invitations",
-          "Kanban board",
-          "Analytics & reporting",
-          "Dark mode",
-          "Issue comments UI",
-          "Production deployment",
-        ],
-        note: "None of these future ideas exist in the codebase today - they're direction, not features.",
-      },
-    },
-  },
-  commerce: {
+    externalLinks: [
+      { label: "CrewLab marketing site", url: "https://crewlab.ujjwaluzu.in" },
+      { label: "CrewLab marketing repo on GitHub", url: "https://github.com/ujjwaluzu/CrewLab" },
+      { label: "Open CrewLab app", url: "https://app.crewlab.ujjwaluzu.in" },
+    ],
+  },  commerce: {
     slug: "commerce",
     seoDescription:
       "Commerce is a Django-based auction marketplace built for CS50W, featuring listings, bidding, watchlists, comments, categories, and auction management.",
@@ -859,19 +590,19 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       },
       {
         kind: "image",
-        image: "repoteam-listing-detail.webp",
+        image: "commerce-listing-detail.webp",
         label: "Listing detail",
         alt: "Commerce listing detail page with bidding and listing information",
       },
       {
         kind: "image",
-        image: "repoteam-create-listing.webp",
+        image: "commerce-create-listing.webp",
         label: "Create listing",
         alt: "Commerce create listing form for adding a new auction item",
       },
       {
         kind: "image",
-        image: "repoteam-watchlist.webp",
+        image: "commerce-watchlist.webp",
         label: "Watchlist",
         alt: "Commerce watchlist page showing saved auction listings",
       },

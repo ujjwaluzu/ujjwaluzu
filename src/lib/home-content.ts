@@ -37,15 +37,16 @@ export const homeContent = {
       image: "uzzutv.webp",
     },
     {
-      slug: "repoteam",
-      name: "RepoTeam",
+      slug: "crewlab",
+      name: "CrewLab",
       description:
-        "A collaborative project-management platform for teams to organize projects, track issues, and work together.",
-      technologies: ["Django", "Python", "SQLite", "Django ORM", "HTML", "CSS", "JavaScript"],
-      githubUrl: "https://github.com/ujjwaluzu/RepoTeam-MVP",
-      category: "MVP",
+        "A collaboration workspace where builders find projects that fit their skills, form a crew, and work together.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Row-level security"],
+      githubUrl: "https://github.com/ujjwaluzu/appCrewLab",
+      category: "Collaboration workspace",
       theme: "collab",
-      image: "repoteam/dashboard.webp",
+      image: "crewlab-homepage.png",
+      imageSize: { width: 1534, height: 717 },
     },
     {
       slug: "commerce",

@@ -57,12 +57,12 @@ Always learning…
 
 ## Projects
 
-### RepoTeam
+### CrewLab
 
 ```text
-Name: RepoTeam
-Description: Find your team. Build together. A platform for connecting collaborators and building projects.
-Technologies: Django, Python, SQLite
+Name: CrewLab
+Description: A collaboration workspace where builders find projects that fit their skills, form a crew, and work together.
+Technologies: Next.js, TypeScript, Tailwind CSS, Supabase, PostgreSQL, row-level security
 ```
 
 ### AniCluster

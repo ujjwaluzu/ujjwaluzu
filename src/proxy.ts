@@ -7,7 +7,7 @@ Web developer exploring ideas, building products, and turning concepts into real
 ## Projects
 
 - [UzzUTV](/project/uzzutv): streaming platform for movies, TV, and anime.
-- [RepoTeam](/project/repoteam): collaborative project management platform.
+- [CrewLab](/project/crewlab): a collaboration workspace for builders, project owners, and crews.
 - [Commerce](/project/commerce): auction platform.
 - [Wiki](/project/wiki): web-based encyclopedia.
 - [Mail](/project/mail): single-page email client.

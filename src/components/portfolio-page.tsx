@@ -95,14 +95,22 @@ function ProjectCard({ project, index }: { project: typeof homeContent.projects[
       <Reveal delayMs={index * 70}>
         <div className={`project-visual project-visual-${project.theme}`} aria-hidden="true">
           <div className="project-visual-inner">
-            <Image
-              src={`${assetRoot}/${project.image}`}
-              alt=""
-              width={1904}
-              height={911}
-              sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 340px, 285px"
-              className="project-shot"
-            />
+            {project.image ? (
+              <Image
+                src={`${assetRoot}/${project.image}`}
+                alt=""
+                width={"imageSize" in project ? project.imageSize.width : 1904}
+                height={"imageSize" in project ? project.imageSize.height : 911}
+                sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 340px, 285px"
+                className="project-shot"
+              />
+            ) : (
+              <div className="project-visual-placeholder">
+                <span aria-hidden="true">C</span>
+                <b>CrewLab</b>
+                <small>teams · projects · issues</small>
+              </div>
+            )}
           </div>
         </div>
         <div className="project-card-body">
@@ -116,7 +124,7 @@ function ProjectCard({ project, index }: { project: typeof homeContent.projects[
             </div>
           </div>
           <div className="project-links">
-            <a
+            {project.githubUrl && <a
               className="github-link"
               href={project.githubUrl}
               target="_blank"
@@ -125,7 +133,7 @@ function ProjectCard({ project, index }: { project: typeof homeContent.projects[
               onClick={(e) => e.stopPropagation()}
             >
               <GitHubMark /> View code
-            </a>
+            </a>}
             <Link
               className="round-arrow"
               href={`/project/${project.slug}`}

@@ -11,12 +11,12 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Projects by Ujjwal Baunthiyal | ujjwaluzu",
-  description: "Explore UzzUTV, RepoTeam, Commerce, Wiki, Mail, Network, and ghprofile projects built by web developer Ujjwal Baunthiyal.",
+  description: "Explore UzzUTV, CrewLab, Commerce, Wiki, Mail, Network, and ghprofile projects built by web developer Ujjwal Baunthiyal.",
   keywords: [
     "Ujjwal Baunthiyal projects",
     "ujjwaluzu projects",
     "UzzUTV",
-    "RepoTeam",
+    "CrewLab",
     "CS50W Commerce",
     "CS50W Wiki",
     "CS50W Mail",
@@ -113,7 +113,7 @@ export default function ProjectArchivePage() {
                   </ul>
                 </div>
                 <div className="project-row-actions">
-                  <a
+                  {project.githubUrl && <a
                     className="view-github"
                     href={project.githubUrl}
                     target="_blank"
@@ -121,7 +121,7 @@ export default function ProjectArchivePage() {
                     aria-label={`View ${project.name} source code on GitHub`}
                   >
                     <GitHubMark /> View on GitHub <Arrow />
-                  </a>
+                  </a>}
                   <Link
                     className="round-arrow"
                     href={`/project/${project.slug}`}

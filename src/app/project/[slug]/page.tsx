@@ -11,7 +11,7 @@ import { CommerceDetail } from "./commerce-detail";
 import { GhprofileDetail } from "./ghprofile-detail";
 import { MailDetail } from "./mail-detail";
 import { NetworkDetail } from "./network-detail";
-import { RepoTeamDetail } from "./repoteam-detail";
+import { CrewLabDetail } from "./crewlab-detail";
 import { UzzutvDetail } from "./uzzutv-detail";
 import { WikiDetail } from "./wiki-detail";
 
@@ -25,7 +25,7 @@ export const dynamicParams = false;
 
 const projectTitles: Record<string, string> = {
   uzzutv: "UzzUTV by Ujjwal Baunthiyal | Django Streaming Platform",
-  repoteam: "RepoTeam by Ujjwal Baunthiyal | Django Project Management",
+  crewlab: "CrewLab by Ujjwal Baunthiyal | Project Collaboration Workspace",
   commerce: "CS50W Commerce by Ujjwal Baunthiyal | Django Auction App",
   wiki: "CS50W Wiki by Ujjwal Baunthiyal | Django Encyclopedia",
   mail: "CS50W Mail by Ujjwal Baunthiyal | Django Email Client",
@@ -35,7 +35,7 @@ const projectTitles: Record<string, string> = {
 
 const projectKeywords: Record<string, string[]> = {
   uzzutv: ["UzzUTV", "UzzUTV ujjwaluzu", "UzzUTV Ujjwal Baunthiyal", "UzzUTV streaming platform", "UzzUTV Django project", "UzzUTV watch party", "UzzUTV anime"],
-  repoteam: ["RepoTeam", "RepoTeam ujjwaluzu", "RepoTeam Ujjwal Baunthiyal", "RepoTeam project management platform", "RepoTeam Django project", "RepoTeam MVP"],
+  crewlab: ["CrewLab", "CrewLab ujjwaluzu", "CrewLab Ujjwal Baunthiyal", "CrewLab collaboration workspace", "project discovery", "builder profiles", "project join applications"],
   commerce: ["Commerce", "CS50W Commerce", "CS50W Commerce Ujjwal", "Commerce Ujjwaluzu", "Commerce Ujjwal Baunthiyal", "Django auction platform", "Django bidding project"],
   wiki: ["Wiki", "CS50W Wiki", "Wiki Ujjwaluzu", "Wiki Ujjwal Baunthiyal", "Django Wiki project", "Markdown encyclopedia Django"],
   mail: ["CS50W Mail", "Mail Ujjwaluzu", "Mail Ujjwal Baunthiyal", "Django JavaScript email client", "single-page email client Django"],
@@ -84,8 +84,8 @@ export default async function ProjectDetailPage({ params }: Props) {
   const project = homeContent.projects.find((p) => p.slug === slug);
   if (!study || !project) notFound();
 
-  const detail = study.repoteam
-    ? <RepoTeamDetail study={study} project={project} />
+  const detail = study.slug === "crewlab"
+    ? <CrewLabDetail study={study} project={project} />
     : study.commerce
       ? <CommerceDetail study={study} project={project} />
       : study.wiki

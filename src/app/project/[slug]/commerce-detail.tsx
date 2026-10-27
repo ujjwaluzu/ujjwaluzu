@@ -15,9 +15,9 @@ const assetRoot = "/assets";
 
 const shotDims: Record<string, { w: number; h: number }> = {
   "auction.webp": { w: 1907, h: 915 },
-  "repoteam-listing-detail.webp": { w: 1899, h: 916 },
-  "repoteam-create-listing.webp": { w: 1899, h: 911 },
-  "repoteam-watchlist.webp": { w: 1917, h: 912 },
+  "commerce-listing-detail.webp": { w: 1899, h: 916 },
+  "commerce-create-listing.webp": { w: 1899, h: 911 },
+  "commerce-watchlist.webp": { w: 1917, h: 912 },
 };
 
 const closingTones = ["open", "bidding", "closed", "winner"];

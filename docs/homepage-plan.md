@@ -111,11 +111,11 @@ Supporting line:
 
 Projects:
 
-### RepoTeam
+### CrewLab
 
-Find your team. Build together. A platform for connecting collaborators and building projects.
+A collaboration workspace where builders find projects that fit their skills, form a crew, and work together.
 
-Tags: Django, Python, SQLite
+Tags: Next.js, TypeScript, Tailwind CSS, Supabase, PostgreSQL, row-level security
 
 ### AniCluster
 
