@@ -93,12 +93,17 @@ export function videoSchema(video: MoreVideo, category: VideoCategory) {
         "@id": `${videoUrl}#video`,
         name: video.title ?? "Ujjwaluzu video",
         description,
+        uploadDate: video.uploadDate,
         url: videoUrl,
         contentUrl: watchUrl,
         embedUrl: `https://www.youtube.com/embed/${video.id}`,
         thumbnailUrl: [`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`],
         publisher: { "@id": `${site.domain}/#ujjwal-baunthiyal` },
-        creator: { "@id": `${site.domain}/#ujjwal-baunthiyal` },
+        creator: {
+          "@type": "Person",
+          "@id": `${site.domain}/#ujjwal-baunthiyal`,
+          name: "Ujjwal Baunthiyal",
+        },
         isPartOf: { "@id": `${site.domain}/more#collection` },
       },
       breadcrumbSchema([
