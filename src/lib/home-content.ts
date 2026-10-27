@@ -45,8 +45,8 @@ export const homeContent = {
       githubUrl: "https://github.com/ujjwaluzu/appCrewLab",
       category: "Collaboration workspace",
       theme: "collab",
-      image: "crewlab-homepage.png",
-      imageSize: { width: 1534, height: 717 },
+      image: "crewlab-homepage-new.png",
+      imageSize: { width: 1909, height: 910 },
     },
     {
       slug: "commerce",

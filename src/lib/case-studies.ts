@@ -485,7 +485,7 @@ export const caseStudies: Record<string, ProjectCaseStudy> = {
       { step: "Work with context", text: "Accepted members coordinate in project discussion." },
     ],
     screenshots: [
-      { kind: "image", image: "crewlab-homepage.png", label: "Marketing homepage", alt: "CrewLab marketing homepage with the headline ‘Build products with real people’ and a robot illustration", width: 1534, height: 717 },
+      { kind: "image", image: "crewlab-homepage-new.png", label: "Marketing homepage", alt: "CrewLab homepage showing its builder-community message, a robot illustration, and founder, builder, and creator sections", width: 1909, height: 910 },
       { kind: "image", image: "crewlab-dashboard.png", label: "App dashboard", alt: "CrewLab dashboard showing project, crew, and application summaries with the My Projects list", width: 1897, height: 912 },
       { kind: "image", image: "crewlab-projects.png", label: "Project workspace", alt: "CrewLab project detail view with the project description and owner information", width: 1902, height: 915 },
     ],
