@@ -119,7 +119,7 @@ section[id] { scroll-margin-top: 96px; }
 .project-shot { display: block; width: 100%; height: 100%; object-fit: cover; }
 .project-visual-cinema { background: radial-gradient(140% 130% at 18% 0%, #223047 0%, #0d1118 58%, #131a26 100%); }
 .project-visual-collab { background: linear-gradient(140deg, #131c2c 0%, #1b2a44 55%, #101a2b 100%); }
-.project-visual-collab .project-shot { object-fit: contain; }
+.project-visual-collab .project-shot { object-fit: cover; object-position: center; }
 .project-visual-placeholder { display: flex; height: 100%; align-items: center; justify-content: center; flex-direction: column; gap: 6px; color: #fff4c5; }
 .project-visual-placeholder > span { display: grid; width: 54px; height: 54px; place-items: center; border: 1px solid #f7ca52; border-radius: 17px; color: #f7ca52; font: 700 30px/1 Georgia, serif; transform: rotate(-7deg); }
 .project-visual-placeholder b { font: 700 21px/1 var(--font-display, Georgia, serif); letter-spacing: -.04em; }

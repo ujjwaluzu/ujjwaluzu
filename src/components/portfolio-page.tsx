@@ -101,6 +101,7 @@ function ProjectCard({ project, index }: { project: typeof homeContent.projects[
                 alt=""
                 width={"imageSize" in project ? project.imageSize.width : 1904}
                 height={"imageSize" in project ? project.imageSize.height : 911}
+                unoptimized={project.image === "crewlab-homepage-new.png"}
                 sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 340px, 285px"
                 className="project-shot"
               />

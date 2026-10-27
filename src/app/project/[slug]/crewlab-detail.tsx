@@ -65,6 +65,7 @@ export function CrewLabDetail({
                     alt={mainShot.alt}
                     width={imageSize.width}
                     height={imageSize.height}
+                    unoptimized={project.image === "crewlab-homepage-new.png"}
                     priority
                     sizes="(max-width: 767px) calc(100vw - 56px), 460px"
                   />
@@ -192,6 +193,7 @@ export function CrewLabDetail({
                       alt={mainShot.alt}
                       width={mainShot.width ?? imageSize.width}
                       height={mainShot.height ?? imageSize.height}
+                      unoptimized={mainShot.image === "crewlab-homepage-new.png"}
                       sizes="(max-width: 767px) 100vw, 720px"
                     />
                     <figcaption className="gallery-label">{mainShot.label}</figcaption>
